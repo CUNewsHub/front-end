@@ -1,0 +1,12 @@
+{% extends 'newshub/framework/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% if not add %}
+	<a href="{% url 'newshub:view_article' pk=form.instance.pk %}">View</a>
+{% endif %}
+<form method="post" action="">
+	{% csrf_token %}
+	{{form.as_p}}
+<button type="submit">Save</button>
+</form>
+{% endblock %}

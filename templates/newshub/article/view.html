@@ -1,0 +1,15 @@
+{% extends 'newshub/framework/base.html' %}
+{% load staticfiles %}
+{% block content %}
+{% if article.author == request.user %}
+	<a href="{% url 'newshub:edit_article' pk=article.pk %}">Edit</a>
+{% endif %}
+<p>author: {{article.author.first_name}} {{article.author.last_name}}</p>
+<p>title: {{article.title}}</p>
+
+<p>headline: {{article.headline}}</p>
+<p>content: {{article.content}}</p>
+{% if article.author == request.user %}
+<p>published: {{article.published}}</p>
+{% endif %}
+{% endblock %}

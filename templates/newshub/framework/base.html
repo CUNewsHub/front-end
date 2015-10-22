@@ -1,0 +1,27 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="NewsHub project" />
+		<title>{% block title %}{%endblock%}</title>
+
+		<script type="text/javascript" src="{% static 'newshub/js/main.js' %}"></script>
+	</head>
+	<body>
+		<!-- Header start -->
+		<section class="section-header">
+			{% include 'newshub/framework/menu.html' %}
+		</section>
+		<!-- Header end -->
+		<!-- Main body start-->
+		<section class="section-content">
+			{% block content %}{% endblock %}
+		</section>
+		<!-- Main body end -->
+		<!-- Footer start -->
+		<section class="section-footer">
+
+		</section>
+		<!-- Footer end -->
+	</body>
+</html>
