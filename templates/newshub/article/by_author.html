@@ -1,7 +1,0 @@
-{% extends 'newshub/framework/base.html' %}
-{% load staticfiles %}
-{% block content %}
-{% for article in articles %}
-	<li><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></li>
-{% endfor %}
-{% endblock %}

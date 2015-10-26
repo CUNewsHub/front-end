@@ -1,3 +1,30 @@
+{% comment %}
+	Profile page of the User/Author. 
+
+	Data received 
+	-----
+	user: the user object who's profile we are viewing
+		- first_name
+		- last_name
+		- email
+		- profile: the profile object. Each user has a profile object associated with them.
+			- picture: a Django ImageField object, containing the profile picture from facebook
+			- about: a short description, which is optional to provide after signing up.
+			- crsid: cambridge universities id. only needed if a user wants to become an author.
+		- article_set: the list of users article objects
+			- article: a single article 
+				- author: the user object of the article, ie. who created it
+				- title
+				- headline
+				- content
+				- tags: a list of tags
+					-tag
+						- name: the name of the tag such as 'football'
+						- category: the category object. Each tag has one category, but a signle category can have many tags. Example would be 'Sport'
+							- name: the name of the category
+				- time_uploaded: a datetime object of when was the article first uploaded
+				- time_changed: the time of the last save of the article
+{% endcomment %}
 {%extends 'newshub/framework/base.html' %}
 {% block title %}Profile{% endblock%}
 {% block content %}

@@ -1,3 +1,7 @@
+{% comment %}
+	The main entry for users which arenot logged in. Login link is provided below, this will redirect the users to facebook when they'll be asked about their data.
+{% endcomment %}
+
 Welcome to NewsHub!
 
 <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
