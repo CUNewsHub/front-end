@@ -4,8 +4,17 @@
 		<meta charset="UTF-8" />
 		<meta name="description" content="NewsHub project" />
 		<title>{% block title %}{%endblock%}</title>
-
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+		<script>
+			var django = {jQuery: jQuery};
+		</script>
+		<!-- including scripts -->
+		<script type="text/javascript" src="{% static 'newshub/js/tinymce.min.js' %}"></script>		
+		{{form.media}}
+		</script>
+		<!-- end include scripts -->
 		<script type="text/javascript" src="{% static 'newshub/js/main.js' %}"></script>
+
 	</head>
 	<body>
 		<!-- Header start -->

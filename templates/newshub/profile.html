@@ -1,3 +1,4 @@
+{% extends 'newshub/framework/base.html' %}
 {% comment %}
 	Profile page of the User/Author. 
 
@@ -11,7 +12,7 @@
 			- picture: a Django ImageField object, containing the profile picture from facebook
 			- about: a short description, which is optional to provide after signing up.
 			- crsid: cambridge universities id. only needed if a user wants to become an author.
-		- article_set: the list of users article objects
+		- article_set.all: the list of users article objects
 			- article: a single article 
 				- author: the user object of the article, ie. who created it
 				- title
@@ -25,11 +26,20 @@
 				- time_uploaded: a datetime object of when was the article first uploaded
 				- time_changed: the time of the last save of the article
 {% endcomment %}
-{%extends 'newshub/framework/base.html' %}
 {% block title %}Profile{% endblock%}
 {% block content %}
+		<h1>Overview</h1>
 		first name: {{user.first_name}} <br />
 		last  name: {{user.last_name}} <br />
 		email: {{user.email}} <br />
 		image: <img src="{{user.profile.picture.url}}" />
+
+		<h1>My articles</h1>
+		<p>
+			<ul>
+				{% for article in request.user.article_set.all %}
+					<li><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></li>
+				{% endfor %}
+			</ul>
+		</p>
 {%endblock%}

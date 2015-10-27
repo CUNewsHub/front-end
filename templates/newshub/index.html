@@ -1,3 +1,4 @@
+{% extends 'newshub/framework/base.html' %}
 {% comment %}
 	This is the main entry for the website, here will be the feed of articles.
 
@@ -17,8 +18,6 @@
 			- time_uploaded: a datetime object of when was the article first uploaded
 			- time_changed: the time of the last save of the article
 {% endcomment %}
-
-{% extends 'newshub/framework/base.html' %}
 {% block content %}
 	Welcome to NewsHub!
 	<p>Articles:</p>
