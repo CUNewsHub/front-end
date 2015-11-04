@@ -1,0 +1,110 @@
+$nav-size: 50px;
+$component-colours: #787878;
+
+body {
+	padding-top: $nav-size;
+}
+
+.article-sidebar {
+	padding: 0 5px 0 5px;
+}
+.nav-pills {
+	margin-top: 30px;
+	
+	li.active a{
+		background-color: $navbar-inverse-link-active-bg;
+	}
+	a {
+		background-color: $component-colours;
+	}
+	.like-button h2 {
+		margin: 0;
+		color: black;
+	}
+	.feedback-header {
+		margin: 30px 0 10px 0;
+		h3 {
+			margin: 0;
+		}
+	}
+	.feedback-pill{
+		&.active a{
+			background-color: $component-colours;
+			color: $navbar-inverse-link-active-bg;
+		}
+	 	a{
+			background-color: transparent;
+			color: black;
+			&:hover{
+				background-color: $component-colours;
+			}
+		}
+	}
+}
+ 
+.nav {
+	text-align: center;
+	a {
+		color: white;
+	}
+}
+
+.article-main, .feed-main {
+	border-left: thin solid black;
+	border-right: thin solid black;
+	.center-block {
+		float: none;
+	}
+	.article-post-meta a {
+		color: $navbar-inverse-link-active-bg;
+	}
+	p {
+		font-family: $font-family-serif;
+	}
+}
+
+.social-media-pill {
+	li {
+		width: 44px;
+		a {
+		    height: 44px;    
+			&:hover{
+				background-color: transparent;
+			}
+		}
+		.facebook-share {
+			background: url("../images/facebook.png");
+		    background-size: contain;
+		}
+		.twitter-share {
+			background: url("../images/twitter.png");
+		    background-size: contain;
+		}
+		.linkedin-share {
+			background: url("../images/linkedin.png");
+		    background-size: contain;
+		}
+		.pinterest-share {
+			background: url("../images/pinterest.ico");
+		    background-size: contain;
+		}
+	}
+}
+
+.feed-article {
+	border-bottom: thin solid black;
+	img {
+		height: 30px;
+		width: 50px;
+		display: inline-block;
+		border: thin solid black;
+		vertical-align: baseline;
+	}
+	h1 {
+		display: inline-block;
+	}
+}
+
+.tags {
+	text-align: center;
+}
