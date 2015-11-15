@@ -1,15 +1,70 @@
 {% extends 'newshub/framework/base.html' %}
-{% load staticfiles %}
 {% block content %}
-{% if article.author == request.user %}
-	<a href="{% url 'newshub:edit_article' pk=article.pk %}">Edit</a>
-{% endif %}
-<p>author: {{article.author.first_name}} {{article.author.last_name}}</p>
-<p>title: {{article.title}}</p>
+<div class="row">
+    <div class="col-sm-2 article-left-sidebar">
+      	<ul class="nav nav-pills nav-stacked">
+        	<li class="article-active"><a href="#">Personal Feed</a></li>
+        	<li><a href="#">Top Stories</a></li>
+        	<li><a href="#">History</a></li>
+        	<li class="search">
+	          	<div id="custom-search-input">
+	            	<div class="input-group col-md-12">	              		
+	            		<span class="input-group-btn">
+		                	<button class="btn" type="button">
+		                  		<span class="glyphicon glyphicon-search"></span>
+		                	</button>
+	              		</span>
+	              		<input type="text" class="  search-query form-control" placeholder="Search" />
+	            	</div>
+	          	</div>
+        	</li>
+        	<li><a href="#">Filter</a></li>
+      	</ul>
+      	<div class="tags">
+      	</div>
+    </div><!-- /.article-sidebar -->
 
-<p>headline: {{article.headline}}</p>
-<p>content: {{article.content|safe}}</p>
-{% if article.author == request.user %}
-<p>published: {{article.published}}</p>
-{% endif %}
+    <div class="col-sm-8 article-main">
+
+		<div class="col-sm-9 center-block article-post">
+			<h1 class="article-post-title">{{article.title}}</h1>
+			<p class="article-post-meta">{{article.author.first_name}} {{article.author.last_name}}</p>			
+			{% if article.author == request.user %}
+				<a href="{% url 'newshub:edit_article' pk=article.pk %}">Edit</a>
+			{% endif %}
+			<p class="article-post-headline">{{article.headline}}</p>
+			<p>{{article.content|safe}}</p>
+		</div><!-- /.article-post -->
+		
+		<!--{% if article.author == request.user %}
+			<p>published: {{article.published}}</p>
+		{% endif %} -->
+
+    </div><!-- /.article-main -->
+
+    <div class="col-sm-2 article-right-sidebar">
+      	<ul class="nav nav-pills nav-stacked">
+        	<li class="like-button"><a href="#"><h3>+ LIKE</h3></a></li>
+        	<li class="feedback-header"><h3>Feedback<h3></li>
+	        <li class="feedback-pill"><a href="#">Enjoyable</a></li>
+	        <li class="feedback-pill"><a href="#">Biased</a></li>
+	        <li class="feedback-pill"><a href="#">Interesting</a></li>
+	        <li class="feedback-pill"><a href"#">Dull</a></li>
+	        <li class="feedback-pill"><a href="#">Poorly Written</a></li>
+	        <li class="feedback-pill"><a href="#">Well Written</a></li>
+	        <li class="feedback-pill"><a href="#">Unsupported</a></li>
+	        <li class="feedback-pill"><a href="#">Opinionated</a></li>
+	        <li class="respond"><a href="#">Respond</a></li>
+      	</ul>
+      	<ul class="nav nav-pills social-media-pill nav-right">
+	        <li><a class="twitter-share" href="#"></a></li>
+	        <li><a class="facebook-share" href="#"></a></li>
+	        <li><a class="pinterest-share" href="#"></a></li>
+	        <li><a class="linkedin-share" href="#"></a></li>  
+      	</ul>
+    </div><!-- /.article-right-sidebar -->
+
+ </div><!-- /.row -->
+
 {% endblock %}
+
