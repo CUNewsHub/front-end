@@ -122,6 +122,9 @@ body {
 		padding: 10px;
 	    box-sizing: border-box;
 	    background-color: black;
+	    .glyphicon {
+	    	top: 0;
+	    }
 	    .form-control, .btn {
 	    	border: transparent;
 	    	height: 25px;

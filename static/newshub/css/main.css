@@ -367,8 +367,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1445132190);
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1445132190#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff2?1445132190) format("woff2"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1445132190) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1445132190) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1445132190#glyphicons_halflingsregular) format("svg");
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
 /* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.5.1/assets/stylesheets/bootstrap/_glyphicons.scss */
 .glyphicon {
@@ -8912,118 +8912,122 @@ body {
   background-color: black;
 }
 /* line 125, ../sass/_generics.scss */
+.nav-pills .search .glyphicon {
+  top: 0;
+}
+/* line 128, ../sass/_generics.scss */
 .nav-pills .search .form-control, .nav-pills .search .btn {
   border: transparent;
   height: 25px;
 }
-/* line 129, ../sass/_generics.scss */
+/* line 132, ../sass/_generics.scss */
 .nav-pills .search .form-control {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
-/* line 133, ../sass/_generics.scss */
+/* line 136, ../sass/_generics.scss */
 .nav-pills .search .btn {
   background-color: white;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
-/* line 140, ../sass/_generics.scss */
+/* line 143, ../sass/_generics.scss */
 .nav-pills .like-button a {
   background-color: #787878;
   padding: 5px 0;
 }
-/* line 144, ../sass/_generics.scss */
+/* line 147, ../sass/_generics.scss */
 .nav-pills .like-button::first-letter {
   color: white;
 }
-/* line 147, ../sass/_generics.scss */
+/* line 150, ../sass/_generics.scss */
 .nav-pills .like-button h3 {
   margin: 0;
   font-size: 24pt;
   color: black;
 }
-/* line 153, ../sass/_generics.scss */
+/* line 156, ../sass/_generics.scss */
 .nav-pills .feedback-header {
   font-variant: small-caps;
   margin: 30px 0 10px 0;
 }
-/* line 156, ../sass/_generics.scss */
+/* line 159, ../sass/_generics.scss */
 .nav-pills .feedback-header h3 {
   margin: 0;
   font-size: 24pt;
   font-weight: bold;
 }
-/* line 162, ../sass/_generics.scss */
+/* line 165, ../sass/_generics.scss */
 .nav-pills .feedback-pill {
   font-size: 14pt;
   font-variant: small-caps;
 }
-/* line 165, ../sass/_generics.scss */
+/* line 168, ../sass/_generics.scss */
 .nav-pills .feedback-pill.active a {
   background-color: #242424;
   font-size: 18pt;
   font-weight: bold;
 }
-/* line 170, ../sass/_generics.scss */
+/* line 173, ../sass/_generics.scss */
 .nav-pills .feedback-pill a {
   padding: 5px 0;
   background-color: transparent;
   color: black;
 }
-/* line 174, ../sass/_generics.scss */
+/* line 177, ../sass/_generics.scss */
 .nav-pills .feedback-pill a:hover {
   background-color: #787878;
 }
-/* line 179, ../sass/_generics.scss */
+/* line 182, ../sass/_generics.scss */
 .nav-pills .respond {
   margin-top: 40px;
 }
-/* line 181, ../sass/_generics.scss */
+/* line 184, ../sass/_generics.scss */
 .nav-pills .respond a {
   background-color: #787878;
   color: black;
 }
 
-/* line 189, ../sass/_generics.scss */
+/* line 192, ../sass/_generics.scss */
 .article-main, .feed-main {
   padding-top: 10px;
   border-left: thin solid black;
   border-right: thin solid black;
 }
-/* line 193, ../sass/_generics.scss */
+/* line 196, ../sass/_generics.scss */
 .article-main .center-block, .feed-main .center-block {
   float: none;
 }
-/* line 196, ../sass/_generics.scss */
+/* line 199, ../sass/_generics.scss */
 .article-main .article-post-meta a, .feed-main .article-post-meta a {
   color: #8D0812;
 }
-/* line 199, ../sass/_generics.scss */
+/* line 202, ../sass/_generics.scss */
 .article-main .author p, .feed-main .author p {
   font-family: MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", Helvetica, Arial, sans-serif;
   color: #8D0812;
 }
-/* line 203, ../sass/_generics.scss */
+/* line 206, ../sass/_generics.scss */
 .article-main p, .feed-main p {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
-/* line 205, ../sass/_generics.scss */
+/* line 208, ../sass/_generics.scss */
 .article-main h1, .feed-main h1 {
   font-size: 24pt;
   font-weight: bold;
 }
 
-/* line 213, ../sass/_generics.scss */
+/* line 216, ../sass/_generics.scss */
 .feed-article .article-post-title, .article-post .article-post-title {
   font-size: 50px;
   font-weight: bold;
   margin-bottom: 0;
 }
-/* line 218, ../sass/_generics.scss */
+/* line 221, ../sass/_generics.scss */
 .feed-article .article-post-headline, .article-post .article-post-headline {
   font-weight: 600;
 }
-/* line 221, ../sass/_generics.scss */
+/* line 224, ../sass/_generics.scss */
 .feed-article .article-post-meta, .article-post .article-post-meta {
   font-weight: bold;
   font-family: MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", Helvetica, Arial, sans-serif;
@@ -9031,7 +9035,7 @@ body {
   display: inline;
   color: #8D0812;
 }
-/* line 227, ../sass/_generics.scss */
+/* line 230, ../sass/_generics.scss */
 .feed-article .article-post-meta:before, .article-post .article-post-meta:before {
   content: '●';
   font-size: 30px;
@@ -9040,12 +9044,12 @@ body {
   vertical-align: sub;
 }
 
-/* line 237, ../sass/_generics.scss */
+/* line 240, ../sass/_generics.scss */
 .feed-article {
   padding: 0 15%;
   box-sizing: border-box;
 }
-/* line 240, ../sass/_generics.scss */
+/* line 243, ../sass/_generics.scss */
 .feed-article img {
   height: 30px;
   width: 50px;
@@ -9053,51 +9057,51 @@ body {
   border: thin solid black;
   vertical-align: baseline;
 }
-/* line 247, ../sass/_generics.scss */
+/* line 250, ../sass/_generics.scss */
 .feed-article .article-post-title {
   margin: 0;
   font-weight: bold;
   font-size: 28pt;
 }
-/* line 251, ../sass/_generics.scss */
+/* line 254, ../sass/_generics.scss */
 .feed-article .article-post-title a {
   color: black;
 }
-/* line 255, ../sass/_generics.scss */
+/* line 258, ../sass/_generics.scss */
 .feed-article .post-tools {
   border-bottom: thin solid black;
 }
-/* line 257, ../sass/_generics.scss */
+/* line 260, ../sass/_generics.scss */
 .feed-article .post-tools .btn {
   display: none;
 }
-/* line 261, ../sass/_generics.scss */
+/* line 264, ../sass/_generics.scss */
 .feed-article .article-post-meta {
   margin: 0 10px;
 }
-/* line 264, ../sass/_generics.scss */
+/* line 267, ../sass/_generics.scss */
 .feed-article:hover {
   background-color: #dddddd;
 }
-/* line 267, ../sass/_generics.scss */
+/* line 270, ../sass/_generics.scss */
 .feed-article:hover .btn {
   display: inline-block;
 }
 
-/* line 272, ../sass/_generics.scss */
+/* line 275, ../sass/_generics.scss */
 .article-forms {
   margin-top: 20px;
 }
-/* line 273, ../sass/_generics.scss */
+/* line 276, ../sass/_generics.scss */
 .article-forms #id_title, .article-forms #id_headline {
   width: 100%;
 }
-/* line 276, ../sass/_generics.scss */
+/* line 279, ../sass/_generics.scss */
 .article-forms #id_headline {
   height: 80px;
 }
 
-/* line 282, ../sass/_generics.scss */
+/* line 285, ../sass/_generics.scss */
 .post-tools .btn {
   border: thin solid black;
   border-radius: 0;
@@ -9109,12 +9113,12 @@ body {
   padding: 0 5px;
 }
 
-/* line 294, ../sass/_generics.scss */
+/* line 297, ../sass/_generics.scss */
 .tags {
   margin-top: 10px;
   text-align: center;
 }
-/* line 297, ../sass/_generics.scss */
+/* line 300, ../sass/_generics.scss */
 .tags .tag-type {
   color: #646464;
 }
