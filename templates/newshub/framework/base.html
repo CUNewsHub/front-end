@@ -1,4 +1,4 @@
-{% load staticfiles %}
+{% load staticfiles fontawesome%}
 <html>
 	<head>
 		<meta charset="UTF-8" />
@@ -14,6 +14,8 @@
 		{{form.media}}
 		<!-- end include scripts -->
 		<script type="text/javascript" src="{% static 'newshub/js/main.js' %}"></script>
+
+		{% fontawesome_stylesheet %}	
 		<!-- Bootstrap core CSS -->
 	    <link href="{% static 'newshub/css/main.css' %}" rel="stylesheet">
 
@@ -44,5 +46,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="{% static 'newshub/js/bootstrap.min.js' %}"></script>
+
 	</body>
 </html>

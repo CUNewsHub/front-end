@@ -1,16 +1,36 @@
 {% extends 'newshub/framework/base.html' %}
-{% load staticfiles %}
+{% load staticfiles widget_tweaks%}
 {% block content %}
 <div class="row article-forms">
-	{% if not add %}
-		<a href="{% url 'newshub:view_article' pk=form.instance.pk %}">View</a>
-	{% endif %}
-	<form method="post" action="">
-		{% csrf_token %}
-		{{form.as_p}}
-		<div class="post-tools">
-			<button class="btn" type="submit">Save</button>
-		</div>
-	</form>
+	<div class="col-md-8 col-md-offset-2">
+		{% if not add %}
+			<a href="{% url 'newshub:view_article' pk=form.instance.pk %}">View</a>
+		{% endif %}
+
+</script>
+
+		<form method="post" action="">
+			{% csrf_token %}
+			{% for field in form%}
+			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+				<label for="{{field.id_for_label}}">{{field.label}}</label>
+				{% if field.html_name == 'published' %}
+					{{field}}
+				{% else%}
+					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+
+	                {% for error in field.errors %}
+	                     <span class="help-block">
+	                        {{error}}
+	                     </span>
+	                {% endfor %}
+	            {%endif%}
+			</div>
+			{% endfor %}
+			<div class="post-tools">
+				<button class="btn" type="submit">Save</button>
+			</div>
+		</form>
+	</div>
 </div>
 {% endblock %}
