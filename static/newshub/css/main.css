@@ -367,8 +367,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?1445132190);
-  src: url(/fonts/bootstrap/glyphicons-halflings-regular.eot?&1445132190#iefix) format("embedded-opentype"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff2?1445132190) format("woff2"), url(/fonts/bootstrap/glyphicons-halflings-regular.woff?1445132190) format("woff"), url(/fonts/bootstrap/glyphicons-halflings-regular.ttf?1445132190) format("truetype"), url(/fonts/bootstrap/glyphicons-halflings-regular.svg?1445132190#glyphicons_halflingsregular) format("svg");
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot");
+  src: url("../fonts/bootstrap/glyphicons-halflings-regular.eot?#iefix") format("embedded-opentype"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff2") format("woff2"), url("../fonts/bootstrap/glyphicons-halflings-regular.woff") format("woff"), url("../fonts/bootstrap/glyphicons-halflings-regular.ttf") format("truetype"), url("../fonts/bootstrap/glyphicons-halflings-regular.svg#glyphicons_halflingsregular") format("svg");
 }
 /* line 24, ../../../../../../../../Library/Ruby/Gems/2.0.0/gems/bootstrap-sass-3.3.5.1/assets/stylesheets/bootstrap/_glyphicons.scss */
 .glyphicon {
@@ -8770,30 +8770,44 @@ button.close {
   }
 }
 /* line 6, ../sass/_generics.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 10, ../sass/_generics.scss */
 body {
   padding-top: 60px;
 }
 
-/* line 10, ../sass/_generics.scss */
+/* line 14, ../sass/_generics.scss */
+.container {
+  height: 100%;
+}
+/* line 16, ../sass/_generics.scss */
+.container .enlarge-height {
+  height: 100%;
+}
+
+/* line 20, ../sass/_generics.scss */
 .nav {
   text-align: center;
 }
-/* line 12, ../sass/_generics.scss */
+/* line 22, ../sass/_generics.scss */
 .nav a {
   color: white;
 }
-/* line 15, ../sass/_generics.scss */
+/* line 25, ../sass/_generics.scss */
 .nav.navbar-right a {
   font-size: 15.52pt;
 }
 
-/* line 20, ../sass/_generics.scss */
+/* line 30, ../sass/_generics.scss */
 .navbar-brand {
   font-size: 36pt;
   padding: 0;
   line-height: inherit;
 }
-/* line 21, ../sass/_generics.scss */
+/* line 31, ../sass/_generics.scss */
 .navbar-brand .logo {
   height: 50px;
   width: 50px;
@@ -8802,24 +8816,24 @@ body {
   border: 3px solid white;
   margin-right: 5px;
 }
-/* line 32, ../sass/_generics.scss */
+/* line 42, ../sass/_generics.scss */
 .navbar-brand .alternate-colour {
   color: white;
 }
 
-/* line 37, ../sass/_generics.scss */
+/* line 47, ../sass/_generics.scss */
 .article-left-sidebar, .article-right-sidebar {
   padding: 0 5px 0 5px;
   font-size: 11.52pt;
   font-weight: bolder;
 }
 
-/* line 43, ../sass/_generics.scss */
+/* line 53, ../sass/_generics.scss */
 .article-left-sidebar .active a, .article-left-sidebar .article-active a {
   padding-left: 10px;
   width: calc(100% + 5px);
 }
-/* line 48, ../sass/_generics.scss */
+/* line 58, ../sass/_generics.scss */
 .article-left-sidebar .article-active:after, .article-left-sidebar .active:after, .article-left-sidebar .article-active:before {
   top: 50%;
   border: solid;
@@ -8833,201 +8847,202 @@ body {
   margin-top: -20px;
   z-index: 1;
 }
-/* line 61, ../sass/_generics.scss */
+/* line 71, ../sass/_generics.scss */
 .article-left-sidebar .active:after {
   left: calc(100% + 5px);
   border-left-color: #8D0812;
 }
-/* line 65, ../sass/_generics.scss */
+/* line 75, ../sass/_generics.scss */
 .article-left-sidebar .article-active:before {
   left: calc(100% - 35px);
   border-right-color: black;
 }
-/* line 69, ../sass/_generics.scss */
+/* line 79, ../sass/_generics.scss */
 .article-left-sidebar .article-active:after {
   left: calc(100% - 34px);
   border-right-color: white;
 }
-/* line 74, ../sass/_generics.scss */
+/* line 84, ../sass/_generics.scss */
 .article-left-sidebar .active:hover:after {
   border-left-color: #242424;
 }
 
-/* line 80, ../sass/_generics.scss */
+/* line 90, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill {
   text-align: center;
 }
-/* line 82, ../sass/_generics.scss */
+/* line 92, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill li {
   display: inline-block;
   float: none;
   width: 35px;
 }
-/* line 86, ../sass/_generics.scss */
+/* line 96, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill li a {
   height: 35px;
 }
-/* line 88, ../sass/_generics.scss */
+/* line 98, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill li a:hover {
   background-color: transparent;
 }
-/* line 92, ../sass/_generics.scss */
+/* line 102, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill li .facebook-share {
   background: url("../images/facebook.png");
   background-size: contain;
 }
-/* line 96, ../sass/_generics.scss */
+/* line 106, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill li .twitter-share {
   background: url("../images/twitter.png");
   background-size: contain;
 }
-/* line 100, ../sass/_generics.scss */
+/* line 110, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill li .linkedin-share {
   background: url("../images/linkedin.png");
   background-size: contain;
 }
-/* line 104, ../sass/_generics.scss */
+/* line 114, ../sass/_generics.scss */
 .article-right-sidebar .social-media-pill li .pinterest-share {
   background: url("../images/pinterest.ico");
   background-size: contain;
 }
 
-/* line 112, ../sass/_generics.scss */
+/* line 122, ../sass/_generics.scss */
 .nav-pills {
   margin-top: 20px;
   position: relative;
 }
-/* line 115, ../sass/_generics.scss */
+/* line 125, ../sass/_generics.scss */
 .nav-pills li.active a {
   background-color: #8D0812;
 }
-/* line 118, ../sass/_generics.scss */
+/* line 128, ../sass/_generics.scss */
 .nav-pills a {
   background-color: #242424;
 }
-/* line 121, ../sass/_generics.scss */
+/* line 131, ../sass/_generics.scss */
 .nav-pills .search {
   padding: 10px;
   box-sizing: border-box;
   background-color: black;
 }
-/* line 125, ../sass/_generics.scss */
+/* line 135, ../sass/_generics.scss */
 .nav-pills .search .glyphicon {
   top: 0;
 }
-/* line 128, ../sass/_generics.scss */
+/* line 138, ../sass/_generics.scss */
 .nav-pills .search .form-control, .nav-pills .search .btn {
   border: transparent;
   height: 25px;
 }
-/* line 132, ../sass/_generics.scss */
+/* line 142, ../sass/_generics.scss */
 .nav-pills .search .form-control {
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
 }
-/* line 136, ../sass/_generics.scss */
+/* line 146, ../sass/_generics.scss */
 .nav-pills .search .btn {
   background-color: white;
   border-top-left-radius: 12px;
   border-bottom-left-radius: 12px;
 }
-/* line 143, ../sass/_generics.scss */
+/* line 153, ../sass/_generics.scss */
 .nav-pills .like-button a {
   background-color: #787878;
   padding: 5px 0;
 }
-/* line 147, ../sass/_generics.scss */
+/* line 157, ../sass/_generics.scss */
 .nav-pills .like-button::first-letter {
   color: white;
 }
-/* line 150, ../sass/_generics.scss */
+/* line 160, ../sass/_generics.scss */
 .nav-pills .like-button h3 {
   margin: 0;
   font-size: 24pt;
   color: black;
 }
-/* line 156, ../sass/_generics.scss */
+/* line 166, ../sass/_generics.scss */
 .nav-pills .feedback-header {
   font-variant: small-caps;
   margin: 30px 0 10px 0;
 }
-/* line 159, ../sass/_generics.scss */
+/* line 169, ../sass/_generics.scss */
 .nav-pills .feedback-header h3 {
   margin: 0;
   font-size: 24pt;
   font-weight: bold;
 }
-/* line 165, ../sass/_generics.scss */
+/* line 175, ../sass/_generics.scss */
 .nav-pills .feedback-pill {
   font-size: 14pt;
   font-variant: small-caps;
 }
-/* line 168, ../sass/_generics.scss */
+/* line 178, ../sass/_generics.scss */
 .nav-pills .feedback-pill.active a {
   background-color: #242424;
   font-size: 18pt;
   font-weight: bold;
 }
-/* line 173, ../sass/_generics.scss */
+/* line 183, ../sass/_generics.scss */
 .nav-pills .feedback-pill a {
   padding: 5px 0;
   background-color: transparent;
   color: black;
 }
-/* line 177, ../sass/_generics.scss */
+/* line 187, ../sass/_generics.scss */
 .nav-pills .feedback-pill a:hover {
   background-color: #787878;
 }
-/* line 182, ../sass/_generics.scss */
+/* line 192, ../sass/_generics.scss */
 .nav-pills .respond {
   margin-top: 40px;
 }
-/* line 184, ../sass/_generics.scss */
+/* line 194, ../sass/_generics.scss */
 .nav-pills .respond a {
   background-color: #787878;
   color: black;
 }
 
-/* line 192, ../sass/_generics.scss */
+/* line 202, ../sass/_generics.scss */
 .article-main, .feed-main {
+  height: 100%;
   padding-top: 10px;
   border-left: thin solid black;
   border-right: thin solid black;
 }
-/* line 196, ../sass/_generics.scss */
+/* line 207, ../sass/_generics.scss */
 .article-main .center-block, .feed-main .center-block {
   float: none;
 }
-/* line 199, ../sass/_generics.scss */
+/* line 210, ../sass/_generics.scss */
 .article-main .article-post-meta a, .feed-main .article-post-meta a {
   color: #8D0812;
 }
-/* line 202, ../sass/_generics.scss */
+/* line 213, ../sass/_generics.scss */
 .article-main .author p, .feed-main .author p {
   font-family: MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", Helvetica, Arial, sans-serif;
   color: #8D0812;
 }
-/* line 206, ../sass/_generics.scss */
+/* line 217, ../sass/_generics.scss */
 .article-main p, .feed-main p {
   font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
-/* line 208, ../sass/_generics.scss */
+/* line 219, ../sass/_generics.scss */
 .article-main h1, .feed-main h1 {
   font-size: 24pt;
   font-weight: bold;
 }
 
-/* line 216, ../sass/_generics.scss */
+/* line 227, ../sass/_generics.scss */
 .feed-article .article-post-title, .article-post .article-post-title {
   font-size: 50px;
   font-weight: bold;
   margin-bottom: 0;
 }
-/* line 221, ../sass/_generics.scss */
+/* line 232, ../sass/_generics.scss */
 .feed-article .article-post-headline, .article-post .article-post-headline {
   font-weight: 600;
 }
-/* line 224, ../sass/_generics.scss */
+/* line 235, ../sass/_generics.scss */
 .feed-article .article-post-meta, .article-post .article-post-meta {
   font-weight: bold;
   font-family: MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", Helvetica, Arial, sans-serif;
@@ -9035,7 +9050,7 @@ body {
   display: inline;
   color: #8D0812;
 }
-/* line 230, ../sass/_generics.scss */
+/* line 241, ../sass/_generics.scss */
 .feed-article .article-post-meta:before, .article-post .article-post-meta:before {
   content: '●';
   font-size: 30px;
@@ -9044,12 +9059,12 @@ body {
   vertical-align: sub;
 }
 
-/* line 240, ../sass/_generics.scss */
+/* line 251, ../sass/_generics.scss */
 .feed-article {
   padding: 0 15%;
   box-sizing: border-box;
 }
-/* line 243, ../sass/_generics.scss */
+/* line 254, ../sass/_generics.scss */
 .feed-article img {
   height: 30px;
   width: 50px;
@@ -9057,51 +9072,51 @@ body {
   border: thin solid black;
   vertical-align: baseline;
 }
-/* line 250, ../sass/_generics.scss */
+/* line 261, ../sass/_generics.scss */
 .feed-article .article-post-title {
   margin: 0;
   font-weight: bold;
   font-size: 28pt;
 }
-/* line 254, ../sass/_generics.scss */
+/* line 265, ../sass/_generics.scss */
 .feed-article .article-post-title a {
   color: black;
 }
-/* line 258, ../sass/_generics.scss */
+/* line 269, ../sass/_generics.scss */
 .feed-article .post-tools {
   border-bottom: thin solid black;
 }
-/* line 260, ../sass/_generics.scss */
+/* line 271, ../sass/_generics.scss */
 .feed-article .post-tools .btn {
   display: none;
 }
-/* line 264, ../sass/_generics.scss */
+/* line 275, ../sass/_generics.scss */
 .feed-article .article-post-meta {
   margin: 0 10px;
 }
-/* line 267, ../sass/_generics.scss */
+/* line 278, ../sass/_generics.scss */
 .feed-article:hover {
   background-color: #dddddd;
 }
-/* line 270, ../sass/_generics.scss */
+/* line 281, ../sass/_generics.scss */
 .feed-article:hover .btn {
   display: inline-block;
 }
 
-/* line 275, ../sass/_generics.scss */
+/* line 286, ../sass/_generics.scss */
 .article-forms {
   margin-top: 20px;
 }
-/* line 276, ../sass/_generics.scss */
+/* line 287, ../sass/_generics.scss */
 .article-forms #id_title, .article-forms #id_headline {
   width: 100%;
 }
-/* line 279, ../sass/_generics.scss */
+/* line 290, ../sass/_generics.scss */
 .article-forms #id_headline {
   height: 80px;
 }
 
-/* line 285, ../sass/_generics.scss */
+/* line 296, ../sass/_generics.scss */
 .post-tools .btn {
   border: thin solid black;
   border-radius: 0;
@@ -9113,22 +9128,22 @@ body {
   padding: 0 5px;
 }
 
-/* line 297, ../sass/_generics.scss */
+/* line 308, ../sass/_generics.scss */
 .tags {
   margin-top: 10px;
   text-align: center;
 }
-/* line 300, ../sass/_generics.scss */
+/* line 311, ../sass/_generics.scss */
 .tags .tag-type {
   color: #646464;
 }
 
-/* line 306, ../sass/_generics.scss */
+/* line 317, ../sass/_generics.scss */
 .redactor-editor h1, .redactor-editor h2, .redactor-editor h3, .redactor-editor h4, .redactor-editor h5, .redactor-editor h6 {
   font-weight: normal;
 }
 
-/* line 311, ../sass/_generics.scss */
+/* line 322, ../sass/_generics.scss */
 .redactor-box {
   border: 1px solid #ccc;
   border-radius: 4px;
