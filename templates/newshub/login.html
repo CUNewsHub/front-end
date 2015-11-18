@@ -1,7 +1,18 @@
+{% extends 'newshub/framework/base.html' %}
+{% load staticfiles %}
 {% comment %}
 	The main entry for users which arenot logged in. Login link is provided below, this will redirect the users to facebook when they'll be asked about their data.
 {% endcomment %}
 
-Welcome to NewsHub!
-
-<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Login with Facebook</a>
+{% block content %}
+<div class="row fill-height">
+	<div class="col-md-10 center-block main login">
+		<h1>Welcome to NewsHub!</h1>
+		<h2>Login via:</h2>
+		<ul class="nav nav-right social">
+	        <li><a class="facebook" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" title="Facebook Login"></a><p class="facebook-title">Facebook</p></li>
+      	</ul>
+		
+	</div>
+</div>
+{%endblock%}

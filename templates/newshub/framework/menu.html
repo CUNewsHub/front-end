@@ -19,9 +19,11 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Search</a></li>
-        <li class="active"><a href="#">News</a></li>
+        <li><a href="#">News</a></li>
+        {% if user.is_authenticated %}
         <li><a href="{% url 'newshub:new_article' %}">Write</a></li>
         <li><a href="{% url 'newshub:profile' %}">Profile</a></li>
+        {% endif %}
       </ul>
     </div><!--/.nav-collapse -->
   </div>

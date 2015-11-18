@@ -28,18 +28,54 @@
 {% endcomment %}
 {% block title %}Profile{% endblock%}
 {% block content %}
-		<h1>Overview</h1>
-		first name: {{user.first_name}} <br />
-		last  name: {{user.last_name}} <br />
-		email: {{user.email}} <br />
-		image: <img src="{{user.profile.picture.url}}" />
+<div class="row fill-height">
+    <div class="col-sm-2 left-sidebar">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#profile" data-toggle="pill">About Me</a></li>
+            <li><a href="#profile-articles" data-toggle="pill">Articles</a></li>
+            <li><a href="#" data-toggle="pill">Awards</a></li>
+            <li ><a href="#" data-toggle="pill">C.V.</a></li>
+            <li ><a href="#" data-toggle="pill">Statistics</a></li>
+            <li ><a href="#" data-toggle="pill">Edit Profile</a></li>
+        </ul>
+    </div><!-- /.article-sidebar -->
 
-		<h1>My articles</h1>
-		<p>
-			<ul>
-				{% for article in request.user.article_set.all %}
-					<li><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></li>
+    <div class="col-sm-8 main tab-content">
+    	<div id="profile" class="row center-block tab-pane active">
+			<h1>{{user.first_name}} {{user.last_name}}</h1>
+			<h3 class="profile-subtitle">2nd Year English Student <span class="pull-right">Clare College</span></h3>
+			<!--email: {{user.email}} <br />-->
+			<p class="profile-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur
+			</p>
+			<p class="profile-description2">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+			<img class="profile-picture" src="{{user.profile.picture.url}}" /> 
+
+		</div>
+		<div id="profile-articles" class="row center-block tab-pane">
+			<div class="featured row">
+				<h1 class="heading">Featured</h1>
+				
+				{% for article in request.user.article_set.all %} <!-- Change this to featured only -->
+				<div class="row">
+		            <div class="center-block profile-articles">
+		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></h1>
+		                <p class="article-post-headline">{{article.headline}}</p>
+		            </div>
+		        </div>
+			{% endfor %}
+			</div>
+			<div class="row non-featured">
+				{% for article in request.user.article_set.all %} <!-- Change this to non-featured only -->
+				<div class="profile-articles">
+	                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></h1>
+	                <p class="article-post-meta">
+	                	<span class="date">{{article.time_uploaded|date:"N Y"}}</span>
+	                	<span class="likes">16 Likes</span>
+	                </p>
+	            </div>
 				{% endfor %}
-			</ul>
-		</p>
+			</div>
+		</div>
+	</div><!-- Profile Info -->
+</div>
 {%endblock%}

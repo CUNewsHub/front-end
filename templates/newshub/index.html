@@ -20,8 +20,8 @@
             - time_changed: the time of the last save of the article
 {% endcomment %}
 {% block content %}
-<div class="row enlarge-height">
-    <div class="col-sm-2 article-left-sidebar">
+<div class="row fill-height">
+    <div class="col-sm-2 left-sidebar">
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#">Personal Feed</a></li>
             <li><a href="#">Top Stories</a></li>
@@ -50,7 +50,7 @@
         </div>
     </div><!-- /.article-sidebar -->
 
-    <div class="col-sm-8 feed-main">
+    <div class="col-sm-8 main">
         {% for article in articles %}
         <div class="row">
             <div class="center-block feed-article">

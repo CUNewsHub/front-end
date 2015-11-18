@@ -2,7 +2,9 @@ $nav-size: 60px;
 $component-colours: #787878;
 $border-radius-search: 12px;
 $border-style: thin solid black;
-
+$center-padding: 0 15%;
+$facebook-colour: #3B5999;
+// Basic
 html, body {
 	height: 100%;
 }
@@ -13,10 +15,13 @@ body {
 
 .container {
 	height: 100%;
-	.enlarge-height {
+	.fill-height {
 		height: 100%;
 	}
 }
+// End Basic
+
+// Navbar
 .nav {
 	text-align: center;
 	a {
@@ -43,13 +48,15 @@ body {
 		color: white;
 	}
 }
+// End Navbar
 
-.article-left-sidebar, .article-right-sidebar {
+// Sidebars
+.left-sidebar, .article-right-sidebar {
 	padding: 0 5px 0 5px;
 	font-size: 11.52pt;
 	font-weight: bolder;
 }
-.article-left-sidebar {
+.left-sidebar {
 	.active a, .article-active a{
 		padding-left: 10px;
 		width: calc(100% + 5px);
@@ -83,6 +90,12 @@ body {
 	//End triangles
 	.active:hover:after{
 		border-left-color: $navbar-inverse-bg;
+	}
+	.active a:focus {
+		background-color: $navbar-inverse-link-active-bg !important;
+		&:hover {
+			background-color: $navbar-inverse-bg !important;
+		}
 	}
 }
 
@@ -198,15 +211,14 @@ body {
 
 	}
 }
+// End Sidebars
 
-.article-main, .feed-main {
+// Center div (profile info, articles, feed, etc.)
+.main {
 	height: 100%;
 	padding-top: 10px;
 	border-left: $border-style;
 	border-right: $border-style;
-	.center-block {
-		float: none;
-	}
 	.article-post-meta a {
 		color: $navbar-inverse-link-active-bg;
 	}
@@ -222,8 +234,46 @@ body {
 
 	}
 }
+.center-block {
+	float: none;
+}
+// End center div
 
-.feed-article, .article-post {
+// Login
+.login {
+	text-align: center;
+	h2 {
+		margin-top: 40px;
+	}
+	.social {
+		margin-top: 40px;
+		display: inline-block;
+		a {
+		    height: 128px;
+		    width: 128px;
+			&:hover{
+				background-color: transparent;
+			}
+		}
+		.facebook {
+			background: url("../images/facebook-512.png");
+		    background-size: contain;
+		}
+		p {
+			font-family: $font-family-sans-serif;
+			margin-top: 20px;
+			font-size: 20pt;
+			font-weight: bold;
+		}
+		.facebook-title {
+			color: $facebook-colour;
+		}
+	}
+}
+// End Login
+
+// Shared between feed article and articles
+.feed-article, .article-post, #profile-articles {
 	.article-post-title {
 		font-size: 50px;
 		font-weight: bold;
@@ -238,18 +288,20 @@ body {
 		font-size: 14px;
 		display: inline;
 		color: $navbar-inverse-link-active-bg;
-		&:before {
-			content: '●';
-			font-size: 30px;
-			margin-right: 5px;
-			display: inline;
-			vertical-align: sub;
-		}
 	}
 }
 
-.feed-article {
-	padding: 0 15%;
+.feed-article, .article-post {
+	.article-post-meta:before {
+		content: '●';
+		font-size: 30px;
+		margin-right: 5px;
+		display: inline;
+		vertical-align: sub;
+	}
+}
+.feed-article, #profile-articles {
+	padding: $center-padding;
 	box-sizing: border-box;
 	img {
 		height: 30px;
@@ -259,6 +311,7 @@ body {
 		vertical-align: baseline;
 	}
 	.article-post-title {
+		padding-top: 10px;
 		margin: 0;
 		font-weight: bold;
 		font-size: 28pt;
@@ -266,6 +319,8 @@ body {
 			color: black;
 		}
 	}
+}
+.feed-article {
 	.post-tools {
 		border-bottom: $border-style;
 		.btn {
@@ -283,6 +338,7 @@ body {
 	}
 }
 
+// Article writing
 .article-forms {
 	#id_title, #id_headline {
 		width: 100%;
@@ -292,6 +348,7 @@ body {
 	}
 	margin-top: 20px;
 }
+
 .post-tools {
 	.btn {
 		border: $border-style;
@@ -323,3 +380,54 @@ body {
 	border: 1px solid #ccc;
 	border-radius: 4px;
 }
+// End article writing
+
+// Profile
+#profile {
+	text-align: justify;
+	padding: $center-padding;
+	.profile-picture {
+		display: inline-block;
+		vertical-align: top;
+	}
+	.profile-description2 {
+		display: inline-block;
+		width: calc(100% - 208px);
+		margin-right: 5px;
+	}
+}
+
+#profile-articles {
+	.heading {
+		font-size: 28pt;
+		text-align: center;
+		border-bottom: $border-style;
+	}
+	.featured {
+		padding: 0 10%;
+	}
+	.article-post-title {
+		font-size: 24pt;
+	}
+	.article-post-meta {
+		.date {
+			margin-right: 20px;
+		}
+		font-size: 12pt;
+	}
+	.profile-articles {
+		border-bottom: $border-style;
+	}
+	.non-featured {
+		.article-post-title {
+			font-size: 20pt;
+		}
+		margin-top: 30px;
+		text-align: justify;
+		.profile-articles {
+			width: 45%;
+			display: inline-block;
+		}
+	}
+}
+// End Profile
