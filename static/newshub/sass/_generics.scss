@@ -360,6 +360,11 @@ body {
 	    font-size: 16px;
 	    padding: 0 5px;
 	}
+
+	.btn-active {
+		color: #ffffff;
+		background-color: $navbar-inverse-link-active-bg;
+	}
 }
 
 .tags {

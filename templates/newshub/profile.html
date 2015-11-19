@@ -65,7 +65,7 @@
 			{% endfor %}
 			</div>
 			<div class="row non-featured">
-				{% for article in request.user.article_set.all %} <!-- Change this to non-featured only -->
+				{% for article in request.user.author.article_set.all %} <!-- Change this to non-featured only -->
 				<div class="profile-articles">
 	                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></h1>
 	                <p class="article-post-meta">
