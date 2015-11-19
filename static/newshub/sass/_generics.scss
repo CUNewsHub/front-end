@@ -163,10 +163,6 @@ body {
 	    }
 	}
 	.like-button {
-		a {
-			background-color: $component-colours;
-			padding: 5px 0;
-		}
 		&::first-letter{
 			color: white;
 		}
@@ -174,6 +170,16 @@ body {
 			margin: 0;
 			font-size: 24pt;
 			color: black;
+			background-color: $component-colours;
+			padding: 5px 0;
+		}
+		h3:hover{
+			background-color: $navbar-inverse-link-active-bg;
+			cursor: pointer;
+		}
+		h3.active {
+			color: white;
+			background-color: $navbar-inverse-link-active-bg;
 		}
 	}
 	.feedback-header {

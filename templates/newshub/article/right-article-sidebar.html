@@ -1,0 +1,31 @@
+<ul class="nav nav-pills nav-stacked">
+	<li class="like-button">
+		<h3 class="{% if request.user in article.likes.all %}active{%endif%}"
+			data-article-id="{{article.pk}}">
+			<i class="fa fa-thumbs-o-up"></i>
+			<span class="like-text">
+			{% if request.user in article.likes.all %}
+				LIKED
+			{% else %}
+				LIKE
+			{% endif %}
+			</span>
+		</h3>
+	</li>
+	<li class="feedback-header"><h3>Feedback<h3></li>
+	<li class="feedback-pill"><a href="#">Enjoyable</a></li>
+	<li class="feedback-pill"><a href="#">Biased</a></li>
+	<li class="feedback-pill"><a href="#">Interesting</a></li>
+	<li class="feedback-pill"><a href"#">Dull</a></li>
+	<li class="feedback-pill"><a href="#">Poorly Written</a></li>
+	<li class="feedback-pill"><a href="#">Well Written</a></li>
+	<li class="feedback-pill"><a href="#">Unsupported</a></li>
+	<li class="feedback-pill"><a href="#">Opinionated</a></li>
+	<li class="respond"><a href="#">Respond</a></li>
+	</ul>
+	<ul class="nav nav-pills social-media-pill nav-right">
+	<li><a class="twitter-share" href="#"></a></li>
+	<li><a class="facebook-share" href="#"></a></li>
+	<li><a class="pinterest-share" href="#"></a></li>
+	<li><a class="linkedin-share" href="#"></a></li>  
+</ul>

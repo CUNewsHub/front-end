@@ -70,7 +70,7 @@
 	                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></h1>
 	                <p class="article-post-meta">
 	                	<span class="date">{{article.time_uploaded|date:"N Y"}}</span>
-	                	<span class="likes">16 Likes</span>
+	                	<span class="likes">{{article.likes.count}} Likes</span>
 	                </p>
 	            </div>
 				{% endfor %}

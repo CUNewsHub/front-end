@@ -1,27 +1,9 @@
 {% extends 'newshub/framework/base.html' %}
 {% block content %}
 <div class="row fill-height">
+    
     <div class="col-sm-2 left-sidebar">
-      	<ul class="nav nav-pills nav-stacked">
-        	<li class="article-active"><a href="#">Personal Feed</a></li>
-        	<li><a href="#">Top Stories</a></li>
-        	<li><a href="#">History</a></li>
-        	<li class="search">
-	          	<div id="custom-search-input">
-	            	<div class="input-group col-md-12">	              		
-	            		<span class="input-group-btn">
-		                	<button class="btn" type="button">
-		                  		<span class="glyphicon glyphicon-search"></span>
-		                	</button>
-	              		</span>
-	              		<input type="text" class="  search-query form-control" placeholder="Search" />
-	            	</div>
-	          	</div>
-        	</li>
-        	<li><a href="#">Filter</a></li>
-      	</ul>
-      	<div class="tags">
-      	</div>
+        {% include 'newshub/framework/left-sidebar.html' with article=True %}
     </div><!-- /.article-sidebar -->
 
     <div class="col-sm-8 main">
@@ -62,25 +44,7 @@
     </div><!-- /.article-main -->
 
     <div class="col-sm-2 article-right-sidebar">
-      	<ul class="nav nav-pills nav-stacked">
-        	<li class="like-button"><a href="#"><h3>+ LIKE</h3></a></li>
-        	<li class="feedback-header"><h3>Feedback<h3></li>
-	        <li class="feedback-pill"><a href="#">Enjoyable</a></li>
-	        <li class="feedback-pill"><a href="#">Biased</a></li>
-	        <li class="feedback-pill"><a href="#">Interesting</a></li>
-	        <li class="feedback-pill"><a href"#">Dull</a></li>
-	        <li class="feedback-pill"><a href="#">Poorly Written</a></li>
-	        <li class="feedback-pill"><a href="#">Well Written</a></li>
-	        <li class="feedback-pill"><a href="#">Unsupported</a></li>
-	        <li class="feedback-pill"><a href="#">Opinionated</a></li>
-	        <li class="respond"><a href="#">Respond</a></li>
-      	</ul>
-      	<ul class="nav nav-pills social-media-pill nav-right">
-	        <li><a class="twitter-share" href="#"></a></li>
-	        <li><a class="facebook-share" href="#"></a></li>
-	        <li><a class="pinterest-share" href="#"></a></li>
-	        <li><a class="linkedin-share" href="#"></a></li>  
-      	</ul>
+      	{% include 'newshub/article/right-article-sidebar.html' with article=article%}
     </div><!-- /.article-right-sidebar -->
 
  </div><!-- /.row -->
