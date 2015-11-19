@@ -29,6 +29,11 @@ $(document).ready(function(){
 					$this.html('Endorse').removeClass('btn-active');
 				}
 			}
-		})
-	})
+		});
+	});
+
+	if (location.hash !== '') $('a[href="' + location.hash + '"]').tab('show');
+    $('a[data-toggle="pill"]').on('click', function(e) {
+      return location.hash = $(e.target).attr('href').substr(1);
+    });
 });
