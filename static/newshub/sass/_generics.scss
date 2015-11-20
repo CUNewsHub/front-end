@@ -221,7 +221,7 @@ body {
 
 // Center div (profile info, articles, feed, etc.)
 .main {
-	height: 100%;
+	min-height: 100%;
 	padding-top: 10px;
 	border-left: $border-style;
 	border-right: $border-style;

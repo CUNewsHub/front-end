@@ -9019,7 +9019,7 @@ body {
 
 /* line 223, ../sass/_generics.scss */
 .main {
-  height: 100%;
+  min-height: 100%;
   padding-top: 10px;
   border-left: thin solid black;
   border-right: thin solid black;
