@@ -23,6 +23,7 @@
         {% if user.is_authenticated %}
         <li><a href="{% url 'newshub:new_article' %}">Write</a></li>
         <li><a href="{% url 'newshub:profile' %}">Profile</a></li>
+        <li><a href="{% url 'newshub:logout' %}">Logout</a></li>
         {% endif %}
       </ul>
     </div><!--/.nav-collapse -->
