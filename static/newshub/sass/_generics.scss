@@ -40,6 +40,15 @@ body {
 	    vertical-align: sub;
 	    border: 3px solid white;
 	    margin-right: 5px;
+	    @media (max-width: $container-sm) {
+	    	margin: 5px;
+	    }
+	}
+	.brand-text {
+		display: none;
+		@media (min-width: $container-sm) {
+			display: inline;
+		}
 	}
 	font-size: 36pt;
 	padding: 0;
@@ -327,6 +336,13 @@ body {
 	}
 }
 .feed-article {
+	.article-link {
+		text-decoration: none;
+		color: $navbar-inverse-bg;
+		&:hover h1{
+			color: $navbar-inverse-link-active-bg;
+		}
+	}
 	.post-tools {
 		border-bottom: $border-style;
 		.btn {
