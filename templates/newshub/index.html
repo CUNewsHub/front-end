@@ -36,7 +36,7 @@
                 </a>
                 {% if request.user != article.author.user %}
                 <div class="post-tools" data-author-id="{{article.author.id}}">
-                    <p class="article-post-meta"><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
+                    <p class="article-post-meta"><img src="{{article.author.user.profile.picture.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
                     {% if request.user in article.author.followed_by.all %}
                     <button type="button" class="btn btn-active btn-default follow-button">
                         Followed
@@ -56,7 +56,7 @@
                 </div>
                 {% else %}
                 <div class="post-tools">
-                    <p class="article-post-meta"><img src="{{user.profile.picture.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
+                    <p class="article-post-meta"><img src="{{article.author.user.profile.picture.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
                     <a href="{% url 'newshub:edit_article' article.pk %}" class="btn btn-default">Edit article</a>
                 </div>
                 {% endif %}
