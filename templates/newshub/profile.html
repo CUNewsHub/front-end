@@ -33,10 +33,14 @@
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#profile" data-toggle="pill">About Me</a></li>
             <li><a href="#profile-articles" data-toggle="pill">Articles</a></li>
+            <!--
             <li><a href="#" data-toggle="pill">Awards</a></li>
-            <li ><a href="#" data-toggle="pill">C.V.</a></li>
-            <li ><a href="#" data-toggle="pill">Statistics</a></li>
-            <li ><a href="#" data-toggle="pill">Edit Profile</a></li>
+            <li><a href="#" data-toggle="pill">C.V.</a></li>
+            <li><a href="#" data-toggle="pill">Statistics</a></li>
+            -->
+            {% if request.user == user %}
+            <li><a href="#" data-toggle="pill">Edit Profile</a></li>
+            {% endif %}
         </ul>
     </div><!-- /.article-sidebar -->
 

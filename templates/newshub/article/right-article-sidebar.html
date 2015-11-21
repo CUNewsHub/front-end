@@ -2,7 +2,8 @@
 	<li class="like-button">
 		<h3 class="{% if request.user in article.likes.all %}active{%endif%}"
 			data-article-id="{{article.pk}}">
-			<i class="fa fa-thumbs-o-up"></i>
+			<!--<i class="fa fa-thumbs-o-up"></i> -->
+			+
 			<span class="like-text">
 			{% if request.user in article.likes.all %}
 				LIKED
