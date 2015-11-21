@@ -5,6 +5,9 @@ $border-style: thin solid black;
 $center-padding: 0 15%;
 $facebook-colour: #3B5999;
 $feed-author-pic-size: 30px;
+$sidebar-md: $container-md/6;
+$sidebar-sm: $container-sm/6;
+$sidebar-lg: $container-lg/6;
 // Basic
 html, body {
 	height: 100%;
@@ -18,6 +21,7 @@ body {
 	height: 100%;
 	.fill-height {
 		height: 100%;
+		position: relative;
 	}
 }
 // End Basic
@@ -31,11 +35,14 @@ body {
 	&.navbar-right a {
 		font-size: 15.52pt;
 	}
-	&.navbar-right {
-		margin-right: 10px;
-    	padding-right: 15%;
+
+	@media (min-width: $container-md) {
+		&.navbar-right {
+			margin-right: 10px;
+	    	padding-right: 15%;
+		}
 	}
-	@media (max-width: $container-desktop) {
+	@media (max-width: $container-md) {
 		&.navbar-right {
 	   		margin-right: 7px;
 		}
@@ -79,46 +86,59 @@ body {
 	padding: 0 5px 0 5px;
 	font-size: 11.52pt;
 	font-weight: bolder;
+	@media (min-width: $container-sm) {
+		position: fixed;
+	    width: $sidebar-sm;
+	    z-index: 1;
+	}
+	@media (min-width: $container-md) {
+	    width: $sidebar-md;
+	}
+	@media (min-width: $container-lg) {
+		width: $sidebar-lg;
+	}
 }
 .left-sidebar {
-	.active a, .article-active a{
-		padding-left: 10px;
-		width: calc(100% + 5px);
-	}
-	//Triangles
-	.article-active:after, .active:after, .article-active:before {
-		top: 50%;
-		border: solid;
-		content: " ";
-		height: 0;
-		width: 0;
-		position: absolute;
-		pointer-events: none;
-		border-color: rgba(136, 183, 213, 0);
-		border-width: 20px;
-		margin-top: -20px;
-		z-index: 1;
-	}
-	.active:after{
-		left: calc(100% + 5px);
-		border-left-color: $navbar-inverse-link-active-bg;
-	}
-	.article-active:before {
-		left: calc(100% - 35px);
-		border-right-color: black;
-	}
-	.article-active:after{
-		left: calc(100% - 34px);
-		border-right-color: white;
-	}
-	//End triangles
-	.active:hover:after{
-		border-left-color: $navbar-inverse-bg;
-	}
-	.active a:focus {
-		background-color: $navbar-inverse-link-active-bg !important;
-		&:hover {
-			background-color: $navbar-inverse-bg !important;
+	@media (min-width: $container-md) {
+		.active a, .article-active a{
+			padding-left: 10px;
+			width: calc(100% + 5px);
+		}
+		//Triangles
+		.article-active:after, .active:after, .article-active:before {
+			top: 50%;
+			border: solid;
+			content: " ";
+			height: 0;
+			width: 0;
+			position: absolute;
+			pointer-events: none;
+			border-color: rgba(136, 183, 213, 0);
+			border-width: 20px;
+			margin-top: -20px;
+			z-index: 1;
+		}
+		.active:after{
+			left: calc(100% + 5px);
+			border-left-color: $navbar-inverse-link-active-bg;
+		}
+		.article-active:before {
+			left: calc(100% - 35px);
+			border-right-color: black;
+		}
+		.article-active:after{
+			left: calc(100% - 34px);
+			border-right-color: white;
+		}
+		//End triangles
+		.active:hover:after{
+			border-left-color: $navbar-inverse-bg;
+		}
+		.active a:focus {
+			background-color: $navbar-inverse-link-active-bg !important;
+			&:hover {
+				background-color: $navbar-inverse-bg !important;
+			}
 		}
 	}
 }
@@ -247,8 +267,10 @@ body {
 .main {
 	min-height: 100%;
 	padding-top: 10px;
-	border-left: $border-style;
-	border-right: $border-style;
+	@media (min-width: $container-sm) {
+		border-left: $border-style;
+		border-right: $border-style;
+	}
 	.article-post-meta a {
 		color: $navbar-inverse-link-active-bg;
 	}
