@@ -346,6 +346,7 @@ body {
 .feed-article, .article-post {
 	.article-post-meta img {
 		border-radius: $feed-author-pic-size;
+		border: none;
 		height: $feed-author-pic-size;
 		width: $feed-author-pic-size;
 		margin: 0 5px 5px 0;
