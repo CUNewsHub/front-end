@@ -21,10 +21,10 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <!-- <li><a href="#">Search</a></li> -->
-          <li><a href="{% url 'newshub:home' %}">News</a></li>
+          <li {% if request.path == '/' %} class="active"{% endif %} ><a href="{% url 'newshub:home' %}">News</a></li>
           {% if user.is_authenticated %}
-          <li><a href="{% url 'newshub:new_article' %}">Write</a></li>
-          <li><a href="{% url 'newshub:profile' %}">Profile</a></li>
+          <li {% if request.path == '/new/article/' or '/edit/article/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:new_article' %}">Write</a></li>
+          <li {% if '/profile/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:profile' %}">Profile</a></li>
           <li><a href="{% url 'newshub:logout' %}">Logout</a></li>
           {% endif %}
         </ul>

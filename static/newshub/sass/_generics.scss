@@ -59,9 +59,11 @@ body {
 		height: 50px;
 	    width: 50px;
 	    display: inline;
-	    vertical-align: sub;
+	    position: relative;
+    	top: -3px;
 	    border: 3px solid white;
 	    margin-right: 5px;
+	    vertical-align: middle;
 	    @media (max-width: $container-sm) {
 	    	margin: 5px;
 	    }
@@ -70,6 +72,7 @@ body {
 		display: none;
 		@media (min-width: $container-sm) {
 			display: inline;
+			vertical-align: middle;
 		}
 	}
 	font-size: 36pt;
@@ -86,10 +89,12 @@ body {
 	padding: 0 5px 0 5px;
 	font-size: 11.52pt;
 	font-weight: bolder;
+}
+.left-sidebar {
 	@media (min-width: $container-sm) {
 		position: fixed;
-	    width: $sidebar-sm;
 	    z-index: 1;
+	    width: $sidebar-sm;
 	}
 	@media (min-width: $container-md) {
 	    width: $sidebar-md;
@@ -97,8 +102,6 @@ body {
 	@media (min-width: $container-lg) {
 		width: $sidebar-lg;
 	}
-}
-.left-sidebar {
 	@media (min-width: $container-md) {
 		.active a, .article-active a{
 			padding-left: 10px;
@@ -450,6 +453,20 @@ body {
 	border-radius: 4px;
 }
 // End article writing
+
+// Articles
+.article-container {
+	@media (min-width: $container-sm) {
+	    margin-left: $sidebar-sm;
+	}
+	@media (min-width: $container-md) {
+	    margin-left: $sidebar-md;
+	}
+	@media (min-width: $container-lg) {
+		margin-left: $sidebar-lg;
+	}
+}
+// End Articles
 
 // Profile
 #profile {
