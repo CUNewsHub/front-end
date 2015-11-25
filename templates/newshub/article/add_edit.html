@@ -1,13 +1,13 @@
 {% extends 'newshub/framework/base.html' %}
 {% load staticfiles widget_tweaks%}
 {% block content %}
-<div class="row article-forms">
-	<div class="col-md-8 col-md-offset-2">
+<div class="row article-forms fill-height">
+	<div id="article-forms-col" class="col-md-8 col-md-offset-2">
+	{% if not add %}
 	<div class="post-tools">
-		{% if not add %}
-			<a href="{% url 'newshub:view_article' pk=form.instance.pk %}" class="btn btn-default">View</a>
-		{% endif %}
+		<a href="{% url 'newshub:view_article' pk=form.instance.pk %}" class="btn btn-default">View</a>
 	</div>
+	{% endif %}
 </script>
 
 		<form method="post" action="">

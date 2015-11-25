@@ -463,7 +463,12 @@ body {
 	#id_headline {
 		height: 80px;
 	}
-	margin-top: 20px;
+	#article-forms-col {
+		padding-top: 20px;
+		height: 100%;
+		border-left: $border-style;
+		border-right: $border-style;
+	}
 }
 
 .post-tools {
