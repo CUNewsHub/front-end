@@ -378,14 +378,14 @@ body {
 // End Login
 
 // Shared between feed article and articles
-.feed-article, .article-post, #profile-articles {
+.feed-article, .article-post, #profile-articles, .featured {
 	.article-post-title {
 		font-size: 50px;
 		font-weight: bold;
 		margin-bottom: 0;
 	}
 	.article-post-headline {
-		font-weight: 600;
+		font-weight: 400;
 	}
 	.article-post-meta {
 		font-weight: bold;
@@ -410,7 +410,7 @@ body {
 		text-align: justify;
 	}
 }
-.feed-article, #profile-articles {
+.feed-article, #profile-articles, .featured {
 	padding: $center-padding;
 	box-sizing: border-box;
 	img {
@@ -427,6 +427,7 @@ body {
 		font-size: 28pt;
 		a {
 			color: black;
+			text-decoration: none;
 		}
 	}
 }
@@ -527,26 +528,49 @@ body {
 #profile {
 	text-align: justify;
 	padding: $center-padding;
-	.profile-picture {
-		display: inline-block;
-		vertical-align: top;
+	.profile-picture, .profile-description {
+		padding: 0;
 	}
-	.profile-description2 {
-		display: inline-block;
-		width: calc(100% - 208px);
-		margin-right: 5px;
+	.profile-picture {
+		img {
+			width: 100%;
+		}
+		margin: 0 20px 10px 0;
+	}
+	.profile-description {
+		padding: 0 10px 10px;
+		margin: 0 0 20px -20px;
+		text-align: center;
+		background-color: $navbar-inverse-bg;
+		color: white;
+		font-size: 14pt;
+		h2 {
+			font-size: 30pt;
+			margin: 10px 0 0;
+		}
+		p {
+			font-family: $font-family-sans-serif;
+			margin: 0;
+		}
+	}
+
+	.featured {
+		.heading {
+			font-size: 28pt;
+			text-align: center;
+			border-bottom: $border-style;
+		}
+		.article-post-title {
+			font-size: 24pt;
+		}
+		.profile-articles {
+			border-bottom: $border-style;
+		}
+		padding: 0 5%;
 	}
 }
 
 #profile-articles {
-	.heading {
-		font-size: 28pt;
-		text-align: center;
-		border-bottom: $border-style;
-	}
-	.featured {
-		padding: 0 10%;
-	}
 	.article-post-title {
 		font-size: 24pt;
 	}

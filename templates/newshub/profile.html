@@ -47,42 +47,36 @@
     <div class="col-sm-8 center-block main tab-content profile-page">
     	<div id="profile" class="row center-block tab-pane active">
 			<div class="row">
-				<h2>{{user.profile.display_name}}</h2>
-				<div class="col-sm-6">
+				<div class="col-sm-5 profile-picture">
 					<img class="img-responsive profile-picture" src="{{user.profile.picture.url}}" /> 
 				</div>
-				<div class="col-sm-6">
-					<div>College</div>
-					<div>{% if user.profile.college %}{{user.profile.college}}{% else %}Not specified{%endif%}</div>
-					<div>Course</div>
-					<div>{% if user.profile.course %}{{user.profile.course}}{% else %}Not specified{%endif%}</div>
-					<div>Year</div>
-					<div>{% if user.profile.course %}{{user.profile.course}}{% else %}Not specified{%endif%}</div>
+				<div class="col-sm-7 profile-description">
+					<h2>{{user.profile.display_name}}Erich Lee</h2>
+					<p>{% if user.profile.course %}{{user.profile.course}}{% else %}Not specified{%endif%} Year {% if user.profile.course %}{{user.profile.course}}{% else %}Not specified{%endif%} Student</p>
+					<p>{% if user.profile.college %}{{user.profile.college}}{% else %}Not specified{%endif%} College</p>
 				</div>
-				<div class="col-sm-10">
+				<div class="profile-blurb">
 					<div class="profile-page-title">
 						Bio
 					</div>
 					<div class="profile-page-section">
-						{{user.profile.about}}
+						{{user.profile.about}}Lorem ipsum Lorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsumLorem ipsum
 					</div>
 				</div>
 			</div>
-
-		</div>
-		<div id="profile-articles" class="row center-block tab-pane">
 			<div class="featured row">
 				<h1 class="heading">Featured</h1>
-				
-				{% for article in request.user.article_set.all %} <!-- Change this to featured only -->
+				{% for article in request.user.author.article_set.all %} <!-- Change this to featured only -->
 				<div class="row">
 		            <div class="center-block profile-articles">
 		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></h1>
 		                <p class="article-post-headline">{{article.headline}}</p>
 		            </div>
 		        </div>
-			{% endfor %}
+				{% endfor %}
 			</div>
+		</div>
+		<div id="profile-articles" class="row center-block tab-pane">
 			<div class="row non-featured">
 				{% for article in request.user.author.article_set.all %} <!-- Change this to non-featured only -->
 				<div class="profile-articles">

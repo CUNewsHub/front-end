@@ -9228,17 +9228,17 @@ body {
 }
 
 /* line 382, ../sass/_generics.scss */
-.feed-article .article-post-title, .article-post .article-post-title, #profile-articles .article-post-title {
+.feed-article .article-post-title, .article-post .article-post-title, #profile-articles .article-post-title, .featured .article-post-title {
   font-size: 50px;
   font-weight: bold;
   margin-bottom: 0;
 }
 /* line 387, ../sass/_generics.scss */
-.feed-article .article-post-headline, .article-post .article-post-headline, #profile-articles .article-post-headline {
-  font-weight: 600;
+.feed-article .article-post-headline, .article-post .article-post-headline, #profile-articles .article-post-headline, .featured .article-post-headline {
+  font-weight: 400;
 }
 /* line 390, ../sass/_generics.scss */
-.feed-article .article-post-meta, .article-post .article-post-meta, #profile-articles .article-post-meta {
+.feed-article .article-post-meta, .article-post .article-post-meta, #profile-articles .article-post-meta, .featured .article-post-meta {
   font-weight: bold;
   font-family: MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -9262,12 +9262,12 @@ body {
 }
 
 /* line 413, ../sass/_generics.scss */
-.feed-article, #profile-articles {
+.feed-article, #profile-articles, .featured {
   padding: 0 15%;
   box-sizing: border-box;
 }
 /* line 416, ../sass/_generics.scss */
-.feed-article img, #profile-articles img {
+.feed-article img, #profile-articles img, .featured img {
   height: 30px;
   width: 50px;
   display: inline-block;
@@ -9275,56 +9275,57 @@ body {
   vertical-align: baseline;
 }
 /* line 423, ../sass/_generics.scss */
-.feed-article .article-post-title, #profile-articles .article-post-title {
+.feed-article .article-post-title, #profile-articles .article-post-title, .featured .article-post-title {
   padding-top: 10px;
   margin: 0;
   font-weight: bold;
   font-size: 28pt;
 }
 /* line 428, ../sass/_generics.scss */
-.feed-article .article-post-title a, #profile-articles .article-post-title a {
+.feed-article .article-post-title a, #profile-articles .article-post-title a, .featured .article-post-title a {
   color: black;
+  text-decoration: none;
 }
 
-/* line 434, ../sass/_generics.scss */
+/* line 435, ../sass/_generics.scss */
 .feed-article .article-link {
   text-decoration: none;
   color: #242424;
 }
-/* line 437, ../sass/_generics.scss */
+/* line 438, ../sass/_generics.scss */
 .feed-article .article-link:hover h1 {
   color: #8D0812;
 }
-/* line 441, ../sass/_generics.scss */
+/* line 442, ../sass/_generics.scss */
 .feed-article .post-tools {
   border-bottom: thin solid black;
 }
-/* line 443, ../sass/_generics.scss */
+/* line 444, ../sass/_generics.scss */
 .feed-article .post-tools .btn {
   display: none;
 }
-/* line 447, ../sass/_generics.scss */
+/* line 448, ../sass/_generics.scss */
 .feed-article .article-post-meta {
   margin: 0 10px;
 }
-/* line 450, ../sass/_generics.scss */
+/* line 451, ../sass/_generics.scss */
 .feed-article:hover {
   background-color: #dddddd;
 }
-/* line 453, ../sass/_generics.scss */
+/* line 454, ../sass/_generics.scss */
 .feed-article:hover .btn {
   display: inline-block;
 }
 
-/* line 460, ../sass/_generics.scss */
+/* line 461, ../sass/_generics.scss */
 .article-forms #id_title, .article-forms #id_headline {
   width: 100%;
 }
-/* line 463, ../sass/_generics.scss */
+/* line 464, ../sass/_generics.scss */
 .article-forms #id_headline {
   height: 80px;
 }
-/* line 466, ../sass/_generics.scss */
+/* line 467, ../sass/_generics.scss */
 .article-forms #article-forms-col {
   padding-top: 20px;
   height: 100%;
@@ -9332,7 +9333,7 @@ body {
   border-right: thin solid black;
 }
 
-/* line 475, ../sass/_generics.scss */
+/* line 476, ../sass/_generics.scss */
 .post-tools .btn {
   border: thin solid black;
   border-radius: 0;
@@ -9343,105 +9344,133 @@ body {
   font-size: 16px;
   padding: 0 5px;
 }
-/* line 486, ../sass/_generics.scss */
+/* line 487, ../sass/_generics.scss */
 .post-tools .btn-active {
   color: #ffffff;
   background-color: #8D0812;
 }
 
-/* line 492, ../sass/_generics.scss */
+/* line 493, ../sass/_generics.scss */
 .tags {
   margin-top: 10px;
   text-align: center;
 }
-/* line 495, ../sass/_generics.scss */
+/* line 496, ../sass/_generics.scss */
 .tags .tag-type {
   color: #646464;
 }
 
-/* line 501, ../sass/_generics.scss */
+/* line 502, ../sass/_generics.scss */
 .redactor-editor h1, .redactor-editor h2, .redactor-editor h3, .redactor-editor h4, .redactor-editor h5, .redactor-editor h6 {
   font-weight: normal;
 }
 
-/* line 506, ../sass/_generics.scss */
+/* line 507, ../sass/_generics.scss */
 .redactor-box {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 @media (min-width: 750px) {
-  /* line 513, ../sass/_generics.scss */
+  /* line 514, ../sass/_generics.scss */
   .article-container {
     margin-left: 125px;
   }
 }
 @media (min-width: 970px) {
-  /* line 513, ../sass/_generics.scss */
+  /* line 514, ../sass/_generics.scss */
   .article-container {
     margin-left: 161.66666667px;
   }
 }
 @media (min-width: 1170px) {
-  /* line 513, ../sass/_generics.scss */
+  /* line 514, ../sass/_generics.scss */
   .article-container {
     margin-left: 195px;
   }
 }
 
-/* line 527, ../sass/_generics.scss */
+/* line 528, ../sass/_generics.scss */
 #profile {
   text-align: justify;
   padding: 0 15%;
 }
-/* line 530, ../sass/_generics.scss */
-#profile .profile-picture {
-  display: inline-block;
-  vertical-align: top;
+/* line 531, ../sass/_generics.scss */
+#profile .profile-picture, #profile .profile-description {
+  padding: 0;
 }
 /* line 534, ../sass/_generics.scss */
-#profile .profile-description2 {
-  display: inline-block;
-  width: calc(100% - 208px);
-  margin-right: 5px;
+#profile .profile-picture {
+  margin: 0 20px 10px 0;
 }
-
-/* line 542, ../sass/_generics.scss */
-#profile-articles .heading {
+/* line 535, ../sass/_generics.scss */
+#profile .profile-picture img {
+  width: 100%;
+}
+/* line 540, ../sass/_generics.scss */
+#profile .profile-description {
+  padding: 0 10px 10px;
+  margin: 0 0 20px -20px;
+  text-align: center;
+  background-color: #242424;
+  color: white;
+  font-size: 14pt;
+}
+/* line 547, ../sass/_generics.scss */
+#profile .profile-description h2 {
+  font-size: 30pt;
+  margin: 10px 0 0;
+}
+/* line 551, ../sass/_generics.scss */
+#profile .profile-description p {
+  font-family: MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", Helvetica, Arial, sans-serif;
+  margin: 0;
+}
+/* line 557, ../sass/_generics.scss */
+#profile .featured {
+  padding: 0 5%;
+}
+/* line 558, ../sass/_generics.scss */
+#profile .featured .heading {
   font-size: 28pt;
   text-align: center;
   border-bottom: thin solid black;
 }
-/* line 547, ../sass/_generics.scss */
-#profile-articles .featured {
-  padding: 0 10%;
+/* line 563, ../sass/_generics.scss */
+#profile .featured .article-post-title {
+  font-size: 24pt;
 }
-/* line 550, ../sass/_generics.scss */
+/* line 566, ../sass/_generics.scss */
+#profile .featured .profile-articles {
+  border-bottom: thin solid black;
+}
+
+/* line 574, ../sass/_generics.scss */
 #profile-articles .article-post-title {
   font-size: 24pt;
 }
-/* line 553, ../sass/_generics.scss */
+/* line 577, ../sass/_generics.scss */
 #profile-articles .article-post-meta {
   font-size: 12pt;
 }
-/* line 554, ../sass/_generics.scss */
+/* line 578, ../sass/_generics.scss */
 #profile-articles .article-post-meta .date {
   margin-right: 20px;
 }
-/* line 559, ../sass/_generics.scss */
+/* line 583, ../sass/_generics.scss */
 #profile-articles .profile-articles {
   border-bottom: thin solid black;
 }
-/* line 562, ../sass/_generics.scss */
+/* line 586, ../sass/_generics.scss */
 #profile-articles .non-featured {
   margin-top: 30px;
   text-align: justify;
 }
-/* line 563, ../sass/_generics.scss */
+/* line 587, ../sass/_generics.scss */
 #profile-articles .non-featured .article-post-title {
   font-size: 20pt;
 }
-/* line 568, ../sass/_generics.scss */
+/* line 592, ../sass/_generics.scss */
 #profile-articles .non-featured .profile-articles {
   width: 45%;
   display: inline-block;
