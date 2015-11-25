@@ -29,7 +29,9 @@
 	<body>
 		<!-- Header start -->
 		<section class="section-header">
+			{% if not '/login' in request.path %} 
 			{% include 'newshub/framework/menu.html' %}
+			{% endif %}
 		</section>
 		<!-- Header end -->
 		<!-- Main body start-->

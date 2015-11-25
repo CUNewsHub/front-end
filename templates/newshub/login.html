@@ -5,13 +5,20 @@
 {% endcomment %}
 
 {% block content %}
-<div class="row fill-height">
-	<div class="col-md-10 center-block main login">
-		<h1>Welcome to NewsHub!</h1>
-		<h2>Login via:</h2>
-		<ul class="nav nav-right social">
-	        <li><a class="facebook" href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" title="Facebook Login"></a><p class="facebook-title">Facebook</p></li>
-      	</ul>
+<div class="row">
+	<div class="col-md-8 center-block login">
+		<div class="col-md-4 login-left">
+			<img class="logo" src="{% static 'newshub/images/nhlogo.svg' %}" />
+		</div>
+		<div class="col-md-8 login-right login-brand">
+			<h1><span class="brand-text"> <span class="alternate-colour">N</span>EWS <span class="alternate-colour">H</span>UB</span></h1>
+		</div>
+		<div class="col-md-8 login-right">	
+			<p class="login-blurb">Welcome to the Cambridge NewsHub - a platform for Cambridge students to find high quality articles written by independent Cambridge bloggers and journalists.</p>
+		</div>
+		<p class="social col-md-8 pull-right">Login via:
+	    	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" title="Facebook Login"><span class="social-span facebook-title">Facebook</span><img class="facebook" src="{% static 'newshub/images/facebook-512.png' %}" alt="fb logo"/></a>
+	    </p>
 		
 	</div>
 </div>

@@ -23,6 +23,12 @@ body {
 		height: 100%;
 		position: relative;
 	}
+	position: relative;
+	.vertically-center {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+	}
 }
 // End Basic
 
@@ -296,28 +302,72 @@ body {
 
 // Login
 .login {
-	text-align: center;
-	h2 {
-		margin-top: 40px;
+	font-family: $font-family-sans-serif;
+	text-align: justify;
+	.login-left, .login-right {
+		padding: 0;
+	}
+	.login-left, .login-brand {
+		@media (min-width: $screen-sm) {
+			float: left;
+		}
+	}
+	.login-brand {
+		@media (max-width: $screen-sm) {
+	    	display: none;
+		}
+		@media (min-width: $screen-sm) {
+	    	width: calc(100% - 100px);
+		}
+		@media (min-width: $screen-md) {
+	    	width: inherit;
+		}
+	}
+	.logo {
+		width: 100%;
+		@media (min-width: $screen-sm) {
+	    	height: 100px;
+	    	width: auto;
+		}
+		@media (min-width: $screen-md) {
+			width: 100%;
+			height: auto;
+		}
+		@media (min-width: $screen-lg) {
+			width: 100%;
+		}
+	}
+	h1 {
+		font-size: 86px;
+	    text-align: center;
+	    color: #9d9d9d;
+	    background-color: #242424;
+	    padding: 4px 0 0 0;
+	    margin: 0;
+	    line-height: 1.25;
+		@media (min-width: $screen-sm) {
+	    	height: 100px;
+		}	    
+		.alternate-colour {
+			color: white;
+		}
+	}
+	.login-blurb {
+		padding: 10px 20px;
+		font-size: 16pt;
 	}
 	.social {
-		margin-top: 40px;
-		display: inline-block;
+		font-size: 18pt;
+		margin-top: 30px;
 		a {
-		    height: 128px;
-		    width: 128px;
-			&:hover{
-				background-color: transparent;
-			}
+			text-decoration: none;
 		}
 		.facebook {
-			background: url("../images/facebook-512.png");
-		    background-size: contain;
+			height: 30px;
+			vertical-align: text-bottom;
 		}
-		p {
-			font-family: $font-family-sans-serif;
-			margin-top: 20px;
-			font-size: 20pt;
+		.social-span {
+			margin-right: 10px;
 			font-weight: bold;
 		}
 		.facebook-title {
