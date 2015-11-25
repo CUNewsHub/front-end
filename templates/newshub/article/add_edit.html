@@ -9,8 +9,7 @@
 	</div>
 	{% endif %}
 </script>
-
-		<form method="post" action="">
+		<form id="article-post-form" method="post" action="">
 			{% csrf_token %}
 			{% for field in form%}
 			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
@@ -35,4 +34,9 @@
 		</form>
 	</div>
 </div>
+<script>
+$(function() {
+    $('form').areYouSure( {'message':'Your article is not finished yet.'} );
+});
+</script>
 {% endblock %}
