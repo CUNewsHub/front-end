@@ -1,9 +1,10 @@
 {% extends 'newshub/framework/base.html' %}
+{% load widget_tweaks %}
 {% block content %}
 <div class="row fill-height">
     
     <div class="col-sm-2 left-sidebar">
-        {% include 'newshub/framework/left-sidebar.html' with article=True %}
+        {% include 'newshub/framework/left-sidebar.html' with article=True type=action_type%}
     </div><!-- /.article-sidebar -->
 
     <div class="col-sm-8 main article-container">
@@ -33,8 +34,44 @@
                     <!-- <button type="button" class="btn btn-default">Feedback</button> -->
 		        {%endif%}
             </div>
-			<p class="article-post-headline">{{article.headline}}</p>
-			<p>{{article.content|safe}}</p>
+            <div class="article-view-element">
+    			<p class="article-post-headline">{{article.headline}}</p>
+    			<div class="article-post-content">{{article.content|safe}}</div>
+            </div>
+            <div class="article-view-element article-comments">
+                <h4>Comments</h4>
+                <form class="form-horizontal" id="article_comment_form" method="post" action="{% url 'newshub:add_comment' %}">
+                    {% csrf_token %}
+                    {% for hidden in comment_form.hidden_fields %}
+                        {{ hidden }}
+                    {% endfor %}
+                    {% for field in comment_form.visible_fields %}
+                    <div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+                        <div class="col-sm-12">
+                            {% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+                            {% for error in field.errors %}
+                                 <span class="help-block">
+                                    {{error}}
+                                 </span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="form-group">
+                        <div class="post-tools col-sm-2">
+                            <input class="btn" type="submit" name="action" value="Comment"/>
+                        </div>
+                    </div>
+                </form>
+                <div class="article-comments-section">
+                    {% for comment in article.comment_set.all %}
+                        {% include 'newshub/article/comment.html' with comment=comment%}
+                    {% empty %}
+                        <p>No comments for this article</p>
+                    {%endfor %}
+
+                </div>
+            </div>
 		</div><!-- /.article-post -->
 		
 		<!--{% if article.author == request.user %}

@@ -8,6 +8,7 @@ $feed-author-pic-size: 30px;
 $sidebar-md: $container-md/6;
 $sidebar-sm: $container-sm/6;
 $sidebar-lg: $container-lg/6;
+$main-color: #8D0812;
 // Basic
 html, body {
 	height: 100%;
@@ -380,12 +381,13 @@ body {
 // Shared between feed article and articles
 .feed-article, .article-post, #profile-articles, .featured {
 	.article-post-title {
-		font-size: 50px;
+		font-size: 40px;
 		font-weight: bold;
 		margin-bottom: 0;
 	}
 	.article-post-headline {
 		font-weight: 400;
+		font-size: 20px;
 	}
 	.article-post-meta {
 		font-weight: bold;
@@ -522,6 +524,16 @@ body {
 		margin-left: $sidebar-lg;
 	}
 }
+
+.article-view-element{
+	border-top: 1px solid $main-color;
+}
+.article-comments{
+	margin-top: 25px;
+	textarea{
+		height: 100px;
+	}
+}
 // End Articles
 
 // Profile
@@ -596,3 +608,4 @@ body {
 	}
 }
 // End Profile
+

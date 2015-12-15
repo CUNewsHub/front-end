@@ -53,6 +53,10 @@ $(document).ready(function(){
     $('a[data-toggle="pill"]').on('click', function(e) {
       return location.hash = $(e.target).attr('href').substr(1);
     });
+
+  $('#article_comment_form').ajaxForm({success: function(data) { 
+    $('.article-comments-section').prepend(data);
+  }, clearForm: true}); 
 });
 
 /*!

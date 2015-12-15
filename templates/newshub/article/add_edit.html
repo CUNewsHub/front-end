@@ -5,7 +5,7 @@
 	<div id="article-forms-col" class="col-md-8 col-md-offset-2">
 	{% if not add %}
 	<div class="post-tools">
-		<a href="{% url 'newshub:view_article' pk=form.instance.pk %}" class="btn btn-default">View</a>
+		<a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default">View</a>
 	</div>
 	{% endif %}
 </script>

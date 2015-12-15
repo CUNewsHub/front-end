@@ -1,4 +1,5 @@
 {% extends 'newshub/framework/base.html' %}
+{% load widget_tweaks %}
 {% comment %}
 	Profile page of the User/Author. 
 
@@ -39,7 +40,7 @@
             <li><a href="#" data-toggle="pill">Statistics</a></li>
             -->
             {% if request.user == user %}
-            <li><a href="#" data-toggle="pill">Edit Profile</a></li>
+            <li><a href="#profile-update" data-toggle="pill">Edit Profile</a></li>
             {% endif %}
         </ul>
     </div><!-- /.article-sidebar -->
@@ -51,8 +52,8 @@
 					<img class="img-responsive profile-picture" src="{{user.profile.picture.url}}" /> 
 				</div>
 				<div class="col-sm-7 profile-description">
-					<h2>{{user.profile.display_name}}Erich Lee</h2>
-					<p>{% if user.profile.course %}{{user.profile.course}}{% else %}Not specified{%endif%} Year {% if user.profile.course %}{{user.profile.course}}{% else %}Not specified{%endif%} Student</p>
+					<h2>{{user.profile.display_name}}</h2>
+					<p>{% if user.profile.year %}{{user.profile.year}}{% else %}Not specified{%endif%} Year {% if user.profile.subject %}{{user.profile.subject}}{% else %}Not specified{%endif%} Student</p>
 					<p>{% if user.profile.college %}{{user.profile.college}}{% else %}Not specified{%endif%} College</p>
 				</div>
 				<div class="profile-blurb">
@@ -69,7 +70,7 @@
 				{% for article in request.user.author.article_set.all %} <!-- Change this to featured only -->
 				<div class="row">
 		            <div class="center-block profile-articles">
-		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></h1>
+		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
 		                <p class="article-post-headline">{{article.headline}}</p>
 		            </div>
 		        </div>
@@ -80,7 +81,7 @@
 			<div class="row non-featured">
 				{% for article in request.user.author.article_set.all %} <!-- Change this to non-featured only -->
 				<div class="profile-articles">
-	                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' pk=article.pk %}">{{article.title}}</a></h1>
+	                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
 	                <p class="article-post-meta">
 	                	<span class="date">{{article.time_uploaded|date:"N Y"}}</span>
 	                	<span class="likes">{{article.likes.count}} Likes</span>
@@ -89,6 +90,37 @@
 				{% endfor %}
 			</div>
 		</div>
+		{% if request.user == user %}
+		<div id="profile-update" class="row center-block tab-pane">
+			<div class="row non-featured">
+				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_profile' request.user.profile.pk %}">
+					{% csrf_token %}
+					{% for field in profile_form %}
+					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+						<label class="col-sm-offset-2 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
+						{% if field.html_name == 'about' %}
+						<div class="col-sm-6">
+						{%else %}
+						<div class="col-sm-4">
+		        	   {%endif%}
+							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+			                {% for error in field.errors %}
+			                     <span class="help-block">
+			                        {{error}}
+			                     </span>
+		        	        {% endfor %}
+		        	    </div>
+			        </div>
+					{% endfor %}
+					<div class="form-group">
+						<div class="post-tools col-sm-offset-4 col-sm-2">
+							<input class="btn" type="submit" name="action" value="Update"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		{% endif %}
 	</div><!-- Profile Info -->
 </div>
 {%endblock%}

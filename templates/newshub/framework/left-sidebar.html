@@ -1,7 +1,18 @@
 <ul class="nav nav-pills nav-stacked">
-    <li class="{%if article%}article-{%endif%}active"><a href="#">Personal Feed</a></li>
-    <li><a href="#">Top Stories</a></li>
-    <li><a href="#">History</a></li>
+    {% if type == 'home' %}
+        <li class="{%if article%}article-{%endif%}active"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+        <li class=""><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
+        <li><a href="{% url 'newshub:history' %}">History</a></li>
+    {% elif type == 'top-stories' %}
+        <li class=""><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+        <li class="{%if article%}article-{%endif%}active"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
+        <li><a href="{% url 'newshub:history' %}">History</a></li>
+    {% elif type == 'history' %}
+        <li class=""><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+        <li><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
+        <li class="{%if article%}article-{%endif%}active"><a href="{% url 'newshub:history' %}">History</a></li>
+    
+    {% endif %}
     <!-- <li class="search">
         <div id="custom-search-input">
             <div class="input-group col-md-12">
