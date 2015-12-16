@@ -1,39 +1,43 @@
 {% extends 'newshub/framework/base.html' %}
 {% load staticfiles widget_tweaks%}
 {% block content %}
-<div class="row article-forms fill-height">
-	<div id="article-forms-col" class="col-md-8 col-md-offset-2">
-	{% if not add %}
-	<div class="post-tools">
-		<a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default">View</a>
-	</div>
-	{% endif %}
-</script>
-		<form id="article-post-form" method="post" action="">
-			{% csrf_token %}
-			{% for field in form%}
-			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-				<label for="{{field.id_for_label}}">{{field.label}}</label>
-				{% if field.html_name == 'published' %}
-					{{field}}
-				{% else%}
-					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 
-	                {% for error in field.errors %}
-	                     <span class="help-block">
-	                        {{error}}
-	                     </span>
-	                {% endfor %}
-	            {%endif%}
-			</div>
-			{% endfor %}
-			<div class="post-tools">
-				<input class="btn" type="submit" name="action" value="Save"/>
-				<input class="btn" type="submit" name="action" value="Publish"/>
-			</div>
-		</form>
+<form id="article-post-form" method="post" action="">
+	<div class="row article-forms fill-height">
+		<div class="col-md-2 left-sidebar">
+			<ul class="nav nav-pills nav-stacked">
+				{% if article.published %}
+				<li><input class="red" type="submit" name="action" value="✓ Published"/></li>
+				{% else %}
+				<li><input type="submit" name="action" value="Publish"/></li>
+				{% endif %}
+				{% if not add %}
+					<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default">View</a></li>
+				{% endif %}
+				<li><input type="submit" name="action" value="Save"/></li>
+			</ul>
+		</div>
+		<div id="article-forms-col" class="col-md-8 col-md-offset-2">
+				{% csrf_token %}
+				{% for field in form%}
+				<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+					<label for="{{field.id_for_label}}">{{field.label}}</label>
+					{% if field.html_name == 'published' %}
+						{{field}}
+					{% else%}
+						{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+
+		                {% for error in field.errors %}
+		                     <span class="help-block">
+		                        {{error}}
+		                     </span>
+		                {% endfor %}
+		            {%endif%}
+				</div>
+				{% endfor %}
+		</div>
 	</div>
-</div>
+</form>
 <script>
 $(function() {
     $('form').areYouSure( {'message':'Your article is not finished yet.'} );

@@ -460,6 +460,29 @@ body {
 
 // Article writing
 .article-forms {
+	.nav-pills {
+		a {
+			font-size: 11.52pt;
+		}
+		input {
+			width: 100%;
+		    color: white;
+		    background-color: $navbar-inverse-bg;
+		    border: none;
+		    padding: 10px 15px;
+		    font-size: 11.52pt;
+		    font-weight: 100;
+		    &:hover {
+		    	background-color: $navbar-inverse-link-active-bg;
+		    }
+		}
+		.red {
+			background-color: $navbar-inverse-link-active-bg;
+			&:hover {
+				background-color: $navbar-inverse-bg;
+			}
+		}
+	}
 	#id_title, #id_headline {
 		width: 100%;
 	}
@@ -558,6 +581,7 @@ body {
 		font-size: 14pt;
 		h2 {
 			font-size: 30pt;
+			font-size: 2vw;
 			margin: 10px 0 0;
 		}
 		p {
