@@ -114,6 +114,12 @@ body {
 			padding-left: 10px;
 			width: calc(100% + 5px);
 		}
+		.article-active a {
+			background-color: $navbar-inverse-link-active-bg;
+			&:hover {
+				background-color: $navbar-inverse-bg;
+			}
+		}
 		//Triangles
 		.article-active:after, .active:after, .article-active:before {
 			top: 50%;

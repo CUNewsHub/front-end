@@ -4,19 +4,6 @@
 
 <form id="article-post-form" method="post" action="">
 	<div class="row article-forms fill-height">
-		<div class="col-md-2 left-sidebar">
-			<ul class="nav nav-pills nav-stacked">
-				{% if article.published %}
-				<li><input class="red" type="submit" name="action" value="✓ Published"/></li>
-				{% else %}
-				<li><input type="submit" name="action" value="Publish"/></li>
-				{% endif %}
-				{% if not add %}
-					<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default">View</a></li>
-				{% endif %}
-				<li><input type="submit" name="action" value="Save"/></li>
-			</ul>
-		</div>
 		<div id="article-forms-col" class="col-md-8 col-md-offset-2">
 				{% csrf_token %}
 				{% for field in form%}
@@ -35,6 +22,19 @@
 		            {%endif%}
 				</div>
 				{% endfor %}
+		</div>
+		<div class="col-md-2 right-sidebar">
+			<ul class="nav nav-pills nav-stacked">
+				{% if article.published %}
+				<li><input class="red" type="submit" name="action" value="✓ Published"/></li>
+				{% else %}
+				<li><input type="submit" name="action" value="Publish"/></li>
+				{% endif %}
+				{% if not add %}
+					<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default">View</a></li>
+				{% endif %}
+				<li><input type="submit" name="action" value="Save"/></li>
+			</ul>
 		</div>
 	</div>
 </form>
