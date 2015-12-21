@@ -2,7 +2,9 @@ $nav-size: 60px;
 $component-colours: #787878;
 $border-radius-search: 12px;
 $border-style: thin solid black;
+$box-shadow-style: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 $center-padding: 0 15%;
+$center-background-color: white;
 $facebook-colour: #3B5999;
 $feed-author-pic-size: 30px;
 $sidebar-md: $container-md/6;
@@ -283,6 +285,7 @@ body {
 .main {
 	min-height: 100%;
 	padding-top: 10px;
+	background-color: $center-background-color;
 	@media (min-width: $container-sm) {
 		border-left: $border-style;
 		border-right: $border-style;
@@ -465,6 +468,9 @@ body {
 }
 
 // Article writing
+#article-post-form {
+	margin-bottom: 0;
+}
 .article-forms {
 	.nav-pills {
 		a {
@@ -497,7 +503,8 @@ body {
 	}
 	#article-forms-col {
 		padding-top: 20px;
-		height: 100%;
+		background-color: $center-background-color;
+		min-height: 100%;
 		border-left: $border-style;
 		border-right: $border-style;
 	}
@@ -554,8 +561,8 @@ body {
 	}
 }
 
-.article-view-element{
-	border-top: 1px solid $main-color;
+.article-view-element, .article-container .post-tools{
+	padding-top: 10px;
 }
 .article-comments{
 	margin-top: 25px;
