@@ -567,6 +567,7 @@ body {
 	}
 }
 
+//redactor style
 .redactor-editor{
 	h1,h2,h3,h4,h5,h6{
 		font-weight: normal;
@@ -574,8 +575,18 @@ body {
 }
 
 .redactor-box{
-	border: 1px solid #ccc;
+	border: 1px solid $main-color;
 	border-radius: 4px;
+}
+
+.redactor-editor{
+	padding: 6px 12px;
+}
+
+
+.redactor-placeholder:after{
+	top: 6px;
+	left: 12px;
 }
 // End article writing
 
