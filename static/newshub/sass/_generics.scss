@@ -606,6 +606,12 @@ body {
 .article-view-element, .article-container .post-tools{
 	padding-top: 10px;
 }
+
+.article-view-element{
+	img{
+		width: 100%;
+	}
+}
 .article-comments{
 	margin-top: 25px;
 	textarea{

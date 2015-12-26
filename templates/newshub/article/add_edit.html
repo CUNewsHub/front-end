@@ -2,42 +2,43 @@
 {% load staticfiles widget_tweaks%}
 {% block content %}
 
-<form id="article-post-form" method="post" action="">
-	<div class="row article-forms fill-height">
-		<div id="article-forms-col" class="col-md-8 col-md-offset-2">
-				{% csrf_token %}
-				{% for field in form%}
-				<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-					<label for="{{field.id_for_label}}">{{field.label}}</label>
-					{% if field.html_name == 'published' %}
-						{{field}}
-					{% else%}
-						{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+<div class="row article-forms fill-height">
+	<div id="article-forms-col" class="col-md-8 col-md-offset-2">
+		<form id="article-post-form" method="post" action="" enctype="multipart/form-data" >
+			{% csrf_token %}
+			{% for field in form%}
+			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+				<label for="{{field.id_for_label}}">{{field.label}}</label>
+				{% if field.html_name == 'published' %}
+					{{field}}
+				{% else%}
+					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 
-		                {% for error in field.errors %}
-		                     <span class="help-block">
-		                        {{error}}
-		                     </span>
-		                {% endfor %}
-		            {%endif%}
-				</div>
-				{% endfor %}
-		</div>
-		<div class="col-md-2 right-sidebar">
-			<ul class="nav nav-pills nav-stacked">
-				{% if form.field.published %} <!-- Can't figure out how to make it published -->
-				<li><input class="red" type="submit" name="action" value="&#10003; Published"/></li> <!-- THIS CURRENTLY DOES NOTHING -->
-				{% else %}
-				<li><input type="submit" name="action" value="Publish"/></li>
-				{% endif %}
-				{% if not add %}
-				<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default">View</a></li>
-				{% endif %}
-				<li><input type="submit" name="action" value="Save"/></li>
-			</ul>
-		</div>
+	                {% for error in field.errors %}
+	                     <span class="help-block">
+	                        {{error}}
+	                     </span>
+	                {% endfor %}
+	            {%endif%}
+			</div>
+			{% endfor %}
+
+		</form>
 	</div>
-</form>
+	<div class="col-md-2 right-sidebar">
+		<ul class="nav nav-pills nav-stacked">
+			{% if form.field.published %} <!-- Can't figure out how to make it published -->
+			<li><input class="red" type="submit" name="action" value="&#10003; Published" form="article-post-form"/></li> <!-- THIS CURRENTLY DOES NOTHING -->
+			{% else %}
+			<li><input type="submit" name="action" value="Publish" form="article-post-form"/></li>
+			{% endif %}
+			{% if not add %}
+			<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default">View</a></li>
+			{% endif %}
+			<li><input type="submit" name="action" value="Save" form="article-post-form"/></li>
+		</ul>
+	</div>
+</div>
 <script>
 $(function() {
     $('form').areYouSure( {'message':'Your article is not finished yet.'} );

@@ -9487,34 +9487,39 @@ body {
   padding-top: 10px;
 }
 
-/* line 609, ../sass/_generics.scss */
+/* line 611, ../sass/_generics.scss */
+.article-view-element img {
+  width: 100%;
+}
+
+/* line 615, ../sass/_generics.scss */
 .article-comments {
   margin-top: 25px;
 }
-/* line 611, ../sass/_generics.scss */
+/* line 617, ../sass/_generics.scss */
 .article-comments textarea {
   height: 100px;
 }
 
-/* line 618, ../sass/_generics.scss */
+/* line 624, ../sass/_generics.scss */
 #profile {
   text-align: justify;
   padding: 0 15%;
   padding-top: 10px;
 }
-/* line 622, ../sass/_generics.scss */
+/* line 628, ../sass/_generics.scss */
 #profile .profile-picture, #profile .profile-description {
   padding: 0;
 }
-/* line 625, ../sass/_generics.scss */
+/* line 631, ../sass/_generics.scss */
 #profile .profile-picture {
   margin: 0 20px 10px 0;
 }
-/* line 626, ../sass/_generics.scss */
+/* line 632, ../sass/_generics.scss */
 #profile .profile-picture img {
   width: 100%;
 }
-/* line 631, ../sass/_generics.scss */
+/* line 637, ../sass/_generics.scss */
 #profile .profile-description {
   padding: 0 10px 10px;
   margin: 0 0 20px -20px;
@@ -9523,62 +9528,62 @@ body {
   color: white;
   font-size: 14pt;
 }
-/* line 638, ../sass/_generics.scss */
+/* line 644, ../sass/_generics.scss */
 #profile .profile-description h2 {
   font-size: 30pt;
   font-size: 2vw;
   margin: 10px 0 0;
 }
-/* line 643, ../sass/_generics.scss */
+/* line 649, ../sass/_generics.scss */
 #profile .profile-description p {
   font-family: MyriadPro-Regular, "Myriad Pro Regular", MyriadPro, "Myriad Pro", Helvetica, Arial, sans-serif;
   margin: 0;
 }
-/* line 649, ../sass/_generics.scss */
+/* line 655, ../sass/_generics.scss */
 #profile .featured {
   padding: 0 5%;
 }
-/* line 650, ../sass/_generics.scss */
+/* line 656, ../sass/_generics.scss */
 #profile .featured .heading {
   font-size: 28pt;
   text-align: center;
   border-bottom: thin solid black;
 }
-/* line 655, ../sass/_generics.scss */
+/* line 661, ../sass/_generics.scss */
 #profile .featured .article-post-title {
   font-size: 24pt;
 }
-/* line 658, ../sass/_generics.scss */
+/* line 664, ../sass/_generics.scss */
 #profile .featured .profile-articles {
   border-bottom: thin solid black;
 }
 
-/* line 666, ../sass/_generics.scss */
+/* line 672, ../sass/_generics.scss */
 #profile-articles .article-post-title {
   font-size: 24pt;
 }
-/* line 669, ../sass/_generics.scss */
+/* line 675, ../sass/_generics.scss */
 #profile-articles .article-post-meta {
   font-size: 12pt;
 }
-/* line 670, ../sass/_generics.scss */
+/* line 676, ../sass/_generics.scss */
 #profile-articles .article-post-meta .date {
   margin-right: 20px;
 }
-/* line 675, ../sass/_generics.scss */
+/* line 681, ../sass/_generics.scss */
 #profile-articles .profile-articles {
   border-bottom: thin solid black;
 }
-/* line 678, ../sass/_generics.scss */
+/* line 684, ../sass/_generics.scss */
 #profile-articles .non-featured {
   margin-top: 30px;
   text-align: justify;
 }
-/* line 679, ../sass/_generics.scss */
+/* line 685, ../sass/_generics.scss */
 #profile-articles .non-featured .article-post-title {
   font-size: 20pt;
 }
-/* line 684, ../sass/_generics.scss */
+/* line 690, ../sass/_generics.scss */
 #profile-articles .non-featured .profile-articles {
   width: 45%;
   display: inline-block;
