@@ -43,6 +43,29 @@
     			<p class="article-post-headline">{{article.headline}}</p>
     			<div class="article-post-content">{{article.content|safe}}</div>
             </div>
+            {% if article.poll %}
+                <div class="article-view-element post-tools">
+                    <div class="article-post-headline">Poll: {{article.poll}}</div>
+                    {% if request.user in article.poll.voted.all %}
+                        {% for choice in article.poll.choice_set.all %}
+                            <p>{{choice}}: {{choice.votes}}</p>
+                        {% endfor %}
+                    {% else %}
+                    <form class="form-horizontal" method="post" action="{% url 'newshub:article_poll_vote' pk=article.poll.pk %}">
+                    {% csrf_token %}
+                    {% for choice in article.poll.choice_set.all %}
+                    <div class="form-group">
+                        <div class="col-sm-1">
+                            <input type="radio" name="choice" id="choice_{{forloop.counter}}" value="{{choice.id}}" />
+                        </div>
+                        <label class="col-sm-10" for="choice_{{forloop.counter}}">{{choice.choice_text}}</label>
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="Vote" class="btn btn-default" />
+                    </form>
+                    {% endif %}
+                </div>
+            {% endif %}
             <div class="article-view-element article-comments">
                 <h4>Comments</h4>
                 <form class="form-horizontal" id="article_comment_form" method="post" action="{% url 'newshub:add_comment' %}">

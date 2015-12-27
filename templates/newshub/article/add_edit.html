@@ -27,7 +27,7 @@
 	</div>
 	<div class="col-md-2 affixed-sidebar right-sidebar">
 		<ul class="nav nav-pills nav-stacked">
-			{% if form.field.published %} <!-- Can't figure out how to make it published -->
+			{% if form.instance.published %} <!-- Can't figure out how to make it published -->
 			<li><input class="red" type="submit" name="action" value="&#10003; Published" form="article-post-form"/></li> <!-- THIS CURRENTLY DOES NOTHING -->
 			{% else %}
 			<li><input type="submit" name="action" value="Publish" form="article-post-form"/></li>
@@ -37,6 +37,46 @@
 			{% endif %}
 			<li><input type="submit" name="action" value="Save" form="article-post-form"/></li>
 		</ul>
+		<div class="article-poll-form">
+			<div class="article-poll-add-title">
+				Add a poll for the article
+			</div>
+			{% if not add %}
+				{% if form.instance.poll %}
+					<p>Poll exists: <b>{{form.instance.poll}}</b></p>
+					<ul class="nav nav-pills nav-stacked">
+						<li><a class="btn btn-default" href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a></li>
+						<li><a class="btn btn-default" href="{% url 'newshub:article_delete_poll' pk=form.instance.poll.pk %}">Delete the poll</a></li>
+					</ul>
+				{%else%}
+				<form action="{% url 'newshub:article_add_poll' %}" method="post">
+					{% csrf_token %}
+					{% for hidden in poll_form.hidden_fields %}
+	                        {{ hidden }}
+	                    {% endfor %}
+					{% for field in poll_form.visible_fields %}
+					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+						<label for="{{field.id_for_label}}">{{field.label}}</label>
+						{% if field.html_name == 'published' %}
+							{{field}}
+						{% else%}
+							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+
+			                {% for error in field.errors %}
+			                     <span class="help-block">
+			                        {{error}}
+			                     </span>
+			                {% endfor %}
+			            {%endif%}
+					</div>
+					{% endfor %}
+					<ul class="nav nav-pills nav-stacked">
+						<li><input type="submit" value="Add poll" class="btn btn-default" /></li>
+					</ul>
+				</form>
+				{% endif %}
+			{% endif %}
+		</div>
 	</div>
 </div>
 <script>
