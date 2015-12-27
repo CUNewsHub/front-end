@@ -8,17 +8,21 @@
 			{% csrf_token %}
 			{% for field in form%}
 			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-				<label for="{{field.id_for_label}}">{{field.label}}</label>
 				{% if field.html_name == 'published' %}
+				<label for="{{field.id_for_label}}">{{field.label}}</label>
 					{{field}}
+				{% elif field.html_name == 'poll' and not add%}
+			
 				{% else%}
+					<label for="{{field.id_for_label}}">{{field.label}}</label>
 					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 
+	               <span class="help-block">
+						<p>{{field.help_text}}</p>
 	                {% for error in field.errors %}
-	                     <span class="help-block">
 	                        {{error}}
-	                     </span>
 	                {% endfor %}
+	               	</span>
 	            {%endif%}
 			</div>
 			{% endfor %}
@@ -38,10 +42,10 @@
 			<li><input type="submit" name="action" value="Save" form="article-post-form"/></li>
 		</ul>
 		<div class="article-poll-form">
+			{% if not add %}
 			<div class="article-poll-add-title">
 				Add a poll for the article
 			</div>
-			{% if not add %}
 				{% if form.instance.poll %}
 					<p>Poll exists: <b>{{form.instance.poll}}</b></p>
 					<ul class="nav nav-pills nav-stacked">
@@ -61,12 +65,12 @@
 							{{field}}
 						{% else%}
 							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
-
+							<span class="help-block">
+								<p>{{field.help_text}}</p>
 			                {% for error in field.errors %}
-			                     <span class="help-block">
 			                        {{error}}
-			                     </span>
 			                {% endfor %}
+			               	</span>
 			            {%endif%}
 					</div>
 					{% endfor %}
