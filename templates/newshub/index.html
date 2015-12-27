@@ -21,11 +21,11 @@
 {% endcomment %}
 {% block content %}
 <div class="row fill-height">
-    <div class="col-sm-2 left-sidebar">
+    <div class="col-sm-2 affixed-sidebar left-sidebar">
         {% include 'newshub/framework/left-sidebar.html' with article=False type=type %}
     </div><!-- /.article-sidebar -->
 
-    <div class="col-sm-8 center-block main">
+    <div class="col-sm-8 main">
         
         {% for article in articles %}
         <div class="row">
@@ -65,9 +65,9 @@
         {% endfor %}
     </div><!-- /.feed-main -->
 
-    <!-- <div class="col-sm-2 right-feed-sidebar">
+    <div class="col-sm-2 affixed-sidebar right-feed-sidebar">
         {% include 'newshub/framework/right-feed-sidebar.html' %}
-    </div>--><!-- /.right-sidebar -->
+    </div><!-- /.right-sidebar -->
 </div><!-- /.row -->
 
 {%endblock%}

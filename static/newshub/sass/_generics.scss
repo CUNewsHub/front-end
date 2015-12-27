@@ -66,15 +66,18 @@ body {
 	    	margin-right: 3px;
 		}
 	}
-	.dropdown-menu {
-		background-color: $navbar-inverse-bg;
-		li a {
-			color: #9d9d9d;
-			&:hover, &:focus {
-	 			background-color: $navbar-inverse-link-active-bg;
-	 			color: white;
-	 		}
-	 	}
+	.dropdown {
+		height: 60px;	
+		.dropdown-menu {
+			background-color: $navbar-inverse-bg;
+			li a {
+				color: #9d9d9d;
+				&:hover, &:focus {
+		 			background-color: $navbar-inverse-link-active-bg;
+		 			color: white;
+		 		}
+		 	}
+		}
 	}
 }
 
@@ -115,17 +118,6 @@ body {
 	font-weight: bolder;
 }
 .left-sidebar {
-	@media (min-width: $container-sm) {
-		position: fixed;
-	    z-index: 1;
-	    width: $sidebar-sm;
-	}
-	@media (min-width: $container-md) {
-	    width: $sidebar-md;
-	}
-	@media (min-width: $container-lg) {
-		width: $sidebar-lg;
-	}
 	@media (min-width: $container-md) {
 		.active a, .article-active a{
 			padding-left: 10px;
@@ -180,17 +172,6 @@ body {
 }
 
 .right-feed-sidebar {
-	@media (min-width: $container-sm) {
-		position: fixed;
-	    z-index: 1;
-	    width: $sidebar-sm;
-	}
-	@media (min-width: $container-md) {
-	    width: $sidebar-md;
-	}
-	@media (min-width: $container-lg) {
-		width: $sidebar-lg;
-	}
 }
 
 .article-right-sidebar {
@@ -227,7 +208,7 @@ body {
 }
 
 .nav-pills {
-	margin-top: 20px;
+	margin-top: 10px;
 	position: relative;
 	li.active a{
 		background-color: $navbar-inverse-link-active-bg;
@@ -257,37 +238,36 @@ body {
 	    }
 	}
 	.like-button {
-		&::first-letter{
-			color: white;
-		}
-		h3 {
+		p {
 			margin: 0;
 			font-size: 24pt;
-			color: black;
+			font-weight: 300;
+			color: white;
 			background-color: $button-light-gray;
 			padding: 5px 0;
+    		vertical-align: middle;
+    		.like-text {
+    			color: black;
+    		}
 		}
-		h3:hover{
+		p:hover{
 			background-color: $navbar-inverse-link-active-bg;
 			cursor: pointer;
 		}
-		h3.active {
+		p.active {
 			color: white;
 			background-color: $navbar-inverse-link-active-bg;
 		}
 	}
-	.feedback-header {
-		font-variant: small-caps;
+	.header {
 		margin: 30px 0 10px 0;
-		h3 {
+		p {
 			margin: 0;
 			font-size: 24pt;
-			font-weight: bold;
 		}
 	}
 	.feedback-pill{
 		font-size: 14pt;
-		font-variant: small-caps;		
 		&.active a{
 			background-color: $navbar-inverse-bg;
 			font-size: 18pt;
@@ -592,30 +572,23 @@ body {
 
 // Articles
 .article-container {
-	@media (min-width: $container-sm) {
-	    margin-left: $sidebar-sm;
+	.article-view-element, .article-container .post-tools{
+		padding-top: 10px;
 	}
-	@media (min-width: $container-md) {
-	    margin-left: $sidebar-md;
-	}
-	@media (min-width: $container-lg) {
-		margin-left: $sidebar-lg;
-	}
-}
 
-.article-view-element, .article-container .post-tools{
-	padding-top: 10px;
-}
-
-.article-view-element{
-	img{
-		width: 100%;
+	.article-view-element{
+		img{
+			width: 100%;
+		}
 	}
-}
-.article-comments{
-	margin-top: 25px;
-	textarea{
-		height: 100px;
+	.article-comments{
+		margin-top: 25px;
+		textarea{
+			height: 100px;
+		}
+	}
+	.article-post-meta img {
+		width: auto;
 	}
 }
 // End Articles

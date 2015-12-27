@@ -1,9 +1,9 @@
 <ul class="nav nav-pills nav-stacked">
 	<li class="like-button">
-		<h3 class="{% if request.user in article.likes.all %}active{%endif%}"
+		<p class="{% if request.user in article.likes.all %}active{%endif%}"
 			data-article-id="{{article.pk}}">
 			<!--<i class="fa fa-thumbs-o-up"></i> -->
-			+
+			<span>+</span>
 			<span class="like-text">
 			{% if request.user in article.likes.all %}
 				LIKED
@@ -11,9 +11,9 @@
 				LIKE
 			{% endif %}
 			</span>
-		</h3>
+		</p>
 	</li>
-	<li class="feedback-header"><h3>Feedback<h3></li>
+	<li class="header"><p>Feedback<p></li>
 	<li class="feedback-pill"><a href="#">Enjoyable</a></li>
 	<li class="feedback-pill"><a href="#">Biased</a></li>
 	<li class="feedback-pill"><a href="#">Interesting</a></li>
