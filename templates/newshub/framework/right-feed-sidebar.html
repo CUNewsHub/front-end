@@ -1,3 +1,23 @@
 <ul class="nav nav-pills nav-stacked">
-	<li class="header"><p>Following<p></li>
+	<li class="header first-header"><p>New to NewsHub?<p></li>
+	<li><a href="#" class="btn btn-default">Get Started</a></li> <!-- NEEDS LINK -->
+	<li class="header"><p>Topic of the Week<p></li>
+	<li><p><b>Does NewsHub need a topic of the week?</b></p></li>
+	{% if user.is_authenticated %}
+	<li class="header following-header"><p>Following<p></li>
+	<ul class="nav nav-pills nav-stacked following-box">
+		{% if user.endorsement.all %}
+			<li><p>Endorsed</p></li>
+			{% for author in user.endorsement.all %}
+			<li class="following-pill"><img src="{{author.user.profile.picture.url}}" alt="author pic"/>{{author.user.first_name}} {{author.user.last_name}}</li>
+			{% endfor %}
+		{% endif %}
+		{% for author in user.follow.all %}
+			{% if author not in user.endorsement.all %}
+			<li class="following-pill"><img src="{{author.user.profile.picture.url}}" alt="author pic"/>{{author.user.first_name}} {{author.user.last_name}}</li>
+			{% endif %}
+		{% endfor %}
+		<li class="following-pill"><img src="{{request.user.profile.picture.url}}" alt="author pic"/>{{request.user.first_name}} {{request.user.last_name}}</li> <!-- Example Pill -->
+	</ul>
+	{% endif %}
 </ul>

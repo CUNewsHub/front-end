@@ -1,7 +1,7 @@
 $nav-size: 60px;
 $component-colours: #787878;
 $border-radius-search: 12px;
-$border-style: thin solid black;
+$border-style: thin solid #A6A6A6;
 $box-shadow-style: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 $center-padding: 0 15%;
 $center-background-color: white;
@@ -87,13 +87,8 @@ body {
 	    width: 50px;
 	    display: inline;
 	    position: relative;
-    	top: -3px;
 	    border: 3px solid white;
-	    margin-right: 5px;
 	    vertical-align: middle;
-	    @media (max-width: $container-sm) {
-	    	margin: 5px;
-	    }
 	}
 	.brand-text {
 		display: none;
@@ -103,8 +98,7 @@ body {
 		}
 	}
 	font-size: 36pt;
-	padding: 0;
-	line-height: inherit;
+	padding: 5px;
 	.alternate-colour {
 		color: white;
 	}
@@ -171,9 +165,6 @@ body {
 	}
 }
 
-.right-feed-sidebar {
-}
-
 .article-right-sidebar {
 	.social-media-pill {
 		text-align: center;
@@ -216,6 +207,11 @@ body {
 	a {
 		background-color: $navbar-inverse-bg;
 	}
+	.btn {
+		display: inline;
+		margin-top: 10px;
+		color: white !important;
+	}
 	.search {
 		padding: 10px;
 	    box-sizing: border-box;
@@ -240,7 +236,7 @@ body {
 	.like-button {
 		p {
 			margin: 0;
-			font-size: 24pt;
+			font-size: 20pt;
 			font-weight: 300;
 			color: white;
 			background-color: $button-light-gray;
@@ -260,17 +256,20 @@ body {
 		}
 	}
 	.header {
-		margin: 30px 0 10px 0;
+		margin-top: 20px;
+		&.first-header {
+			margin: 0 0 10px 0;
+		}
 		p {
 			margin: 0;
-			font-size: 24pt;
+			font-size: 20pt;
 		}
 	}
 	.feedback-pill{
-		font-size: 14pt;
+		font-size: 12pt;
 		&.active a{
 			background-color: $navbar-inverse-bg;
-			font-size: 18pt;
+			font-size: 16pt;
 			font-weight: bold;
 		}
 	 	a{
@@ -288,8 +287,40 @@ body {
 			background-color: $button-light-gray;
 			color: black;
 		}
-
 	}
+	.following-header {
+		border-bottom: $border-style;
+	}
+	.following-box {
+		.following-pill {
+			text-align: left;
+			height: 30px;
+			margin-bottom: 10px;
+			img {
+				height: 100%;
+				width: auto;
+				border-radius: 50%;
+				margin-right: 5px;
+			}
+		}
+	}
+	.saved-article {
+		a {
+			font-size: 16pt !important;
+			font-weight: normal;
+			background-color: transparent;
+			color: black;
+			padding: 5px;
+			&:hover, &:focus {
+				background-color: transparent;
+			}
+		}		
+	}
+}
+.right-feed-sidebar {
+	overflow-y: auto;
+	overflow-x: hidden;
+	height: 100%;
 }
 // End Sidebars
 
@@ -463,6 +494,7 @@ body {
 	}
 	.post-tools {
 		border-bottom: $border-style;
+		padding-bottom: 5px;
 		.btn {
 			display: none;
 		}

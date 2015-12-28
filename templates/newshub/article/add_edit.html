@@ -3,7 +3,15 @@
 {% block content %}
 
 <div class="row article-forms fill-height">
-	<div id="article-forms-col" class="col-md-8 col-md-offset-2">
+	<div class="col-sm-2 affixed-sidebar left-sidebar">
+		<ul class="nav nav-pills nav-stacked">
+			<li class="header first-header"><p>Saved Articles<p></li>
+			{% for article in request.user.author.article_set.all %}
+			<li class="saved-article"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></li>
+			{% endfor %}
+		</ul>
+    </div><!-- previous-articles-sidebar -->
+	<div id="article-forms-col" class="col-md-8">
 		<form id="article-post-form" method="post" action="" enctype="multipart/form-data" >
 			{% csrf_token %}
 			{% for field in form%}
