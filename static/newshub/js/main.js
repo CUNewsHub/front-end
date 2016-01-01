@@ -59,7 +59,7 @@ $(document).ready(function(){
   }, clearForm: true}); 
 });
 
-/* function debounce(func, wait, immediate) {
+function debounce(func, wait, immediate) {
   var timeout;
   return function() {
     var context = this, args = arguments;
@@ -75,13 +75,17 @@ $(document).ready(function(){
 };
 
 var myEfficientFn = debounce(function() {
-  $('.affixed-sidebar').css('top', $(this).scrollTop() + "px");
+  $('.affixed-sidebar').stop().animate({
+    marginTop: $(this).scrollTop()
+  });
 }, 250);
 
-window.addEventListener('scroll', myEfficientFn); */
-$(window).scroll(function() {
-  $('.affixed-sidebar').css('top', $(this).scrollTop() + "px");
-});
+window.addEventListener('scroll', myEfficientFn);
+/* $(window).scroll(function() {
+  $('.affixed-sidebar').stop().animate({
+    marginTop: $(this).scrollTop()
+  });
+}); */
 /*!
  * jQuery Plugin: Are-You-Sure (Dirty Form Detection)
  * https://github.com/codedance/jquery.AreYouSure/

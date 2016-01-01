@@ -438,7 +438,7 @@ body {
 	}
 	.article-post-headline {
 		font-weight: 400;
-		font-size: 20px;
+		font-size: 16px;
 	}
 	.article-post-meta {
 		font-weight: bold;
@@ -571,6 +571,9 @@ body {
 	}
 }
 
+.text-middle {
+	text-align: center;
+}
 .tags {
 	margin-top: 10px;
 	text-align: center;
@@ -621,6 +624,38 @@ body {
 	}
 	.article-post-meta img {
 		width: auto;
+	}
+	.poll {
+		.form-group {
+			margin: 0;
+		}
+		.article-poll-headline {
+			text-align: center;
+		    color: $navbar-inverse-link-active-bg;
+		    font-size: 20px;
+		}
+		input[type="radio"] {
+			display: none;
+		}
+		input[type="radio"]:checked + label, label:hover {
+			background-color: $navbar-inverse-link-active-bg;
+			color: white;
+		}
+		label {
+			padding: 3px;
+    		font-size: 16px;
+    		margin: 0;
+		}
+		.poll-count {
+			width: 10%;
+			display: inline-block;
+		}
+		.poll-middle-text {
+			width: 90%;
+			text-align: center;
+			display: inline-block;
+    		margin-left: -5%;
+		}
 	}
 }
 // End Articles

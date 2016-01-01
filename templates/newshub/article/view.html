@@ -44,8 +44,8 @@
     			<div class="article-post-content">{{article.content|safe}}</div>
             </div>
             {% if article.poll %}
-                <div class="article-view-element post-tools">
-                    <div class="article-post-headline">Poll: {{article.poll}}</div>
+                <div class="article-view-element poll">
+                    <div class="article-poll-headline">{{article.poll}}</div>
                     {% if request.user in article.poll.voted.all %}
                         {% for choice in article.poll.choice_set.all %}
                             <p>{{choice}}: {{choice.votes}}</p>
@@ -55,10 +55,8 @@
                     {% csrf_token %}
                     {% for choice in article.poll.choice_set.all %}
                     <div class="form-group">
-                        <div class="col-sm-1">
-                            <input type="radio" name="choice" id="choice_{{forloop.counter}}" value="{{choice.id}}" />
-                        </div>
-                        <label class="col-sm-10" for="choice_{{forloop.counter}}">{{choice.choice_text}}</label>
+                        <input type="radio" name="choice" id="choice_{{forloop.counter}}" value="{{choice.id}}" />
+                        <label class="col-sm-12" for="choice_{{forloop.counter}}"><span class="poll-count">{{forloop.counter}}</span><span class="poll-middle-text text-middle">{{choice.choice_text}}</span></label>
                     </div>
                     {% endfor %}
                     <input type="submit" value="Vote" class="btn btn-default" />
