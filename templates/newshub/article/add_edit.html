@@ -7,7 +7,15 @@
 		<ul class="nav nav-pills nav-stacked">
 			<li class="header first-header"><p>Saved Articles<p></li>
 			{% for article in request.user.author.article_set.all %}
+			{% if not article.published %}
 			<li class="saved-article"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></li>
+			{% endif %}
+			{% endfor %}
+			<li class="header"><p>Published Articles<p></li>
+			{% for article in request.user.author.article_set.all %}
+			{% if article.published %}
+			<li class="saved-article"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></li>
+			{% endif %}
 			{% endfor %}
 		</ul>
     </div><!-- previous-articles-sidebar -->
