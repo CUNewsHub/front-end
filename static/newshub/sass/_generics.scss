@@ -279,6 +279,9 @@ body {
 			&:hover{
 				background-color: $component-colours;
 			}
+			&.active{
+				background-color: $main-color;
+			}
 		}
 	}
 	.respond {

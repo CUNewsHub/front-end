@@ -57,6 +57,22 @@ $(document).ready(function(){
   $('#article_comment_form').ajaxForm({success: function(data) { 
     $('.article-comments-section').prepend(data);
   }, clearForm: true}); 
+
+  $('.feedback-pill a').click(function(e){
+    e.preventDefault();
+    $url = $(this).attr("href");
+    $this = $(this);
+    $.ajax({
+      'method': 'get',
+      'url': $url,
+      'success': function(data){
+        if(data=='success'){
+          $('.feedback-pill a').removeClass('active');
+          $this.addClass('active');
+        }
+      }
+    });
+  });
 });
 
 function debounce(func, wait, immediate) {

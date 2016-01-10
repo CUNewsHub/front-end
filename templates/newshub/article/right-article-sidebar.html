@@ -14,14 +14,17 @@
 		</p>
 	</li>
 	<li class="header"><p>Feedback<p></li>
-	<li class="feedback-pill"><a href="#">Enjoyable</a></li>
-	<li class="feedback-pill"><a href="#">Biased</a></li>
-	<li class="feedback-pill"><a href="#">Interesting</a></li>
-	<li class="feedback-pill"><a href"#">Dull</a></li>
-	<li class="feedback-pill"><a href="#">Poorly Written</a></li>
-	<li class="feedback-pill"><a href="#">Well Written</a></li>
-	<li class="feedback-pill"><a href="#">Unsupported</a></li>
-	<li class="feedback-pill"><a href="#">Opinionated</a></li>
+	{% for feedback in feedback_set %}
+		{% if uf%}
+			{% if uf.feedback == feedback %}
+				<li class="feedback-pill"><a class="active" href="{% url 'newshub:article_add_feedback' article.pk feedback.pk %}">{{feedback}}</a></li>
+			{% else %}
+				<li class="feedback-pill"><a href="{% url 'newshub:article_add_feedback' article.pk feedback.pk %}">{{feedback}}</a></li>
+			{% endif %}
+		{% else %}
+			<li class="feedback-pill"><a href="{% url 'newshub:article_add_feedback' article.pk feedback.pk %}">{{feedback}}</a></li>
+		{% endif %}	
+	{% endfor %}
 	<li class="respond"><a href="#">Respond</a></li>
 	</ul>
 	<ul class="nav nav-pills social-media-pill nav-right">
