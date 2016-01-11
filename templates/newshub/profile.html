@@ -53,8 +53,8 @@
 				</div>
 				<div class="col-sm-7 profile-description">
 					<h2>{{user.profile.display_name}}</h2>
-					<p>{% if user.profile.year %}{{user.profile.year}}{% else %}Not specified{%endif%} Year {% if user.profile.subject %}{{user.profile.subject}}{% else %}Not specified{%endif%} Student</p>
-					<p>{% if user.profile.college %}{{user.profile.college}}{% else %}Not specified{%endif%} College</p>
+					<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
+					<p>{% if user.profile.college %}at {{user.profile.college}}{% else %}Not specified{%endif%} College</p>
 				</div>
 				<div class="profile-blurb">
 					<div class="profile-page-title">
@@ -66,7 +66,7 @@
 			</div>
 			<div class="featured row">
 				<h1 class="heading">Featured</h1>
-				{% for article in request.user.author.article_set.all %} <!-- Change this to featured only -->
+				{% for article in user.author.article_set.all %} <!-- Change this to featured only -->
 				<div class="row">
 		            <div class="center-block profile-articles">
 		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
@@ -78,7 +78,7 @@
 		</div>
 		<div id="profile-articles" class="row center-block tab-pane">
 			<div class="row non-featured">
-				{% for article in request.user.author.article_set.all %} <!-- Change this to non-featured only -->
+				{% for article in user.author.article_set.all %} <!-- Change this to non-featured only -->
 				<div class="profile-articles">
 	                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
 	                <p class="article-post-meta">

@@ -30,7 +30,7 @@
               <span class="glyphicon glyphicon-menu-down"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="{% url 'newshub:update_profile' request.user.profile.pk %}">Edit Profile</a></li>
+              <li><a href="{% url 'newshub:profile' request.user.profile.pk %}#edit-profile">Edit Profile</a></li>
               <li><a href="{% url 'newshub:logout' %}">Logout</a></li>
             </ul>
           </li>
