@@ -4,6 +4,7 @@
 	<li class="header"><p>Topic of the Week<p></li>
 	<li><p><b>Does NewsHub need a topic of the week?</b></p></li>
 	{% if user.is_authenticated and user.follow_set.all.count > 0 %}
+	{{user.follow_set.all.count}}
 	<li class="header following-header"><p>Following<p></li>
 	<ul class="nav nav-pills nav-stacked following-box">
 		{% if user.endorsement_set.all %}
@@ -14,6 +15,7 @@
 		{% endif %}
 		{% for author in user.follow_set.all %}
 			{% if author not in user.endorsement_set.all %}
+			{{author}}
 			<li class="following-pill"><img src="{{author.user.profile.picture.url}}" alt="author pic"/>{{author.user.first_name}} {{author.user.last_name}}</li>
 			{% endif %}
 		{% endfor %}

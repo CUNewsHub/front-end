@@ -33,14 +33,14 @@
     <div class="col-sm-2 affixed-sidebar left-sidebar">
         <ul class="nav nav-pills nav-stacked">
             <li class="active"><a href="#profile" data-toggle="pill">About Me</a></li>
-            <li><a href="#profile-articles" data-toggle="pill">Articles</a></li>
+            <li><a href="#profile" data-toggle="pill">Articles</a></li>
             <!--
             <li><a href="#" data-toggle="pill">Awards</a></li>
             <li><a href="#" data-toggle="pill">C.V.</a></li>
             <li><a href="#" data-toggle="pill">Statistics</a></li>
             -->
             {% if request.user == user %}
-            <li><a href="#profile-update" data-toggle="pill">Edit Profile</a></li>
+            <li><a href="#edit-profile" data-toggle="pill">Edit Profile</a></li>
             {% endif %}
         </ul>
     </div><!-- /.article-sidebar -->
@@ -66,7 +66,7 @@
 			</div>
 			<div class="featured row">
 				<h1 class="heading">Featured</h1>
-				{% for article in user.author.article_set.all %} <!-- Change this to featured only -->
+				{% for article in user.author.article_set.all|slice:":2" %} <!-- This is first 2 -->
 				<div class="row">
 		            <div class="center-block profile-articles">
 		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
@@ -75,22 +75,23 @@
 		        </div>
 				{% endfor %}
 			</div>
-		</div>
-		<div id="profile-articles" class="row center-block tab-pane">
-			<div class="row non-featured">
-				{% for article in user.author.article_set.all %} <!-- Change this to non-featured only -->
-				<div class="profile-articles">
-	                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
-	                <p class="article-post-meta">
-	                	<span class="date">{{article.time_uploaded|date:"N Y"}}</span>
-	                	<span class="likes">{{article.likes.count}} Likes</span>
-	                </p>
-	            </div>
-				{% endfor %}
+
+			<div id="profile-articles" class="row center-block tab-pane">
+				<div class="row non-featured">
+					{% for article in user.author.article_set.all|slice:"2:" %} <!-- Change this to non-featured only -->
+					<div class="profile-articles">
+		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
+		                <p class="article-post-meta">
+		                	<span class="date">{{article.time_uploaded|date:"N Y"}}</span>
+		                	<span class="likes">{{article.likes.count}} Likes</span>
+		                </p>
+		            </div>
+					{% endfor %}
+				</div>
 			</div>
 		</div>
 		{% if request.user == user %}
-		<div id="profile-update" class="row center-block tab-pane">
+		<div id="edit-profile" class="row center-block tab-pane">
 			<div class="row non-featured">
 				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_profile' request.user.profile.pk %}">
 					{% csrf_token %}

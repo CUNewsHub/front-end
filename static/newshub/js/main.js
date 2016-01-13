@@ -91,9 +91,11 @@ function debounce(func, wait, immediate) {
 };
 
 var myEfficientFn = debounce(function() {
-  $('.affixed-sidebar').stop().animate({
-    marginTop: $(this).scrollTop()
-  });
+  if($(window).width() > 768){
+    $('.affixed-sidebar').stop().animate({
+      top: $(this).scrollTop()
+    });
+  }
 }, 250);
 
 window.addEventListener('scroll', myEfficientFn);

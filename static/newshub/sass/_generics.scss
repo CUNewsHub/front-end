@@ -41,6 +41,9 @@ body {
 // End Basic
 
 // Navbar
+.navbar-fixed-top {
+	border: none;
+}
 .nav {
 	text-align: center;
 	a {
@@ -69,6 +72,8 @@ body {
 	.dropdown {
 		height: 60px;	
 		.dropdown-menu {
+			right: -21px;
+			border: none;
 			background-color: $navbar-inverse-bg;
 			li a {
 				color: #9d9d9d;
@@ -208,8 +213,7 @@ body {
 		background-color: $navbar-inverse-bg;
 	}
 	.btn {
-		display: inline;
-		margin-top: 10px;
+		display: inline-block;
 		color: white !important;
 	}
 	.search {
@@ -245,14 +249,16 @@ body {
     		.like-text {
     			color: black;
     		}
+    		&:hover, &.active {
+    			background-color: $navbar-inverse-link-active-bg;
+    			color: white;
+    			.like-text {
+    				color: white;
+    			}
+    		}
 		}
 		p:hover{
-			background-color: $navbar-inverse-link-active-bg;
 			cursor: pointer;
-		}
-		p.active {
-			color: white;
-			background-color: $navbar-inverse-link-active-bg;
 		}
 	}
 	.header {
@@ -269,6 +275,7 @@ body {
 		font-size: 12pt;
 		&.active a{
 			background-color: $navbar-inverse-bg;
+			color: white;
 			font-size: 16pt;
 			font-weight: bold;
 		}
@@ -277,9 +284,11 @@ body {
 			background-color: transparent;
 			color: black;
 			&:hover{
-				background-color: $component-colours;
+				color: white;
+				background-color: $main-color;
 			}
 			&.active{
+				color: white;
 				background-color: $main-color;
 			}
 		}
@@ -289,6 +298,9 @@ body {
 		a {
 			background-color: $button-light-gray;
 			color: black;
+			&:hover, &:active {
+				color: white;
+			}
 		}
 	}
 	.following-header {
@@ -324,6 +336,9 @@ body {
 	overflow-y: auto;
 	overflow-x: hidden;
 	height: 100%;
+	@media (max-width: $screen-sm) {
+	    display: none;
+	}
 }
 // End Sidebars
 
@@ -427,6 +442,13 @@ body {
 		}
 		.facebook-title {
 			color: $facebook-colour;
+		}
+		.google {
+			height: 40px;
+			vertical-align: text-bottom;
+		}
+		.google-title, .google {
+			display: none;
 		}
 	}
 }
@@ -558,10 +580,11 @@ body {
 
 .post-tools {
 	.btn {
-		border: $border-style;
+		border: none;
 		border-radius: 0;
 		font-family: $font-family-sans-serif;
-		color: $navbar-inverse-link-active-bg;
+		color: white;
+		background-color: $navbar-inverse-bg;
 		font-weight: bold;
 		display: inline-block;
 	    font-size: 16px;
@@ -613,7 +636,9 @@ body {
 	.article-view-element, .article-container .post-tools{
 		padding-top: 10px;
 	}
-
+	.post-tools {
+		margin-top: 10px;
+	}
 	.article-view-element{
 		img{
 			width: 100%;
@@ -658,6 +683,9 @@ body {
 			text-align: center;
 			display: inline-block;
     		margin-left: -5%;
+		}
+		.btn {
+			margin-top: 10px;
 		}
 	}
 }
@@ -711,6 +739,10 @@ body {
 	}
 }
 
+#edit-profile {
+	padding-top: 20px;
+}
+
 #profile-articles {
 	.article-post-title {
 		font-size: 24pt;
@@ -732,7 +764,8 @@ body {
 		text-align: justify;
 		.profile-articles {
 			width: 45%;
-			display: inline-block;
+		    float: left;
+		    margin-right: 5%;
 		}
 	}
 }
