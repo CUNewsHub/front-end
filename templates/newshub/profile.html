@@ -165,7 +165,7 @@
 				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_society' request.user.society.pk %}" enctype="multipart/form-data">
 					{% csrf_token %}
 					{% for field in profile_form %}
-					
+				
 					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
 						<label class="col-sm-offset-2 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
 						{% if field.html_name == 'about' %}
