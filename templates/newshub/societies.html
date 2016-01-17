@@ -1,0 +1,29 @@
+{% extends 'newshub/framework/base.html' %}
+{% load widget_tweaks %}
+{% block title %}{% endblock%}
+{% block content %}
+<div class="row fill-height">
+    <div class="col-sm-2 affixed-sidebar left-sidebar">
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#societies" data-toggle="pill">My Societies</a></li>
+            <li><a href="#create-new" data-toggle="pill">Create New</a></li>
+        </ul>
+    </div><!-- /.article-sidebar -->
+
+    <div class="col-sm-8 main tab-content profile-page">
+    	<div id="societies" class="row center-block tab-pane active">
+			{% for society in request.user.admin_of.all %}
+				<p><a href="{% url 'newshub:societies_login' pk=society.pk %}">{{society.user.username}}</a></p>
+			{% endfor %}
+		</div>
+		<div id="create-new" class="row center-block tab-pane">
+			<form action="" method="post">
+			{% csrf_token %}
+			{{form.as_p}}
+			{{society_data_form}}
+			<button type="submit">Create</button>
+			</form>
+		</div>
+	</div><!-- Profile Info -->
+</div>
+{%endblock%}

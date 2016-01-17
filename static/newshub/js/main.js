@@ -23,7 +23,8 @@ $(document).ready(function(){
 			data: {'author': $this.parent().attr("data-author-id")},
 			method: 'GET',
 			success: function(data){
-				if(data.created){
+        console.log(data)
+				if(data.created && data.success){
 					$this.html('Endorsed').addClass('btn-active');
 				} else {
 					$this.html('Endorse').removeClass('btn-active');

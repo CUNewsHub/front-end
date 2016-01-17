@@ -41,7 +41,7 @@
             <li><a href="#" data-toggle="pill">Statistics</a></li>
             -->
             {% if request.user == user %}
-            <li><a href="#edit-profile" data-toggle="pill">Edit Profile</a></li>
+            	<li><a href="#edit-profile" data-toggle="pill">Edit Profile</a></li>
             {% endif %}
             {% else %}
             <li class="active"><a href="#profile" data-toggle="pill">About the Society</a></li>
@@ -52,7 +52,7 @@
             <li><a href="#" data-toggle="pill">Statistics</a></li>
             -->
 	            {% if request.user == user %}
-	            <li><a href="#profile-update" data-toggle="pill">Edit Society</a></li>
+	            <li><a href="#edit-profile" data-toggle="pill">Edit Society</a></li>
 	            {% endif %}
             {% endif %}
         </ul>
@@ -78,11 +78,28 @@
 					</div>
 				</div>
 			{% else %}
-				<h1>Society name: {{user.first_name}}</h1>
-				<h3>Admins:</h3>
-				{% for user in user.society.admins.all %}
-					<p>{{user}}</p>
-				{% endfor %}
+			<div class="col-sm-5 profile-picture">
+				{% if user.society.logo %}
+					<img class="img-responsive profile-picture" src="{{user.society.logo.url}}" /> 
+				{% endif %}
+
+				</div>
+				<div class="col-sm-7 profile-description">
+					<h2>{{user.first_name}}</h2>
+					{% if user.society.website %}
+						<p><a href="{{user.society.website}}">Website</a></p>
+					{% endif %}
+					{% if user.society.facebook %}
+						<p><a href="{{user.society.facebook_link}}">Facebook page</a></p>
+					{% endif %}
+				</div>
+				<div class="profile-blurb">
+					<div class="profile-page-title">
+					</div>
+					<div class="profile-page-section">
+						{{user.society.about}}
+					</div>
+				</div>
 			{% endif %}
 			</div>
 			<div class="featured row">
@@ -119,7 +136,7 @@
 		<div id="edit-profile" class="row center-block tab-pane">
 			<div class="row non-featured">
 				{% if not society %}
-				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_profile' request.user.profile.pk %}">
+				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_profile' request.user.profile.pk %}" >
 					{% csrf_token %}
 					{% for field in profile_form %}
 					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
@@ -145,7 +162,49 @@
 					</div>
 				</form>
 				{% else %}
-
+				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_society' request.user.society.pk %}" enctype="multipart/form-data">
+					{% csrf_token %}
+					{% for field in profile_form %}
+					
+					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+						<label class="col-sm-offset-2 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
+						{% if field.html_name == 'about' %}
+						<div class="col-sm-6">
+						{%else %}
+						<div class="col-sm-4">
+		        	   	{%endif%}
+							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+			                {% for error in field.errors %}
+			                     <span class="help-block">
+			                        {{error}}
+			                     </span>
+		        	        {% endfor %}
+		        	    </div>
+			        </div>
+					{% endfor %}
+					{% for field in society_form %}
+					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+						<label class="col-sm-offset-2 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
+						{% if field.html_name == 'about' %}
+						<div class="col-sm-6">
+						{%else %}
+						<div class="col-sm-4">
+		        	   	{%endif%}
+							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+			                {% for error in field.errors %}
+			                     <span class="help-block">
+			                        {{error}}
+			                     </span>
+		        	        {% endfor %}
+		        	    </div>
+			        </div>
+					{% endfor %}
+					<div class="form-group">
+						<div class="post-tools col-sm-offset-4 col-sm-2">
+							<input class="btn" type="submit" name="action" value="Update"/>
+						</div>
+					</div>
+				</form>
 				{% endif %}
 			</div>
 		</div>

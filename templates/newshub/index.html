@@ -31,7 +31,7 @@
         <div class="row">
             <div class="center-block feed-article">
                 <a class="article-link" href="{% url 'newshub:view_article' action_type=type pk=article.pk %}">
-                    <h1 class="article-post-title">{{article.title}}</h1>
+                    <h1 class="article-post-title">{{article.title}} {{request.user.asd}}</h1>
                     <p class="article-post-headline">{{article.headline}}</p>
                 </a>
                 {% if request.user != article.author.user %}
@@ -49,9 +49,14 @@
                     <button type="button" class="btn btn-active btn-default endorse-button">
                         Endorsed
                     {% else %}
+                    
+                    {% if request.user.endorsement_set.count < 4 %}
+
                     <button type="button" class="btn btn-default endorse-button">
                         Endorse
                     {% endif %}
+                    {% endif %}
+                    </button>
                     <!-- <button type="button" class="btn btn-default">Feedback</button> -->
                 </div>
                 {% else %}

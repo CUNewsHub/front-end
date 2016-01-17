@@ -63,11 +63,13 @@
 				Add a poll for the article
 			</div>
 				{% if form.instance.poll %}
-					<p>Poll exists: <b>{{form.instance.poll}}</b></p>
+					<p>This article has already have a poll</p>
+					<p><a class="btn btn-default" href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a></p>
+					<!--<p>Poll exists: <b>{{form.instance.poll}}</b></p>
 					<ul class="nav nav-pills nav-stacked">
 						<li><a class="btn btn-default" href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a></li>
 						<li><a class="btn btn-default" href="{% url 'newshub:article_delete_poll' pk=form.instance.poll.pk %}">Delete the poll</a></li>
-					</ul>
+					</ul>-->
 				{%else%}
 				<form action="{% url 'newshub:article_add_poll' %}" method="post">
 					{% csrf_token %}

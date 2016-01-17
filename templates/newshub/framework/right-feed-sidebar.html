@@ -3,22 +3,22 @@
 	<li><a href="#" class="btn btn-default">Get Started</a></li> <!-- NEEDS LINK -->
 	<li class="header"><p>Topic of the Week<p></li>
 	<li><p><b>Does NewsHub need a topic of the week?</b></p></li>
-	{% if user.is_authenticated and user.follow_set.all.count > 0 %}
-	{{user.follow_set.all.count}}
-	<li class="header following-header"><p>Following<p></li>
-	<ul class="nav nav-pills nav-stacked following-box">
-		{% if user.endorsement_set.all %}
-			<li><p>Endorsed</p></li>
-			{% for author in user.endorsement_set.all %}
-			<li class="following-pill"><img src="{{author.user.profile.picture.url}}" alt="author pic"/>{{author.user.first_name}} {{author.user.last_name}}</li>
+		{% if request.user.follow_set.all.count > 0%}
+		<li class="header following-header"><p>Following<p></li>
+		<ul class="nav nav-pills nav-stacked following-box">
+			{% for author in user.follow_set.all %}
+				<li class="following-pill"><img src="{{author.user.profile.picture.url}}" alt="author pic"/>{{author.user.first_name}} {{author.user.last_name}}</li>
 			{% endfor %}
+		</ul>
 		{% endif %}
-		{% for author in user.follow_set.all %}
-			{% if author not in user.endorsement_set.all %}
-			{{author}}
-			<li class="following-pill"><img src="{{author.user.profile.picture.url}}" alt="author pic"/>{{author.user.first_name}} {{author.user.last_name}}</li>
-			{% endif %}
-		{% endfor %}
-	</ul>
-	{% endif %}
+		{% if request.user.endorsement_set.all.count > 0 %}
+		<li class="header following-header"><p>Endorsed<p></li>
+		<ul class="nav nav-pills nav-stacked following-box">
+			{% for endorsement in user.endorsement_set.all %}
+				{% with user=endorsement.author.user %}
+				<li class="following-pill"><img src="{{user.profile.picture.url}}" alt="author pic"/>{{user.first_name}} {{user.last_name}}</li>
+				{% endwith %}
+			{% endfor %}
+		</ul>
+		{% endif %}
 </ul>
