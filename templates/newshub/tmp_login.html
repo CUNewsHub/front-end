@@ -1,0 +1,5 @@
+{% load staticfiles %}
+<p class="social col-md-8 pull-right">Login via:
+	<a href="{% url 'social:begin' 'facebook' %}?next=/" title="Facebook Login"><span class="social-span facebook-title">Facebook</span></a>
+	<a href="{% url 'social:begin' 'google' %}?next=/" title="Google Login"><span class="social-span google-title">Google</span></a>
+</p>
