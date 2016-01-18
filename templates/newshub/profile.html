@@ -69,6 +69,10 @@
 					<h2>{{user.profile.display_name}}</h2>
 					<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
 					<p>{% if user.profile.college %}at {{user.profile.college}}{% else %}Not specified{%endif%} College</p>
+
+					{% if user.endorsement_set.count > 0 %}
+						<p>{{user.profile.display_name}} has {{user.endorsement_set.count}} endorsements.</p>
+					{% endif %}
 				</div>
 				<div class="profile-blurb">
 					<div class="profile-page-title">
@@ -92,6 +96,11 @@
 					{% if user.society.facebook %}
 						<p><a href="{{user.society.facebook_link}}">Facebook page</a></p>
 					{% endif %}
+
+					{% if user.endorsement_set.count > 0 %}
+						<p>{{user.first_name}} has {{user.endorsement_set.count}} endorsements.</p>
+					{% endif %}
+					<p>{{user.username}}</p>
 				</div>
 				<div class="profile-blurb">
 					<div class="profile-page-title">

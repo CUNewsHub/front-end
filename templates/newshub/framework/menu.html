@@ -36,6 +36,7 @@
               {% endif %}
               {% if request.user.profile %}
                 {% for society in request.user.admin_of.all %}
+                <li><a href="{% url 'newshub:societies_login' society.pk %}">{{society.first_name}}</a></li>
               {% endfor %}
               {% endif %}
               <li><a href="{% url 'newshub:logout' %}">Logout</a></li>

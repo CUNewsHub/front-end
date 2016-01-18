@@ -1,17 +1,26 @@
 <ul class="nav nav-pills nav-stacked">
     {% if type == 'home' %}
-        <li class="{%if article%}article-{%endif%}active"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
-        <li class="{%if article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
-        <li class="{%if article%}article-pill{%endif%}"><a href="{% url 'newshub:history' %}">History</a></li>
+        <li class="{%if is_article%}article-{%endif%}active"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:history' %}">History</a></li>
     {% elif type == 'top-stories' %}
-        <li class="{%if article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
-        <li class="{%if article%}article-{%endif%}active"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
-        <li class="{%if article%}article-pill{%endif%}"><a href="{% url 'newshub:history' %}">History</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+        <li class="{%if is_article%}article-{%endif%}active"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:history' %}">History</a></li>
     {% elif type == 'history' %}
-        <li class="{%if article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
-        <li class="{%if article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
-        <li class="{%if article%}article-{%endif%}active"><a href="{% url 'newshub:history' %}">History</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
+        <li class="{%if is_article%}article-{%endif%}active"><a href="{% url 'newshub:history' %}">History</a></li>
     
+    {% endif %}
+    {% if is_article %}
+        {% for tag in article.tags.all %}
+            {% if tag.approved %}
+                <p><a href="{% url 'newshub:article_by_tags' tag.name %}">{{tag.name}}</a></p>
+            {% else %}
+                <p>{{tag}}</p>
+            {%endif %}
+        {% endfor %}
     {% endif %}
     <!-- <li class="search">
         <div id="custom-search-input">

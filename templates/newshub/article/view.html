@@ -4,7 +4,7 @@
 <div class="row fill-height">
     
     <div class="col-sm-2 affixed-sidebar left-sidebar">
-        {% include 'newshub/framework/left-sidebar.html' with article=True type=action_type%}
+        {% include 'newshub/framework/left-sidebar.html' with article=article is_article=True type=action_type%}
     </div><!-- /.article-sidebar -->
 
     <div class="col-sm-8 main article-container">
