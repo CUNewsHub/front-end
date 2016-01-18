@@ -20,7 +20,7 @@
 		<p class="social col-md-8 pull-right">Login via:
 	    	<a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}" title="Facebook Login"><span class="social-span facebook-title">Facebook</span><img class="facebook" src="{% static 'newshub/images/facebook.png' %}" alt="fb logo"/></a>
 	    	<a href="{% url 'social:begin' 'google' %}?next={{ request.path }}" title="Google Login"><span class="social-span google-title">Google</span><img class="google" src="{% static 'newshub/images/google.png' %}" alt="google logo"/></a>
-	    	<a href="{% url 'newshub:society_login' %}">Login with society credentials</a>
+	    	<!-- <a href="{% url 'newshub:society_login' %}">Login with society credentials</a> -->
 	    </p>
 		
 	</div>
