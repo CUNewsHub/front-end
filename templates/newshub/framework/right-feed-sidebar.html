@@ -10,7 +10,7 @@
 				{% with user=follow.author.user %}
 				<li class="following-pill">
 					{% if user.profile.picture %}
-						<img src="" alt="author pic"/>
+						<img src="{{user.profile.picture.url}}" alt="author pic"/>
 					{% endif %}
 					{% if user.society.logo %}
 						<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
@@ -28,7 +28,7 @@
 				{% with user=endorsement.author.user %}
 				<li class="following-pill">
 					{% if user.profile.picture %}
-						<img src="" alt="author pic"/>
+						<img src="{{user.profile.picture.url}}" alt="author pic"/>
 					{% endif %}
 					{% if user.society.logo %}
 						<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
