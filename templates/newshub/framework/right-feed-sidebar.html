@@ -6,11 +6,18 @@
 		{% if request.user.follow_set.all.count > 0%}
 		<li class="header following-header"><p>Following<p></li>
 		<ul class="nav nav-pills nav-stacked following-box">
-			{% for author in user.follow_set.all %}
-				<li class="following-pill"><img src="{{author.user.profile.picture.url}}" alt="author pic"/>
-				{% if user.society.logo %}
-					<img class="img-responsive profile-picture" src="{{user.society.logo.url}}" /> 
-				{% endif %}{{author.user.first_name}} {{author.user.last_name}}</li>
+			{% for follow in user.follow_set.all %}
+				{% with user=follow.author.user %}
+				<li class="following-pill">
+					{% if user.profile.picture %}
+						<img src="" alt="author pic"/>
+					{% endif %}
+					{% if user.society.logo %}
+						<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
+					{% endif %}
+					{{user.first_name}} {{user.last_name}}
+				</li>
+				{% endwith %}
 			{% endfor %}
 		</ul>
 		{% endif %}
@@ -19,10 +26,15 @@
 		<ul class="nav nav-pills nav-stacked following-box">
 			{% for endorsement in user.endorsement_set.all %}
 				{% with user=endorsement.author.user %}
-				<li class="following-pill"><img src="{{user.profile.picture.url}}" alt="author pic"/>{{user.first_name}} {{user.last_name}}
-				{% if user.society.logo %}
-					<img class="img-responsive profile-picture" src="{{user.society.logo.url}}" /> 
-				{% endif %}</li>
+				<li class="following-pill">
+					{% if user.profile.picture %}
+						<img src="" alt="author pic"/>
+					{% endif %}
+					{% if user.society.logo %}
+						<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
+					{% endif %}
+					{{user.first_name}} {{user.last_name}}
+				</li>
 				{% endwith %}
 			{% endfor %}
 		</ul>
