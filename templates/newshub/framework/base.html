@@ -32,8 +32,10 @@
 	<body>
 		<!-- Header start -->
 		<section class="section-header">
-			{% if not '/login' in request.path %} 
-			{% include 'newshub/framework/menu.html' %}
+			{% if request.path == '/landing/pages/tags/' or request.path == '/landing/pages/follow/endorse/' %}
+			{% include 'newshub/framework/menu.html' with after_landing=0 %}
+			{% elif not '/login' in request.path %}
+			{% include 'newshub/framework/menu.html' with after_landing=1%}
 			{% endif %}
 		</section>
 		<!-- Header end -->

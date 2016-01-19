@@ -1,0 +1,9 @@
+{% extends 'newshub/framework/base.html' %}
+{% block content %}
+<form action="" method="POST">
+	{% csrf_token %}
+	Following and endorsing people	
+	<input type="submit" name="action" value="Save" />
+	<input type="submit" name="action" value="Skip" />
+</form>
+{% endblock %}
