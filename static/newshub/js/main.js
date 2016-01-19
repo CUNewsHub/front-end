@@ -1,33 +1,35 @@
 $(document).ready(function(){
 	$(".follow-button").click(function(){
 		$this = $(this);
+    $author_id = $this.parent().attr("data-author-id");
 		$.ajax({
 			url: '/action/follow/',
 			dataType: 'json',
-			data: {'author': $this.parent().attr("data-author-id")},
+			data: {'author': $author_id},
 			method: 'GET',
 			success: function(data){
 				if(data.created){
-					$this.html('Followed').addClass('btn-active');
+          $('div[data-author-id='+$author_id+'] .follow-button').addClass('btn-active').html('Followed');
 				} else {
-					$this.html('Follow').removeClass('btn-active');
+          $('div[data-author-id='+$author_id+'] .follow-button').removeClass('btn-active').html('Follow');
 				}
 			}
 		})
 	});
 	$(".endorse-button").click(function(){
 		$this = $(this);
+    $author_id = $this.parent().attr("data-author-id");
 		$.ajax({
 			url: '/action/endorse/',
 			dataType: 'json',
-			data: {'author': $this.parent().attr("data-author-id")},
+			data: {'author': $author_id},
 			method: 'GET',
 			success: function(data){
         console.log(data)
 				if(data.created && data.success){
-					$this.html('Endorsed').addClass('btn-active');
+          $('div[data-author-id='+$author_id+'] .endorse-button').addClass('btn-active').html('Endorsed');
 				} else {
-					$this.html('Endorse').removeClass('btn-active');
+          $('div[data-author-id='+$author_id+'] .endorse-button').removeClass('btn-active').html('Endorse');
 				}
 			}
 		});

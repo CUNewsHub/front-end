@@ -32,7 +32,7 @@
 	<body>
 		<!-- Header start -->
 		<section class="section-header">
-			{% if request.path == '/landing/pages/tags/' or request.path == '/landing/pages/follow/endorse/' or request.path == '/privacy/policy/' %}
+			{% if request.path == '/landing/pages/tags/' or request.path == '/landing/pages/follow/endorse/' or request.path == '/privacy/policy/' or request.path == '/about/us/' or request.path == '/contact/us/' %}
 			{% include 'newshub/framework/menu.html' with after_landing=0 %}
 			{% elif not '/login' in request.path %}
 			{% include 'newshub/framework/menu.html' with after_landing=1%}
