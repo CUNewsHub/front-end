@@ -121,7 +121,10 @@ body {
 		}
 	}
 	font-size: 36pt;
-	padding: 5px;
+	padding: 5px 5px 5px 0;
+    overflow: hidden;
+    position: relative;
+    left: 5px;
 	.alternate-colour {
 		color: white;
 	}
@@ -354,6 +357,10 @@ body {
 		border-bottom: $border-style;
 	}
 	.following-box {
+		.following-profile-link {
+			padding: 0;
+			color: black;
+		}
 		.following-pill {
 			text-align: left;
 			height: 30px;
@@ -486,6 +493,12 @@ body {
 	.login-blurb {
 		padding: 10px 20px;
 		font-size: 16pt;
+	}
+	.blurb-2 {
+		@media (min-width: $screen-md) {
+			position: relative;
+			top: 10px;
+		}
 	}
 	.social {
 		font-size: 18pt;
@@ -639,7 +652,7 @@ body {
 	}
 }
 
-.post-tools {
+.post-tools, .profile-tools {
 	.btn {
 		border: none;
 		border-radius: 0;
@@ -699,6 +712,11 @@ body {
 	}
 	.post-tools {
 		margin-top: 10px;
+		.btn {
+			margin-right: 5px;
+			padding: 5px 10px;
+			vertical-align: inherit;
+		}
 	}
 	.article-view-element{
 		img{
@@ -711,8 +729,10 @@ body {
 			height: 100px;
 		}
 	}
-	.article-post-meta img {
-		width: auto;
+	.article-post-meta {
+		img {
+			width: auto;
+		}
 	}
 	.poll {
 		.form-group {
@@ -783,7 +803,9 @@ body {
 			margin: 0;
 		}
 	}
-
+	.profile-tools {
+		text-align: center;
+	}
 	.featured {
 		.heading {
 			font-size: 28pt;
@@ -802,6 +824,9 @@ body {
 
 #edit-profile {
 	padding-top: 20px;
+	.form-group {
+		margin: 0 0 15px;
+	}
 }
 
 #profile-articles {

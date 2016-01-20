@@ -111,6 +111,33 @@
 				</div>
 			{% endif %}
 			</div>
+			{% if request.user != user %}
+			<div class="row">
+				<div class="col-sm-5 profile-tools" data-author-id="{{article.author.id}}">
+                    {% if request.user in user.author.followed_by.all %}
+                    <button type="button" class="btn btn-active btn-default follow-button">
+                        Followed
+                    {% else %}
+                    <button type="button" class="btn btn-default follow-button">
+                        Follow
+                    {% endif %}
+                    </button>
+                    {% if request.user in user.author.endorsed_by.all %}
+                    <button type="button" class="btn btn-active btn-default endorse-button">
+                        Endorsed
+                    {% else %}
+                    
+                    {% if request.user.endorsement_set.count < 4 %}
+
+                    <button type="button" class="btn btn-default endorse-button">
+                        Endorse
+                    {% endif %}
+                    {% endif %}
+                    </button>
+                    <!-- <button type="button" class="btn btn-default">Feedback</button> -->
+                </div>
+            </div>
+            {% endif %}
 			<div class="featured row">
 				<h1 class="heading">Featured</h1>
 				{% for article in user.author.article_set.all|slice:":2" %} <!-- This is first 2 -->
@@ -149,11 +176,11 @@
 					{% csrf_token %}
 					{% for field in profile_form %}
 					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-						<label class="col-sm-offset-2 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
+						<label class="col-sm-offset-1 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
 						{% if field.html_name == 'about' %}
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 						{%else %}
-						<div class="col-sm-4">
+						<div class="col-sm-8">
 		        	   {%endif%}
 							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 			                {% for error in field.errors %}
@@ -165,7 +192,7 @@
 			        </div>
 					{% endfor %}
 					<div class="form-group">
-						<div class="post-tools col-sm-offset-4 col-sm-2">
+						<div class="post-tools col-sm-offset-3 col-sm-2">
 							<input class="btn" type="submit" name="action" value="Update"/>
 						</div>
 					</div>
@@ -176,11 +203,11 @@
 					{% for field in profile_form %}
 				
 					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-						<label class="col-sm-offset-2 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
+						<label class="col-sm-offset-1 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
 						{% if field.html_name == 'about' %}
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 						{%else %}
-						<div class="col-sm-4">
+						<div class="col-sm-8">
 		        	   	{%endif%}
 							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 			                {% for error in field.errors %}
@@ -193,11 +220,11 @@
 					{% endfor %}
 					{% for field in society_form %}
 					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-						<label class="col-sm-offset-2 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
+						<label class="col-sm-offset-1 col-sm-2" for="{{field.id_for_label}}">{{field.label}}</label>
 						{% if field.html_name == 'about' %}
-						<div class="col-sm-6">
+						<div class="col-sm-8">
 						{%else %}
-						<div class="col-sm-4">
+						<div class="col-sm-8">
 		        	   	{%endif%}
 							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 			                {% for error in field.errors %}
@@ -209,7 +236,7 @@
 			        </div>
 					{% endfor %}
 					<div class="form-group">
-						<div class="post-tools col-sm-offset-4 col-sm-2">
+						<div class="post-tools col-sm-offset-3 col-sm-2">
 							<input class="btn" type="submit" name="action" value="Update"/>
 						</div>
 					</div>
