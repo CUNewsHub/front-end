@@ -1,9 +1,26 @@
 {% extends 'newshub/framework/base.html' %}
 {% block content %}
-<form action="" method="POST">
-	{% csrf_token %}
-	Following and endorsing people	
-	<input type="submit" name="action" value="Save" />
-	<input type="submit" name="action" value="Skip" />
-</form>
+<div class="row fill-height">
+    <div class="col-sm-8 main landing-page center-block">
+		<form class="landing-follow-author"action="" method="POST">
+			{% csrf_token %}
+			<p class="header">Follow some authors</p>
+			<div class="col-sm-8 center-block author-item">
+				<div class="row author-profile">
+					<img class="author-pic" src="{{user.profile.picture.url}}{{user.society.logo.url}}" alt="author pic"/>
+					<a class="author-name" href="{% url 'newshub:profile' user.pk %}">{{user.first_name}} {{user.last_name}}</a>
+					<div class="post-tools follow-button">
+		                <button type="button" class="btn btn-default follow-button">
+		                    Follow
+		                </button>
+	                </div>
+				</div>
+			<p class="author-info">{{user.profile.about}}</p>			</div>
+			<div class="post-tools">
+				<!--<input class="btn" type="submit" name="action" value="Save" />-->
+				<input class="btn" type="submit" name="action" value="Next" />
+			</div>
+		</form>
+	</div>
+</div>
 {% endblock %}

@@ -1,9 +1,28 @@
 {% extends 'newshub/framework/base.html' %}
 {% block content %}
-<form action="" method="POST">
-	{% csrf_token %}
-	{{form.as_p}}
-	<input type="submit" name="action" value="Save" />
-	<input type="submit" name="action" value="Skip" />
-</form>
+<div class="row fill-height">
+    <div class="col-sm-8 main landing-page center-block">
+		<!-- <form class="landing-tag-picker" action="" method="POST">
+			{% csrf_token %}
+			{{form.as_p}}
+			<div class="post-tools">
+				<input class="btn" type="submit" name="action" value="Save" />
+				<input class="btn" type="submit" name="action" value="Skip" />
+			</div>
+		</form> -->
+		<form class="landing-tag-picker" action="" method="POST">
+			{% csrf_token %}
+			<p class="header">Pick Some Tags:</p>
+			<ul id="id_tags">
+				{% for tag in form.tags %}
+				<li><label>{{tag.tag}} <span>{{tag.choice_label}}</span></label></li>
+				{% endfor %}
+			</ul>
+			<div class="post-tools">
+				<input class="btn" type="submit" name="action" value="Save" />
+				<input class="btn" type="submit" name="action" value="Next" />
+			</div>
+		</form>
+	</div>
+</div>
 {% endblock %}

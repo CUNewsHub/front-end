@@ -11,16 +11,6 @@
         <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
         <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
         <li class="{%if is_article%}article-{%endif%}active"><a href="{% url 'newshub:history' %}">History</a></li>
-    
-    {% endif %}
-    {% if is_article %}
-        {% for tag in article.tags.all %}
-            {% if tag.approved %}
-                <p><a href="{% url 'newshub:article_by_tags' tag.name %}">{{tag.name}}</a></p>
-            {% else %}
-                <p>{{tag}}</p>
-            {%endif %}
-        {% endfor %}
     {% endif %}
     <!-- <li class="search">
         <div id="custom-search-input">
@@ -36,11 +26,30 @@
     </li>
     <li ><a href="#">Filter</a></li>  -->
 </ul>
-<!-- <div class="tags">
-    <div class="trending-tags">
+<div class="tags">
+    {% if is_article %}
+    <div class="related-tags">
+        <p class="tag-type">Related Tags</p>
+        <ul class="tag-list">
+            {% for tag in article.tags.all %}
+                {% if tag.approved %}
+                    <li><a href="{% url 'newshub:article_by_tags' tag.name %}">{{tag.name}}</a></li>
+                {% else %}
+                    <li>{{tag}}</li>
+                {%endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    {% else %}
+    <!-- <div class="trending-tags">
         <p class="tag-type">Trending Tags</p>
-    </div>
-    <div class="suggested-tags">
-        <p class="tag-type">Suggested Tags</p>
-    </div>
-</div> -->
+        {% for tag in Author.objects.all %}
+            {% if tag.approved %}
+                <li><a href="{% url 'newshub:article_by_tags' tag.name %}">{{tag.name}}</a></li>
+            {% else %}
+                <li>{{tag}}</li>
+            {%endif %}
+        {% endfor %}
+    </div> -->
+    {% endif %}
+</div>

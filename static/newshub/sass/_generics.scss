@@ -200,6 +200,25 @@ body {
 			}
 		}
 	}
+	.tags {
+		margin-top: 10px;
+		text-align: center;
+		.tag-type {
+			color: #646464;
+		}
+		.tag-list {
+			list-style: none;
+			padding: 0;
+			li {
+				display: inline-block;
+				margin: 3px;
+				a {
+					color: black;
+					text-decoration: none;
+				}
+			}
+		}
+	}
 }
 
 .article-right-sidebar {
@@ -528,8 +547,75 @@ body {
 }
 // End Login
 
+// Landing Pages
+.landing-page {
+	text-align: center;
+	.header {
+		font-family: $font-family-sans-serif;
+		font-size: 28pt;
+		font-weight: bold;
+	}
+	.post-tools {
+		.btn {
+			padding: 5px 20px;
+    		margin: 0 5px;
+		}
+	}
+	.landing-tag-picker {
+		#id_tags {
+			list-style: none;
+			padding: 0;		
+			li {
+				display: inline-block;
+				margin: 0 5px 0 0;
+			}
+			input[type="checkbox"] {
+				display: none;
+			}
+			input[type="checkbox"]:checked + span, span:hover {
+				background-color: $navbar-inverse-link-active-bg;
+				color: white;
+			}
+			span {
+				padding: 5px 10px;
+	    		font-size: 18px;
+	    		margin: 0;
+			}
+		}
+	}
+	.author-item {
+		text-align: left;
+		border-bottom: $border-style;
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		.author-profile {
+			margin-bottom: 10px;
+			.author-pic {
+				height: 60px;
+				width: auto;
+				border-radius: 30px;
+				margin-left: 15px;
+			}
+			.author-name {
+				font-size: 30px;
+				font-weight: bold;
+				color: black;
+				vertical-align: middle;
+   				margin-left: 5px;
+			}
+			.follow-button {
+				display: inline-block;
+				.btn {
+					padding: 5px 5px;
+				}
+			}
+		}
+	}
+}
+// End Landing
+
 // Shared between feed article and articles
-.feed-article, .article-post, #profile-articles, .featured {
+.feed-article, .article-post, .featured {
 	.article-post-title {
 		font-size: 40px;
 		font-weight: bold;
@@ -562,7 +648,7 @@ body {
 		text-align: justify;
 	}
 }
-.feed-article, #profile-articles, .featured {
+.feed-article, .featured {
 	padding: $center-padding;
 	box-sizing: border-box;
 	img {
@@ -674,13 +760,6 @@ body {
 .text-middle {
 	text-align: center;
 }
-.tags {
-	margin-top: 10px;
-	text-align: center;
-	.tag-type {
-		color: #646464;
-	}
-}
 
 //redactor style
 .redactor-editor{
@@ -784,23 +863,26 @@ body {
 		img {
 			width: 100%;
 		}
-		margin: 0 20px 10px 0;
 	}
 	.profile-description {
-		padding: 0 10px 10px;
-		margin: 0 0 20px -20px;
-		text-align: center;
-		background-color: $navbar-inverse-bg;
-		color: white;
-		font-size: 14pt;
-		h2 {
-			font-size: 30pt;
-			font-size: 2vw;
-			margin: 10px 0 0;
+		.profile-info {
+			padding: 10px 0;
+			text-align: center;
+			background-color: $navbar-inverse-bg;
+			color: white;
+			font-size: 14pt;
+			h2 {
+				font-size: 30pt;
+				font-size: 2vw;
+				margin: 10px 0 0;
+			}
+			p {
+				font-family: $font-family-sans-serif;
+				margin: 0;
+			}
 		}
-		p {
-			font-family: $font-family-sans-serif;
-			margin: 0;
+		.profile-blurb {
+			padding: 10px 20px;
 		}
 	}
 	.profile-tools {
@@ -829,31 +911,5 @@ body {
 	}
 }
 
-#profile-articles {
-	.article-post-title {
-		font-size: 24pt;
-	}
-	.article-post-meta {
-		.date {
-			margin-right: 20px;
-		}
-		font-size: 12pt;
-	}
-	.profile-articles {
-		border-bottom: $border-style;
-	}
-	.non-featured {
-		.article-post-title {
-			font-size: 20pt;
-		}
-		margin-top: 30px;
-		text-align: justify;
-		.profile-articles {
-			width: 45%;
-		    float: left;
-		    margin-right: 5%;
-		}
-	}
-}
 // End Profile
 

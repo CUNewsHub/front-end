@@ -34,7 +34,7 @@
         <ul class="nav nav-pills nav-stacked">
        		{% if not society %}
             <li class="active"><a href="#profile" data-toggle="pill">About Me</a></li>
-            <li><a href="#profile" data-toggle="pill">Articles</a></li>
+            <li><a href="#profile-articles" data-toggle="pill">Articles</a></li>
             <!--
             <li><a href="#" data-toggle="pill">Awards</a></li>
             <li><a href="#" data-toggle="pill">C.V.</a></li>
@@ -66,19 +66,21 @@
 					<img class="img-responsive profile-picture" src="{{user.profile.picture.url}}" /> 
 				</div>
 				<div class="col-sm-7 profile-description">
-					<h2>{{user.profile.display_name}}</h2>
-					<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
-					<p>{% if user.profile.college %}at {{user.profile.college}}{% else %}Not specified{%endif%} College</p>
+					<div class="profile-info">
+						<h2>{{user.profile.display_name}}</h2>
+						<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
+						<p>{% if user.profile.college %}at {{user.profile.college}}{% else %}Not specified{%endif%}</p>
 
-					{% if user.endorsement_set.count > 0 %}
-						<p>{{user.profile.display_name}} has {{user.endorsement_set.count}} endorsements.</p>
-					{% endif %}
-				</div>
-				<div class="profile-blurb">
-					<div class="profile-page-title">
+						{% if user.endorsement_set.count > 0 %}
+							<p>{{user.profile.display_name}} has {{user.endorsement_set.count}} endorsements.</p>
+						{% endif %}
 					</div>
-					<div class="profile-page-section">
-						{{user.profile.about}}
+					<div class="profile-blurb">
+						<div class="profile-page-title">
+						</div>
+						<div class="profile-page-section">
+							{{user.profile.about}}
+						</div>
 					</div>
 				</div>
 			{% else %}
@@ -140,7 +142,7 @@
             {% endif %}
 			<div class="featured row">
 				<h1 class="heading">Featured</h1>
-				{% for article in user.author.article_set.all|slice:":2" %} <!-- This is first 2 -->
+				{% for article in user.author.article_set.all|slice:":3" %} <!-- This is first 3 -->
 				{% if article.published %}
 				<div class="row">
 		            <div class="center-block profile-articles">
@@ -151,23 +153,54 @@
 		        {% endif %}
 				{% endfor %}
 			</div>
-
-			<div id="profile-articles" class="row center-block tab-pane">
-				<div class="row non-featured">
-					{% for article in user.author.article_set.all|slice:"2:" %} <!-- Change this to non-featured only -->
-					{% if article.published %}
-					<div class="profile-articles">
-		                <h1 class="article-post-title"><a href="{% url 'newshub:view_article' action_type='home' pk=article.pk %}">{{article.title}}</a></h1>
-		                <p class="article-post-meta">
-		                	<span class="date">{{article.time_uploaded|date:"N Y"}}</span>
-		                	<span class="likes">{{article.likes.count}} Likes</span>
-		                </p>
-		            </div>
-		            {% endif %}
-					{% endfor %}
-				</div>
-			</div>
 		</div>
+
+		<div id="profile-articles" class="row center-block tab-pane">
+			{% for article in user.author.article_set.all|slice:"3:" %}
+			{% if article.published %}
+			<div class="row">
+            <div class="center-block feed-article">
+                <a class="article-link" href="% url 'newshub:view_article' action_type='home' pk=article.pk %}">
+                    <h1 class="article-post-title">{{article.title}} {{request.user.asd}}</h1>
+                    <p class="article-post-headline">{{article.headline}}</p>
+                </a>
+                {% if request.user != article.author.user %}
+                <div class="post-tools" data-author-id="{{article.author.id}}">
+                    <p class="article-post-meta"><img src="{{article.author.user.profile.picture.url}}{{article.author.user.society.logo.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
+                    {% if request.user in article.author.followed_by.all %}
+                    <button type="button" class="btn btn-active btn-default follow-button">
+                        Followed
+                    {% else %}
+                    <button type="button" class="btn btn-default follow-button">
+                        Follow
+                    {% endif %}
+                    </button>
+                    {% if request.user in article.author.endorsed_by.all %}
+                    <button type="button" class="btn btn-active btn-default endorse-button">
+                        Endorsed
+                    {% else %}
+                    
+                    {% if request.user.endorsement_set.count < 4 %}
+
+                    <button type="button" class="btn btn-default endorse-button">
+                        Endorse
+                    {% endif %}
+                    {% endif %}
+                    </button>
+                    <!-- <button type="button" class="btn btn-default">Feedback</button> -->
+                </div>
+                {% else %}
+                <div class="post-tools">
+                    <p class="article-post-meta"><img src="{{article.author.user.profile.picture.url}}{{article.author.user.society.logo.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
+                    <a href="{% url 'newshub:edit_article' article.pk %}" class="btn btn-default">Edit article</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+            {% endif %}
+			{% endfor %}
+		</div>
+
 		{% if request.user == user %}
 		<div id="edit-profile" class="row center-block tab-pane">
 			<div class="row non-featured">
