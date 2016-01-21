@@ -15,10 +15,10 @@
 				<a href="{% url 'newshub:article_delete_poll_choice' pk=choice.pk %}"><i class="fa fa-times"></i></a>
 			</li>
 		{%empty%}
-			<p>This poll has no questions</p>
+			<p>This poll has no options</p>
 		{% endfor %}
 		</ul>
-		<h4>Add a new question</h4>
+		<h4>Add a new option</h4>
 		<form action="{% url 'newshub:article_poll_add_choice' %}" method="post" class="form-horizontal">
 			{% csrf_token %}
 			{% for field in form.hidden_fields %}

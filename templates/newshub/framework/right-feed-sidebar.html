@@ -28,6 +28,7 @@
 		<ul class="nav nav-pills nav-stacked following-box">
 			{% for endorsement in user.endorsement_set.all %}
 				{% with user=endorsement.author.user %}
+				<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">
 				<li class="following-pill">
 					{% if user.profile.picture %}
 						<img src="{{user.profile.picture.url}}" alt="author pic"/>
@@ -35,8 +36,8 @@
 					{% if user.society.logo %}
 						<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
 					{% endif %}
-					<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">{{user.first_name}} {{user.last_name}}</a>
-				</li>
+					{{user.first_name}} {{user.last_name}}
+				</li></a>
 				{% endwith %}
 			{% endfor %}
 		</ul>

@@ -115,7 +115,7 @@
 			</div>
 			{% if request.user != user %}
 			<div class="row">
-				<div class="col-sm-5 profile-tools" data-author-id="{{article.author.id}}">
+				<div class="col-sm-5 profile-tools" data-author-id="{{user.author.pk}}">
                     {% if request.user in user.author.followed_by.all %}
                     <button type="button" class="btn btn-active btn-default follow-button">
                         Followed
