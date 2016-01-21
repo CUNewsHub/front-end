@@ -74,8 +74,12 @@ $(document).ready(function(){
       'url': $url,
       'success': function(data){
         if(data=='success'){
-          $('.feedback-pill a').removeClass('active');
-          $this.addClass('active');
+          if($this.hasClass('active')){
+            $this.removeClass('active').blur();
+          }
+          else{
+            $this.addClass('active').blur();
+          }
         }
       }
     });

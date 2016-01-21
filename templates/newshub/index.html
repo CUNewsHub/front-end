@@ -45,17 +45,19 @@
                         Follow
                     {% endif %}
                     </button>
+                    {% comment %}
                     {% if request.user in article.author.endorsed_by.all %}
                     <button type="button" class="btn btn-active btn-default endorse-button">
                         Endorsed
                     {% else %}
                     
-                    {% if request.user.endorsement_set.count < 4 %}
+                        {% if request.user.endorsement_set.count < 4 %}
 
-                    <button type="button" class="btn btn-default endorse-button">
-                        Endorse
+                        <button type="button" class="btn btn-default endorse-button">
+                            Endorse
+                        {% endif %}
                     {% endif %}
-                    {% endif %}
+                    {% endcomment %}
                     </button>
                     <!-- <button type="button" class="btn btn-default">Feedback</button> -->
                 </div>

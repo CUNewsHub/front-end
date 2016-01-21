@@ -3,13 +3,55 @@
 {% block title %}{% endblock%}
 {% block content %}
 <div class="row fill-height">
-    <div class="col-sm-8 col-sm-offset-2 main profile-page">
+    <div class="col-sm-8 col-sm-offset-2 main profile-page" id="edit-profile">
 		<div id="create-new" class="row center-block">
-			<form action="" method="post">
+			<div class="form-group">
+				<div class="col-sm-8 col-sm-offset-3">
+					<h3>Society creation form</h3>
+					<span class="help-block">Required fields are marked with *</span>
+				</div>
+			</div>
+			<form action="" class="form-horizontal" method="post">
 			{% csrf_token %}
-			{{form.as_p}}
-			{{society_data_form}}
-			<button type="submit">Create</button>
+			{% for field in form %}
+			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+				<label class="col-sm-offset-1 col-sm-2" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
+				{% if field.html_name == 'about' %}
+				<div class="col-sm-8">
+				{%else %}
+				<div class="col-sm-8">
+        	   {%endif%}
+					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+	                {% for error in field.errors %}
+	                     <span class="help-block">
+	                        {{error}}
+	                     </span>
+        	        {% endfor %}
+        	    </div>
+	        </div>
+	        {% endfor %}
+			{% for field in society_data_form %}
+			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+				<label class="col-sm-offset-1 col-sm-2" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
+				{% if field.html_name == 'about' %}
+				<div class="col-sm-8">
+				{%else %}
+				<div class="col-sm-8">
+        	   {%endif%}
+					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+	                {% for error in field.errors %}
+	                     <span class="help-block">
+	                        {{error}}
+	                     </span>
+        	        {% endfor %}
+        	    </div>
+	        </div>
+	        {% endfor %}
+			<div class="form-group">
+				<div class="post-tools col-sm-offset-3 col-sm-2">
+					<input class="btn" type="submit" name="action" value="Create"/>
+				</div>
+			</div>
 			</form>
 		</div>
 	</div><!-- Profile Info -->

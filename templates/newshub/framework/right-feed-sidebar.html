@@ -23,6 +23,7 @@
 			{% endfor %}
 		</ul>
 		{% endif %}
+		{% comment %}
 		{% if request.user.endorsement_set.all.count > 0 %}
 		<li class="header following-header"><p>Endorsed<p></li>
 		<ul class="nav nav-pills nav-stacked following-box">
@@ -42,4 +43,5 @@
 			{% endfor %}
 		</ul>
 		{% endif %}
+		{% endcomment %}
 </ul>

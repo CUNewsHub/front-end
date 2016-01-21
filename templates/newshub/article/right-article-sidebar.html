@@ -21,7 +21,7 @@
 	<li class="header"><p>Feedback<p></li>
 	{% for feedback in feedback_set %}
 		{% if uf %}
-			{% if uf.feedback == feedback %}
+			{% if feedback in uf.feedback.all %}
 				<li class="feedback-pill"><a class="active" href="{% url 'newshub:article_add_feedback' article.pk feedback.pk %}">{{feedback}}</a></li>
 			{% else %}
 				<li class="feedback-pill"><a href="{% url 'newshub:article_add_feedback' article.pk feedback.pk %}">{{feedback}}</a></li>
@@ -32,7 +32,7 @@
 	{% endfor %}
 	{% else %}
 		<li class="feedback-info feedback-likes">{{article.likes.count}} LIKES</li>
-		<li class="feedback-info feedback-views">X VIEWS</li>
+		<li class="feedback-info feedback-views">{{article.viewedarticle_set.count}} VIEWS</li>
 		<li class="header"><p>Feedback<p></li>
 		<li class="feedback-info feedback-total">TOTAL X</li>
 		<li class="feedback-info progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:50%"><span class="description">Enjoyable</span></li>

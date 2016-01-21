@@ -126,6 +126,7 @@
                         Follow
                     {% endif %}
                     </button>
+                    {% comment %}
                     {% if request.user in user.author.endorsed_by.all %}
                     <button type="button" class="btn btn-active btn-default endorse-button">
                         Endorsed
@@ -138,6 +139,7 @@
                     {% endif %}
                     {% endif %}
                     </button>
+                    {% endcomment %}
                     <!-- <button type="button" class="btn btn-default">Feedback</button> -->
                 </div>
             </div>
