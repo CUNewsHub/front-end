@@ -68,11 +68,13 @@
 				<div class="col-sm-7 profile-description">
 					<div class="profile-info">
 						<h2>{{user.profile.display_name}}</h2>
-						<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
-						<p>{% if user.profile.college %}at {{user.profile.college}}{% else %}Not specified{%endif%}</p>
+						{% if user.profile.get_year_display or user.profile.subject %}
+							<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
+							{% if user.profile.college %}<p>at {{user.profile.college}}</p>{% endif %}
 
-						{% if user.endorsement_set.count > 0 %}
-							<p>{{user.profile.display_name}} has {{user.endorsement_set.count}} endorsements.</p>
+							{% if user.endorsement_set.count > 0 %}
+								<p>{{user.profile.display_name}} has {{user.endorsement_set.count}} endorsements.</p>
+							{% endif %}
 						{% endif %}
 					</div>
 					<div class="profile-blurb">

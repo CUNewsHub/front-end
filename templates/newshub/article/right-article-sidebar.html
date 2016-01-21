@@ -4,11 +4,15 @@
 		<p class="{% if request.user in article.likes.all %}active{%endif%}"
 			data-article-id="{{article.pk}}">
 			<!--<i class="fa fa-thumbs-o-up"></i> -->
-			<span>+</span>
-			<span class="like-text">
 			{% if request.user in article.likes.all %}
+			<span class="like-like">&#10004;</span>
+			<span class="like-liked" style="display: none;">+</span>
+			<span class="like-text">
 				LIKED
 			{% else %}
+			<span class="like-like" style="display: none;">&#10004;</span>
+			<span class="like-liked">+</span>
+			<span class="like-text">
 				LIKE
 			{% endif %}
 			</span>

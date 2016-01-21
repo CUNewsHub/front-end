@@ -35,7 +35,7 @@ $(document).ready(function(){
 		});
 	});
 
-	$(".like-button h3").click(function(){
+	$(".like-button p").click(function(){
 		$this = $(this);
 		$.ajax({
 			url: '/action/like/',
@@ -45,8 +45,12 @@ $(document).ready(function(){
 			success: function(data){
 				if(data.created){
 					$this.children('.like-text').html('LIKED').parent().addClass('active');
+          $this.children('.like-liked').hide();
+          $this.children('.like-like').show();
 				} else {
 					$this.children('.like-text').html('LIKE').parent().removeClass('active');
+          $this.children('.like-like').hide();
+          $this.children('.like-liked').show();
 				}
 			}
 		});
