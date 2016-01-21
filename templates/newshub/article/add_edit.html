@@ -5,15 +5,19 @@
 <div class="row article-forms fill-height">
 	<div class="col-sm-2 affixed-sidebar left-sidebar">
 		<ul class="nav nav-pills nav-stacked">
-			<li class="header first-header"><p>Saved Articles<p></li>
 			{% for article in request.user.author.article_set.all %}
 			{% if not article.published %}
+			{% if forloop.first %}
+			<li class="header first-header"><p>Saved Articles<p></li>
+			{% endif %}
 			<li class="saved-article"><a href="{% url 'newshub:edit_article' pk=article.pk %}">{{article.title}}</a></li>
 			{% endif %}
 			{% endfor %}
-			<li class="header"><p>Published Articles<p></li>
 			{% for article in request.user.author.article_set.all %}
 			{% if article.published %}
+			{% if forloop.first %}
+			<li class="header"><p>Published Articles<p></li>
+			{% endif %}
 			<li class="saved-article"><a href="{% url 'newshub:edit_article' pk=article.pk %}">{{article.title}}</a></li>
 			{% endif %}
 			{% endfor %}
