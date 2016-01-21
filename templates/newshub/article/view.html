@@ -95,7 +95,7 @@
                     {% for comment in article.comment_set.all %}
                         {% include 'newshub/article/comment.html' with comment=comment%}
                     {% empty %}
-                        <p>No comments for this article</p>
+                        <p class="no-comment">No comments for this article</p>
                     {%endfor %}
 
                 </div>

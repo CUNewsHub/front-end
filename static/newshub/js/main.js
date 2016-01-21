@@ -74,6 +74,7 @@ $(document).ready(function(){
       'url': $url,
       'success': function(data){
         if(data=='success'){
+          $('p.no-comment').remove();
           if($this.hasClass('active')){
             $this.removeClass('active').blur();
           }
