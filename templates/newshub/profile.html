@@ -67,7 +67,7 @@
 				</div>
 				<div class="col-sm-7 profile-description">
 					<div class="profile-info">
-						<h2>{{user.profile.display_name}}</h2>
+						<h2>{% if user.profile.display_name == "" %}{{user.profile.display_name}}{% else %}{{user.first_name}} {{user.last_name}}{%endif %}</h2>
 						{% if user.profile.get_year_display or user.profile.subject %}
 							<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
 							{% if user.profile.college %}<p>at {{user.profile.college}}</p>{% endif %}
@@ -81,7 +81,7 @@
 						<div class="profile-page-title">
 						</div>
 						<div class="profile-page-section">
-							{{user.profile.about}}
+							{% if user.profile.about %}{{user.profile.about}}{% endif %}
 						</div>
 					</div>
 				</div>
@@ -209,7 +209,7 @@
 		<div id="edit-profile" class="row center-block tab-pane">
 			<div class="row non-featured">
 				{% if not society %}
-				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_profile' request.user.profile.pk %}" >
+				<form class="form-horizontal" id="" method="post" action="{% url 'newshub:update_profile' request.user.profile.pk %}" enctype="multipart/form-data" >
 					{% csrf_token %}
 					{% for field in profile_form %}
 					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">

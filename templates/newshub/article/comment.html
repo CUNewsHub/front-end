@@ -1,4 +1,4 @@
 <div class="article-post">
-	<p class="article-post-meta"><img src="{{comment.made_by.profile.picture.url}}" alt="author pic"/><a href="{% url 'newshub:profile' comment.made_by.pk %}">{{comment.made_by.profile.display_name}}</a></p>
-	<p>{{comment.text}}</p>
+	<p class="article-post-meta"><img src="{{comment.made_by.profile.picture.url}}" alt="author pic"/><a href="{% url 'newshub:profile' comment.made_by.pk %}">{% if comment.made_by.profile.display_name %}{{comment.made_by.profile.display_name}}{% else %}{{comment.made_by.first_name}} {{comment.made_by.last_name}}{%endif%}</a></p>
+	<p>{{comment.text|linebreaks}}</p>
 </div>

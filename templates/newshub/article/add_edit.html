@@ -92,7 +92,13 @@
 			<li><input type="submit" name="action" value="Publish" form="article-post-form"/></li>
 			{% endif %}
 			{% if not add %}
-			<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default btn-block">View</a></li>
+				<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default btn-block">
+				{% if form.instance.published %}
+					View
+				{% else %}
+					Preview
+				{% endif %}
+				</a></li>
 			{% endif %}
 			<li><input type="submit" name="action" value="Save" form="article-post-form"/></li>
 		</ul>
