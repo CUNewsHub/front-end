@@ -9498,7 +9498,7 @@ body {
 .feed-article .article-post-headline, .article-post .article-post-headline, .featured .article-post-headline {
   font-weight: 400;
   font-size: 16px;
-  word-wrap: word-break;
+  word-wrap: break-word;
 }
 /* line 629, ../sass/_generics.scss */
 .feed-article .article-post-meta, .article-post .article-post-meta, .featured .article-post-meta {
@@ -9681,7 +9681,7 @@ body {
 }
 /* line 793, ../sass/_generics.scss */
 .article-container .article-view-element p, .article-container .article-container .post-tools p {
-  word-wrap: brea-word;
+  word-wrap: break-word;
 }
 /* line 797, ../sass/_generics.scss */
 .article-container .post-tools {
