@@ -1,4 +1,23 @@
 $(document).ready(function(){
+
+  toastr.options = {
+    "closeButton": true,
+    "debug": false,
+    "newestOnTop": false,
+    "progressBar": false,
+    "positionClass": "toast-top-right",
+    "preventDuplicates": false,
+    "onclick": null,
+    "showDuration": "300",
+    "hideDuration": "1000",
+    "timeOut": "2000",
+    "extendedTimeOut": "1000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  }
+
 	$(".follow-button").click(function(){
 		$this = $(this);
     $author_id = $this.parent().attr("data-author-id");
@@ -64,6 +83,22 @@ $(document).ready(function(){
   $('#article_comment_form').ajaxForm({success: function(data) { 
     $('.article-comments-section').prepend(data);
   }, clearForm: true}); 
+
+  $('#add_new_tag_form').ajaxForm({success:function(data){
+    if(data.success){
+      toastr.success('Success!');
+      s2val = $("#id_tags").select2('val');
+      s2val = s2val.concat(data.tag.id);
+      $('#id_tags')
+         .append($("<option></option>")
+         .attr("value",data.tag.id)
+         .text(data.tag.name)); 
+      $("#id_tags").select2('val', s2val);
+    }
+    else{
+      toastr.error(data.error_msg);
+    }
+  }, clearForm: true});
 
   $('.feedback-pill a').click(function(e){
     e.preventDefault();
