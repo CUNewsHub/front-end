@@ -10,7 +10,8 @@
 
 		{% fontawesome_stylesheet %}	
 		<!-- Bootstrap core CSS -->
-	    <link href="{% static 'external/css/toastr.min.css' %}" rel="stylesheet">
+	    <link href="{% static 'external/css/toastr.min.css' %}" rel="stylesheet">	    
+	    <link href="{% static 'external/css/bootstrapValidator.min.css' %}" rel="stylesheet">
 	    <link href="{% static 'newshub/css/main.css' %}" rel="stylesheet">
 	    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 	    <link rel="shortcut icon" type="image/png" href="{% static 'newshub/images/favicon.ico' %}"/>
@@ -54,6 +55,8 @@
 	{{form.media}}
 	<!-- end include scripts -->
 	<script type="text/javascript" src="{% static 'external/js/toastr.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'external/js/bootstrapValidator.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'newshub/js/validators.js' %}"></script>
     <script src="{% static 'newshub/js/bootstrap.min.js' %}"></script>
 	<script type="text/javascript" src="{% static 'newshub/js/main.js' %}"></script>
 

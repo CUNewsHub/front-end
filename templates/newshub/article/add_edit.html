@@ -53,19 +53,19 @@
 		</form>
 		<div class="article-tag-form article-poll-form">
 			<h4>Add a new tag</h4>
-			<form id="add_new_tag_form" class="form-inline" action="{% url 'newshub:add_tag' %}" method="post">
+			<form id="add_new_tag_form" class="form-horizontal" action="{% url 'newshub:add_tag' %}" method="post">
 			{% csrf_token %}
-			{% for field in tag_form%}
 				<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-				<label for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
-					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
-
-	               	</span>
-	            </div>
-			{% endfor %}
-			<div class="form-group">
-				<button type="submit" class="btn-default btn">Add</button>
-			</div>
+				{% for field in tag_form%}
+					<label class="col-sm-1 control-label" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
+					<div class="col-sm-3">
+						{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+		            </div>
+				{% endfor %}
+					<div class="col-sm-3">
+						<button type="submit" class="btn-default btn">Add</button>
+					</div>
+				</div>
 			</form>
 		</div>
 		{% if not add %}
@@ -109,8 +109,7 @@
 				</form>
 				{% endif %}
 		</div>
-
-			{% endif %}
+		{% endif %}
 	</div>
 	<div class="col-md-2 affixed-sidebar right-sidebar">
 		<ul class="nav nav-pills nav-stacked">
