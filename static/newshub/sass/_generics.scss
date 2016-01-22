@@ -624,6 +624,7 @@ body {
 	.article-post-headline {
 		font-weight: 400;
 		font-size: 16px;
+		word-wrap: word-break;
 	}
 	.article-post-meta {
 		font-weight: bold;
@@ -789,6 +790,9 @@ body {
 .article-container {
 	.article-view-element, .article-container .post-tools{
 		padding-top: 10px;
+		p{
+			word-wrap: brea-word;
+		}
 	}
 	.post-tools {
 		margin-top: 10px;
