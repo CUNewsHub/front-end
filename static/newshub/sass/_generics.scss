@@ -624,7 +624,7 @@ body {
 	.article-post-headline {
 		font-weight: 400;
 		font-size: 16px;
-		word-wrap: word-break;
+		word-wrap: break-word;
 	}
 	.article-post-meta {
 		font-weight: bold;
@@ -791,7 +791,7 @@ body {
 	.article-view-element, .article-container .post-tools{
 		padding-top: 10px;
 		p{
-			word-wrap: brea-word;
+			word-wrap: break-word;
 		}
 	}
 	.post-tools {

@@ -67,7 +67,7 @@
 				</div>
 				<div class="col-sm-7 profile-description">
 					<div class="profile-info">
-						<h2>{% if user.profile.display_name == "" %}{{user.profile.display_name}}{% else %}{{user.first_name}} {{user.last_name}}{%endif %}</h2>
+						<h2>{% if user.profile.display_name != "" %}{{user.profile.display_name}}{% else %}{{user.first_name}} {{user.last_name}}{%endif %}</h2>
 						{% if user.profile.get_year_display or user.profile.subject %}
 							<p>{% if user.profile.get_year_display %}{{user.profile.get_year_display}}{%endif%} {% if user.profile.subject %}{{user.profile.subject}}{%endif%} Student</p>
 							{% if user.profile.college %}<p>at {{user.profile.college}}</p>{% endif %}
