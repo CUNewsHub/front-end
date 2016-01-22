@@ -7,19 +7,11 @@
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="NewsHub project" />
 		<title>{% block title %}{%endblock%}</title>
-		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
-		<script src="{% static 'external/js/jquery.form.js' %}"></script> 
- 
-		<script>
-			var django = {jQuery: jQuery};
-		</script>
-		<!-- including scripts -->
-		{{form.media}}
-		<!-- end include scripts -->
-		<script type="text/javascript" src="{% static 'newshub/js/main.js' %}"></script>
 
 		{% fontawesome_stylesheet %}	
 		<!-- Bootstrap core CSS -->
+	    <link href="{% static 'external/css/toastr.min.css' %}" rel="stylesheet">	    
+	    <link href="{% static 'external/css/bootstrapValidator.min.css' %}" rel="stylesheet">
 	    <link href="{% static 'newshub/css/main.css' %}" rel="stylesheet">
 	    <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 	    <link rel="shortcut icon" type="image/png" href="{% static 'newshub/images/favicon.ico' %}"/>
@@ -53,7 +45,20 @@
 	<!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+	<script src="{% static 'external/js/jquery.form.js' %}"></script> 
+
+	<script>
+		var django = {jQuery: jQuery};
+	</script>
+	<!-- including scripts -->
+	{{form.media}}
+	<!-- end include scripts -->
+	<script type="text/javascript" src="{% static 'external/js/toastr.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'external/js/bootstrapValidator.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'newshub/js/validators.js' %}"></script>
     <script src="{% static 'newshub/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'newshub/js/main.js' %}"></script>
 
 	</body>
 </html>

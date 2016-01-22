@@ -51,16 +51,36 @@
 			{% endfor %}
 
 		</form>
+		<div class="article-tag-form article-poll-form">
+			<h4>Add a new tag</h4>
+			<form id="add_new_tag_form" class="form-horizontal" action="{% url 'newshub:add_tag' %}" method="post">
+			{% csrf_token %}
+				<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+				{% for field in tag_form%}
+					<label class="col-sm-1 control-label" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
+					<div class="col-sm-3">
+						{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+		            </div>
+				{% endfor %}
+					<div class="col-sm-3">
+						<button type="submit" class="btn-default btn">Add</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		{% if not add %}
 		<div class="article-poll-form">
-			{% if not add %}
+			<h4>Manage poll for this article</h4>
 				{% if form.instance.poll %}
 					<!--<p>This article has already have a poll</p>
 					<p><a class="btn btn-default" href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a></p>-->
-					<p>Poll exists: <b>{{form.instance.poll}}</b></p>
-					<ul class="nav nav-pills">
-						<li><a class="btn btn-default" href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a></li>
-						<li><a class="btn btn-default" href="{% url 'newshub:article_delete_poll' pk=form.instance.poll.pk %}">Delete the poll</a></li>
-					</ul>
+					<h5>Poll title: <b>{{form.instance.poll}}</b> Number of options: <b>{{form.instance.poll.choice_set.count}}</b></h5>
+					{% if form.instance.poll.choice_set.count < 2 %}
+					<p class="bg-warning">This poll has less than 2 options, so it will not be shown on the article view page. Add more options to make it visible!</p>
+					{% endif %}
+						<a href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a>
+						<a href="{% url 'newshub:article_delete_poll' pk=form.instance.poll.pk %}">Delete the poll</a>
+						<br /><br /><br />
 				{%else%}
 				<form action="{% url 'newshub:article_add_poll' %}" method="post">
 					{% csrf_token %}
@@ -88,8 +108,8 @@
 					</ul>
 				</form>
 				{% endif %}
-			{% endif %}
 		</div>
+		{% endif %}
 	</div>
 	<div class="col-md-2 affixed-sidebar right-sidebar">
 		<ul class="nav nav-pills nav-stacked">
@@ -112,9 +132,10 @@
 		
 	</div>
 </div>
+{% comment %}
 <script>
 $(function() {
     $('form').areYouSure( {'message':'Your article is not finished yet.'} );
 });
-</script>
+</script>{% endcomment %}
 {% endblock %}

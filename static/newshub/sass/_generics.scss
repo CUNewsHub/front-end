@@ -26,6 +26,10 @@ body {
  	-moz-osx-font-smoothing: grayscale;
 }
 
+.toast-top-right{
+	top: 70px;
+}
+
 .container {
 	height: 100%;
 	.fill-height {
@@ -749,6 +753,16 @@ body {
 		min-height: 100%;
 		border-left: $border-style;
 		border-right: $border-style;
+
+		.article-poll-form{
+			margin-top: 30px;
+			border-top: 2px dashed $main-color;
+			a{
+				color: $main-color;
+				padding-right: 5px;
+				font-size: 18px;
+			}
+		}
 	}
 }
 
