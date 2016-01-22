@@ -24,17 +24,20 @@
 		</ul>
     </div><!-- previous-articles-sidebar -->
 	<div id="article-forms-col" class="col-md-8">
+		<div class="form-group">
+				<span class="help-block">Required fields are marked with *</span>
+		</div>
 		<form id="article-post-form" method="post" action="" enctype="multipart/form-data" >
 			{% csrf_token %}
 			{% for field in form%}
 			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
 				{% if field.html_name == 'published' %}
-				<label for="{{field.id_for_label}}">{{field.label}}</label>
+				<label for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
 					{{field}}
 				{% elif field.html_name == 'poll' and not add%}
 			
 				{% else%}
-					<label for="{{field.id_for_label}}">{{field.label}}</label>
+					<label for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
 					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 
 	               <span class="help-block">

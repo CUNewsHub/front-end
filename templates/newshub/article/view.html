@@ -12,8 +12,17 @@
 		<div class="col-sm-9 center-block article-post">
 			<h1 class="article-post-title">{{article.title}}</h1>
 			<div class="post-tools" data-author-id="{{article.author.id}}">
-				<p class="article-post-meta"><img src="{{article.author.user.profile.picture.url}}{{article.author.user.society.logo.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>			
-				{% if article.author.user == request.user %}
+				<p class="article-post-meta">
+                    <img src="{{article.author.user.profile.picture.url}}{{article.author.user.society.logo.url}}" alt="author pic"/>
+                    <a href="{% url 'newshub:profile' article.author.user.pk %}">
+                        {% if article.author.user.profile.display_name and article.author.user.profile.display_name.strip %}
+                            {{article.author.user.profile.display_name}}
+                        {% else %}
+                            {{article.author.user.first_name}} {{article.author.user.last_name}}
+                        {% endif %}
+                    </a>
+                </p>			
+		  		{% if article.author.user == request.user %}
                 	<a href="{% url 'newshub:edit_article' pk=article.pk %}" class="btn btn-default">Edit article</a>
 				{% else %}
 		            {% if request.user in article.author.followed_by.all %}
