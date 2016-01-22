@@ -74,6 +74,9 @@ body {
 		height: 60px;
 		.societies {
 			background-color: $darker-gray;
+			.society-link {
+				color: white;
+			}
 		}
 		.societies-header {
 			color: white;
@@ -269,6 +272,15 @@ body {
 	}
 	.feedback-likes, .feedback-views {
 		font-size: 20pt;
+	}
+}
+
+.right-profile-sidebar {
+	.profile-tools {
+		.btn {
+			width: 100%;
+    		font-size: 18pt;
+		}
 	}
 }
 
@@ -798,7 +810,7 @@ body {
 		margin-top: 10px;
 		.btn {
 			margin-right: 5px;
-			padding: 5px 10px;
+			padding: 5px 20px;
 			vertical-align: inherit;
 		}
 	}
@@ -814,11 +826,15 @@ body {
 		}
 	}
 	.article-post-meta {
+		margin-right: 10px;
 		img {
 			width: auto;
 		}
 	}
 	.poll {
+		p {
+			font-family: $font-family-sans-serif;
+		}
 		.form-group {
 			margin: 0;
 		}
@@ -852,6 +868,27 @@ body {
 		.btn {
 			margin-top: 10px;
 		}
+		.poll-results {
+			font-weight: bold;
+			.row {
+				margin: 0 0 10px 0;
+			}
+			.poll-count {
+				width: auto;
+				margin-right: 10px;
+			}
+			.poll-results-info {
+				margin-right: 10px;
+				display: inline-block;
+			}
+			.poll-results-right{
+				display: inline-block;
+				.poll-results-bar {
+					float: none;
+					background-color: $navbar-inverse-link-active-bg;
+				}
+			}
+		}
 	}
 }
 // End Articles
@@ -865,6 +902,7 @@ body {
 		padding: 0;
 	}
 	.profile-picture {
+		border: 5px solid $navbar-inverse-bg;
 		img {
 			width: 100%;
 		}
@@ -889,9 +927,6 @@ body {
 		.profile-blurb {
 			padding: 10px 20px;
 		}
-	}
-	.profile-tools {
-		text-align: center;
 	}
 	.featured {
 		.heading {

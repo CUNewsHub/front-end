@@ -22,7 +22,7 @@
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <!-- <li><a href="#">Search</a></li> -->
-          <li {% if request.path == '/' or '/view/article/' in request.path %} class="active"{% endif %} ><a href="{% url 'newshub:home' %}">News</a></li>
+          <li {% if request.path == '/' or '/view/article/' in request.path or '/history/' in request.path or '/top-stories/' in request.path %} class="active"{% endif %} ><a href="{% url 'newshub:home' %}">News</a></li>
           <li {% if request.path == '/new/article/' or '/edit/article/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:new_article' %}">Post</a></li>
           <li {% if '/profile/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:profile' %}">Profile</a></li>
           <li role="presentation" class="dropdown">
@@ -33,11 +33,10 @@
               <li><a href="{% url 'newshub:profile' %}#edit-profile">Edit Profile</a></li>
                 {% if request.user.profile %}
                 <li class="societies societies-header">Societies</li>
-                <li class="societies create-society"><a href="{% url 'newshub:create_society' %}">New society</a></li>
                 {% for society in request.user.admin_of.all %}
-                <li class="societies"><a href="{% url 'newshub:societies_login' society.pk %}">{{society.user.first_name}}</a></li>
+                <li class="societies"><a class="society-link" href="{% url 'newshub:societies_login' society.pk %}">{{society.user.first_name}}</a></li>
                 {% endfor %}
-
+                <li class="societies create-society"><a href="{% url 'newshub:create_society' %}">+ New society</a></li>
             {% endif %}
               <li><a href="{% url 'newshub:logout' %}">Logout</a></li>
             </ul>

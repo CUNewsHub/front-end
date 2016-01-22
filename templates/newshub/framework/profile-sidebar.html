@@ -1,0 +1,33 @@
+<ul class="nav nav-pills nav-stacked">
+	{% if request.user != user %}
+		<div class="profile-tools" data-author-id="{{user.author.pk}}">
+            <li>
+            {% if request.user in user.author.followed_by.all %}
+            <button type="button" class="btn btn-active btn-default follow-button">
+                Followed
+            {% else %}
+            <button type="button" class="btn btn-default follow-button">
+                Follow
+            {% endif %}
+            </button>
+            </li>
+            {% comment %}
+            <li>
+            {% if request.user in user.author.endorsed_by.all %}
+            <button type="button" class="btn btn-active btn-default endorse-button">
+                Endorsed
+            {% else %}
+            
+            {% if request.user.endorsement_set.count < 4 %}
+
+            <button type="button" class="btn btn-default endorse-button">
+                Endorse
+            {% endif %}
+            {% endif %}
+            </button>
+            </li>
+            {% endcomment %}
+        </div>
+    {% endif %}
+	{% include 'newshub/framework/following-box.html' %}
+</ul>

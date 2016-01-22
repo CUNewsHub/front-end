@@ -1,0 +1,41 @@
+{% if request.user.follow_set.all.count > 0%}
+	<li class="header following-header"><p>Following<p></li>
+	<ul class="nav nav-pills nav-stacked following-box">
+		{% for follow in user.follow_set.all %}
+			{% with user=follow.author.user %}
+			<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">
+			<li class="following-pill">
+				{% if user.profile.picture %}
+					<img src="{{user.profile.picture.url}}" alt="author pic"/>
+				{% endif %}
+				{% if user.society.logo %}
+					<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
+				{% endif %}
+				{{user.first_name}} {{user.last_name}}
+			</li>
+			</a>
+			{% endwith %}
+		{% endfor %}
+	</ul>
+	{% endif %}
+	{% comment %}
+	{% if request.user.endorsement_set.all.count > 0 %}
+	<li class="header following-header"><p>Endorsed<p></li>
+	<ul class="nav nav-pills nav-stacked following-box">
+		{% for endorsement in user.endorsement_set.all %}
+			{% with user=endorsement.author.user %}
+			<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">
+			<li class="following-pill">
+				{% if user.profile.picture %}
+					<img src="{{user.profile.picture.url}}" alt="author pic"/>
+				{% endif %}
+				{% if user.society.logo %}
+					<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
+				{% endif %}
+				{{user.first_name}} {{user.last_name}}
+			</li></a>
+			{% endwith %}
+		{% endfor %}
+	</ul>
+{% endif %}
+{% endcomment %}

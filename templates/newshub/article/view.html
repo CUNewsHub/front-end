@@ -23,7 +23,7 @@
                     </a>
                 </p>			
 		  		{% if article.author.user == request.user %}
-                	<a href="{% url 'newshub:edit_article' pk=article.pk %}" class="btn btn-default">Edit article</a>
+                	<a href="{% url 'newshub:edit_article' pk=article.pk %}" class="btn btn-default">Edit</a>
 				{% else %}
 		            {% if request.user in article.author.followed_by.all %}
                     <button type="button" class="btn btn-active btn-default follow-button">
@@ -58,9 +58,16 @@
                 <div class="article-view-element poll">
                     <div class="article-poll-headline">{{article.poll}}</div>
                     {% if request.user in article.poll.voted.all %}
+                        <div class="poll-results">
                         {% for choice in article.poll.choice_set.all %}
-                            <p>{{choice}}: {{choice.votes}}</p>
+                            <div class="row">
+                                <div class="poll-results-info"><span class="poll-count">{{forloop.counter}}</span> {{choice}}</div>
+                                <div class="poll-results-right">
+                                    <div class="poll-results-bar progress-bar progress-bar-success" role="progressbar" aria-valuenow="300" aria-valuemin="0" aria-valuemax="20" style="width:100%"><span class="description">{{choice.votes}}</span></div>
+                                </div>
+                            </div>
                         {% endfor %}
+                        </div>
                     {% else %}
                     <form class="form-horizontal" method="post" action="{% url 'newshub:article_poll_vote' pk=article.poll.pk %}">
                     {% csrf_token %}
@@ -122,6 +129,15 @@
     </div><!-- /.article-right-sidebar -->
 
  </div><!-- /.row -->
-
+<script>
+var maxWidth = Math.max.apply( null, $('.poll-results-info').map( function () {
+    return $( this ).outerWidth( true );
+}).get());
+$('.poll-results-info').outerWidth(maxWidth);
+$('.poll-results-right').css('width', '100%').css('width', "-=" + (maxWidth+14) + "px");
+$( window ).resize(function() {
+$('.poll-results-right').css('width', '100%').css('width', "-=" + (maxWidth+14) + "px");
+});
+</script>
 {% endblock %}
 

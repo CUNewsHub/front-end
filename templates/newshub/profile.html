@@ -56,14 +56,14 @@
 	            {% endif %}
             {% endif %}
         </ul>
-    </div><!-- /.article-sidebar -->
+    </div><!-- /.profile-sidebar -->
 
     <div class="col-sm-8 main tab-content profile-page">
     	<div id="profile" class="row center-block tab-pane active">
 			<div class="row">
 			{% if not society %}
 				<div class="col-sm-5 profile-picture">
-					<img class="img-responsive profile-picture" src="{{user.profile.picture.url}}" /> 
+					<img class="img-responsive" src="{{user.profile.picture.url}}" /> 
 				</div>
 				<div class="col-sm-7 profile-description">
 					<div class="profile-info">
@@ -89,23 +89,25 @@
 			{% else %}
 			<div class="col-sm-5 profile-picture">
 				{% if user.society.logo %}
-					<img class="img-responsive profile-picture" src="{{user.society.logo.url}}" /> 
+					<img class="img-responsive" src="{{user.society.logo.url}}" /> 
 				{% endif %}
 
 				</div>
 				<div class="col-sm-7 profile-description">
-					<h2>{{user.first_name}}</h2>
-					{% if user.society.website %}
-						<p><a href="{{user.society.website}}">Website</a></p>
-					{% endif %}
-					{% if user.society.facebook %}
-						<p><a href="{{user.society.facebook_link}}">Facebook page</a></p>
-					{% endif %}
+					<div class="profile-info">
+						<h2>{{user.first_name}}</h2>
+						{% if user.society.website %}
+							<p><a href="{{user.society.website}}">Website</a></p>
+						{% endif %}
+						{% if user.society.facebook %}
+							<p><a href="{{user.society.facebook_link}}">Facebook page</a></p>
+						{% endif %}
 
-					{% if user.endorsement_set.count > 0 %}
-						<p>{{user.first_name}} has {{user.endorsement_set.count}} endorsements.</p>
-					{% endif %}
-					<p>{{user.username}}</p>
+						{% if user.endorsement_set.count > 0 %}
+							<p>{{user.first_name}} has {{user.endorsement_set.count}} endorsements.</p>
+						{% endif %}
+						<p>{{user.username}}</p>
+					</div>
 				</div>
 				<div class="profile-blurb">
 					<div class="profile-page-title">
@@ -116,35 +118,7 @@
 				</div>
 			{% endif %}
 			</div>
-			{% if request.user != user %}
-			<div class="row">
-				<div class="col-sm-5 profile-tools" data-author-id="{{user.author.pk}}">
-                    {% if request.user in user.author.followed_by.all %}
-                    <button type="button" class="btn btn-active btn-default follow-button">
-                        Followed
-                    {% else %}
-                    <button type="button" class="btn btn-default follow-button">
-                        Follow
-                    {% endif %}
-                    </button>
-                    {% comment %}
-                    {% if request.user in user.author.endorsed_by.all %}
-                    <button type="button" class="btn btn-active btn-default endorse-button">
-                        Endorsed
-                    {% else %}
-                    
-                    {% if request.user.endorsement_set.count < 4 %}
-
-                    <button type="button" class="btn btn-default endorse-button">
-                        Endorse
-                    {% endif %}
-                    {% endif %}
-                    </button>
-                    {% endcomment %}
-                    <!-- <button type="button" class="btn btn-default">Feedback</button> -->
-                </div>
-            </div>
-            {% endif %}
+			{% if user.author.article_set.all.count > 0 %}
 			<div class="featured row">
 				<h1 class="heading">Featured</h1>
 				{% for article in user.author.article_set.all|slice:":3" %} <!-- This is first 3 -->
@@ -158,6 +132,7 @@
 		        {% endif %}
 				{% endfor %}
 			</div>
+			{% endif %}
 		</div>
 
 		<div id="profile-articles" class="row center-block tab-pane">
@@ -297,5 +272,8 @@
 		</div>
 		{% endif %}
 	</div><!-- Profile Info -->
+	<div class="col-sm-2 affixed-sidebar right-profile-sidebar">
+        {% include 'newshub/framework/profile-sidebar.html' %}
+    </div><!-- /.following-sidebar -->
 </div>
 {%endblock%}
