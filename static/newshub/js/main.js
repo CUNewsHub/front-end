@@ -88,6 +88,7 @@ $(document).ready(function(){
     if(data.success){
       toastr.success('Success!');
       s2val = $("#id_tags").select2('val');
+      if (s2val === null) s2val = [];
       s2val = s2val.concat(data.tag.id);
       $('#id_tags')
          .append($("<option></option>")
