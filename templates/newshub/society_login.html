@@ -33,6 +33,13 @@
 	        	    </div>
 	        	</div>
 				{% endfor %}
+	        	{% if login_error %}
+	        	<div class="row">
+	        		<div class="col-sm-offset-2 col-sm-10">
+	        		<p style="color:red;">Either the Society name or password is incorrect</p>
+	        		</div>
+	        	</div>
+	        	{% endif %}
 				<div class="row">			
 					<div class="post-tools col-sm-offset-4 col-sm-2">
 						<input class="btn btn-block" type="submit" name="action" value="Login"/>
