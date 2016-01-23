@@ -96,12 +96,6 @@
 				<div class="col-sm-7 profile-description">
 					<div class="profile-info">
 						<h2>{{user.first_name}}</h2>
-						{% if user.society.website %}
-							<p><a href="{{user.society.website}}">Website</a></p>
-						{% endif %}
-						{% if user.society.facebook %}
-							<p><a href="{{user.society.facebook_link}}">Facebook page</a></p>
-						{% endif %}
 
 						{% if user.endorsement_set.count > 0 %}
 							<p>{{user.first_name}} has {{user.endorsement_set.count}} endorsements.</p>

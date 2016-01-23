@@ -197,13 +197,17 @@ body {
 			border-right-color: white;
 		}
 		//End triangles
-		.active:hover:after{
-			border-left-color: $navbar-inverse-bg;
-		}
-		.active a:focus {
+		.active a:focus, .active a:hover {
 			background-color: $navbar-inverse-link-active-bg !important;
-			&:hover {
+		}
+	}
+	.sibling-hover {
+		&.active {
+			a {
 				background-color: $navbar-inverse-bg !important;
+			}
+			&:after {
+				border-left-color: $navbar-inverse-bg !important; 
 			}
 		}
 	}
@@ -284,6 +288,14 @@ body {
 		.btn {
 			width: 100%;
     		font-size: 18pt;
+    		font-weight: normal;
+		}
+		margin-bottom: 5px;
+	}
+	li {
+		font-size: 18pt;
+		a {
+			padding: 5px;
 		}
 	}
 }
@@ -574,7 +586,22 @@ body {
 	.post-tools {
 		.btn {
 			padding: 5px 20px;
-    		margin: 0 5px;
+		}
+		.btn-next {
+			.btn {
+				padding: 5px 10px 5px 15px;
+				height: 34px;
+				background-color: $navbar-inverse-link-active-bg;
+			}
+			&:after{
+			    position: absolute;
+			    content:"";
+			    width:0;
+			    height:0;
+			    border-top:17px solid transparent;
+			    border-bottom:17px solid transparent;
+			    border-left:17px solid $navbar-inverse-link-active-bg;
+			}
 		}
 	}
 	.landing-tag-picker {
@@ -798,7 +825,7 @@ body {
 
 .redactor-box{
 	border: 1px solid $main-color;
-	border-radius: 4px;
+	border-radius: 0;
 }
 
 .redactor-editor{

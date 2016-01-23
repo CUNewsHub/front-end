@@ -138,6 +138,11 @@ $(document).ready(function(){
     });
   });
 });
+$('.nav-stacked > li').hover(function() {
+    $(this).siblings().addClass("sibling-hover");
+}, function() {
+    $(this).siblings().removeClass("sibling-hover");
+});
 
 function debounce(func, wait, immediate) {
   var timeout;
