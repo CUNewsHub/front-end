@@ -101,6 +101,22 @@ $(document).ready(function(){
     }
   }, clearForm: true});
 
+  $('.feature-article-form').ajaxForm({success: function(data){
+    if(data.success){
+      toastr.success('Success!');
+      if(data.feature){
+        console.log("feature");
+        $('button[form="feature_article_form_'+data.id_article+'"]').html('Unfeature').addClass('btn-active');
+      }
+      else{
+        $('button[form="feature_article_form_'+data.id_article+'"]').html('Feature').removeClass('btn-active');
+      }
+    }
+    else{
+      toastr.error(data.error);
+    }
+  }, clearForm: true});
+
   $('.feedback-pill a').click(function(e){
     e.preventDefault();
     $url = $(this).attr("href");
