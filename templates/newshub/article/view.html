@@ -129,15 +129,19 @@
     </div><!-- /.article-right-sidebar -->
 
  </div><!-- /.row -->
+{% endblock %}
+
+{% block js %}
+    {{block.super}}
 <script>
-var maxWidth = Math.max.apply( null, $('.poll-results-info').map( function () {
-    return $( this ).outerWidth( true );
-}).get());
-$('.poll-results-info').outerWidth(maxWidth);
-$('.poll-results-right').css('width', '100%').css('width', "-=" + (maxWidth+14) + "px");
-$( window ).resize(function() {
-$('.poll-results-right').css('width', '100%').css('width', "-=" + (maxWidth+14) + "px");
-});
+    var maxWidth = Math.max.apply( null, $('.poll-results-info').map( function () {
+        return $( this ).outerWidth( true );
+    }).get());
+    $('.poll-results-info').outerWidth(maxWidth);
+    $('.poll-results-right').css('width', '100%').css('width', "-=" + (maxWidth+14) + "px");
+    $( window ).resize(function() {
+    $('.poll-results-right').css('width', '100%').css('width', "-=" + (maxWidth+14) + "px");
+    });
 </script>
 {% endblock %}
 

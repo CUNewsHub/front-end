@@ -20,4 +20,32 @@ $(document).ready(function(){
 		}
 	});
 
+	$("#society_login_form").bootstrapValidator({
+		feedbackIcons: validators_feedback_icons,
+		fields:{
+			'username': not_empty_validator,
+			'password': not_empty_validator
+		}
+	});
+
+	$("#update_profile").bootstrapValidator({
+		feedbackIcons: validators_feedback_icons,
+		fields: {
+			'display_name': not_empty_validator
+		}
+	});
+
+	$("#article_comment_form").bootstrapValidator({
+		feedbackIcons: validators_feedback_icons,
+		fields:{
+			'text': {
+				validators:{
+					notEmpty:{
+						message: 'You cannot post an empty comment'
+					}
+				}
+			}
+		}
+	})
+
 });

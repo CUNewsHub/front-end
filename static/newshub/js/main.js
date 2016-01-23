@@ -28,9 +28,9 @@ $(document).ready(function(){
 			method: 'GET',
 			success: function(data){
 				if(data.created){
-          $('div[data-author-id='+$author_id+'] .follow-button').addClass('btn-active').html('Followed');
+          $('[data-author-id='+$author_id+'] .follow-button').addClass('btn-active').html('Followed');
 				} else {
-          $('div[data-author-id='+$author_id+'] .follow-button').removeClass('btn-active').html('Follow');
+          $('[data-author-id='+$author_id+'] .follow-button').removeClass('btn-active').html('Follow');
 				}
 			}
 		})

@@ -1,0 +1,10 @@
+{% extends 'newshub/framework/base.html' %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6 col-sm-offset-3">
+		<h3>Congratulations! You have created a new society: <b>{{user.first_name}}</b></h3>
+		<h3>Your username is: <b>{{user.username}}</b>. You will have to user this username, to login as a society. Alternatively, you can always switch to a society after logging in with your personal account</h3>
+		<h3><a href="{% url 'newshub:profile' user.pk %}#edit-profile">Go to your profile</a></h3>
+	</div>
+</div>
+{% endblock %}

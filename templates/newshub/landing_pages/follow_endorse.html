@@ -8,14 +8,14 @@
 			<div class="col-sm-8 center-block author-item">
 				<div class="row author-profile">
 					<img class="author-pic" src="{{user.profile.picture.url}}{{user.society.logo.url}}" alt="author pic"/>
-					<a class="author-name" href="{% url 'newshub:profile' user.pk %}">{{user.first_name}} {{user.last_name}}</a>
+					<a class="author-name" href="#">{{user.first_name}} {{user.last_name}}</a>
 					<div class="post-tools follow-button">
 		                <button type="button" class="btn btn-default follow-button">
 		                    Follow
 		                </button>
 	                </div>
 				</div>
-			<p class="author-info">{{user.profile.about}}</p>			</div>
+			<p class="author-info">{{user.profile.about}}</p></div>
 			<div class="post-tools">
 				<div class="btn-next">
 				<input class="btn" type="submit" name="action" value="Next" />

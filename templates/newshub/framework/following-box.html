@@ -1,5 +1,5 @@
 {% if feed == 0 %}
-	{% if user.author.follow_set.all.count > 0%}
+	{% if user.author.follow_set.all.count > 0 and user == request.user %}
 	<li class="header following-header"><p>Following Me<p></li>
 	<ul class="nav nav-pills nav-stacked following-box">
 		{% for follow in user.author.follow_set.all %}

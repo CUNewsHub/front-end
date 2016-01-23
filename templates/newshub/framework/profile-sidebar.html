@@ -1,7 +1,7 @@
 <ul class="nav nav-pills nav-stacked">
 	{% if request.user != user %}
-		<div class="profile-tools" data-author-id="{{user.author.pk}}">
-            <li>
+		<div class="profile-tools">
+            <li data-author-id="{{user.author.pk}}">
             {% if request.user in user.author.followed_by.all %}
             <button type="button" class="btn btn-active btn-default follow-button">
                 Followed
@@ -30,10 +30,10 @@
         </div>
     {% endif %}
     {% if user.society.website %}
-        <li><a href="{{user.society.website}}">Website</a></li>
+        <li><a target="_blank" href="{{user.society.website}}">Website</a></li>
     {% endif %}
     {% if user.society.facebook %}
-        <li><a href="{{user.society.facebook_link}}">Facebook page</a></li>
+        <li><a target="_blank" href="{{user.society.facebook_link}}">Facebook page</a></li>
     {% endif %}
 	{% include 'newshub/framework/following-box.html' with feed=0 %}
 </ul>

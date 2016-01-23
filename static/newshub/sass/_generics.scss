@@ -413,8 +413,8 @@ body {
 			height: 30px;
 			margin-bottom: 10px;
 			img {
-				height: 100%;
-				width: auto;
+				height: 30px;
+				width: 30px;
 				border-radius: 50%;
 				margin-right: 5px;
 			}
@@ -490,6 +490,11 @@ body {
 .login {
 	font-family: $font-family-sans-serif;
 	text-align: justify;
+	.login-right form{
+		.form-group {
+			margin-bottom: 5px;
+		}
+	}
 	.login-left, .login-right {
 		padding: 0;
 	}
@@ -623,6 +628,7 @@ body {
 				padding: 5px 10px;
 	    		font-size: 18px;
 	    		margin: 0;
+	    		cursor: pointer;
 			}
 		}
 	}
@@ -869,7 +875,7 @@ body {
 	.article-post-meta {
 		margin-right: 10px;
 		img {
-			width: auto;
+			width: 30px!important;
 		}
 	}
 	.poll {
@@ -993,4 +999,10 @@ body {
 }
 
 // End Profile
+
+//overwrite select2
+.select2-container--default .select2-selection--multiple{
+	border: 1px solid $main-color!important;
+	border-radius: 0px!important;
+}
 
