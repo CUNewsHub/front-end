@@ -1,8 +1,8 @@
 <!-- <ul>
-	<li><a href="{% url 'newshub:home' %}">Home</a></li>
-	<li><a href="{% url 'newshub:profile' %}">Profile</a></li>
-	<li><a href="{% url 'newshub:new_article' %}">Write an article</a>
-	<li><a href="{% url 'newshub:logout' %}">Logout</a></li>
+  <li><a href="{% url 'newshub:home' %}">Home</a></li>
+  <li><a href="{% url 'newshub:profile' %}">Profile</a></li>
+  <li><a href="{% url 'newshub:new_article' %}">Write an article</a>
+  <li><a href="{% url 'newshub:logout' %}">Logout</a></li>
 </ul> -->
 {% load staticfiles %}
 
@@ -30,7 +30,7 @@
               <span class="glyphicon glyphicon-menu-down"></span>
             </a>
             <ul class="dropdown-menu">
-              <li><a href="{% url 'newshub:profile' %}#edit-profile">Edit Profile</a></li>
+              <li><a href="{% url 'newshub:profile' %}#edit-profile" data-open-profile-tab="#edit-profile">Edit Profile</a></li>
                 {% if request.user.profile %}
                 <li class="societies societies-header">Societies</li>
                 {% for society in request.user.admin_of.all %}

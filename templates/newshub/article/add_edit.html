@@ -1,143 +1,143 @@
 {% extends 'newshub/framework/base.html' %}
 {% load staticfiles widget_tweaks%}
 {% block title %}
-	{% if add %}
-		Add new article
-	{% else %}
-		Edit article
-	{% endif %}
+    {% if add %}
+        Add new article
+    {% else %}
+        Edit article
+    {% endif %}
 {% endblock%}
 {% block content %}
 
 <div class="row article-forms fill-height">
-	<div class="col-sm-2 affixed-sidebar left-sidebar">
-		<ul class="nav nav-pills nav-stacked">
-			{% for article in request.user.author.article_set.all %}
-			{% if not article.published %}
-			{% if forloop.first %}
-			<li class="header first-header"><p>Saved Articles<p></li>
-			{% endif %}
-			<li class="saved-article"><a href="{% url 'newshub:edit_article' pk=article.pk %}">{{article.title}}</a></li>
-			{% endif %}
-			{% endfor %}
-			{% for article in request.user.author.article_set.all %}
-			{% if article.published %}
-			{% if forloop.first %}
-			<li class="header"><p>Published Articles<p></li>
-			{% endif %}
-			<li class="saved-article"><a href="{% url 'newshub:edit_article' pk=article.pk %}">{{article.title}}</a></li>
-			{% endif %}
-			{% endfor %}
-		</ul>
+    <div class="col-sm-2 affixed-sidebar left-sidebar">
+        <ul class="nav nav-pills nav-stacked">
+            {% for article in request.user.author.article_set.all %}
+            {% if not article.published %}
+            {% if forloop.first %}
+            <li class="header first-header"><p>Saved Articles<p></li>
+            {% endif %}
+            <li class="saved-article"><a href="{% url 'newshub:edit_article' pk=article.pk %}">{{article.title}}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% for article in request.user.author.article_set.all %}
+            {% if article.published %}
+            {% if forloop.first %}
+            <li class="header"><p>Published Articles<p></li>
+            {% endif %}
+            <li class="saved-article"><a href="{% url 'newshub:edit_article' pk=article.pk %}">{{article.title}}</a></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
     </div><!-- previous-articles-sidebar -->
-	<div id="article-forms-col" class="col-md-8">
-		<div class="form-group">
-				<span class="help-block">Required fields are marked with *</span>
-		</div>
-		<form id="article-post-form" method="post" action="" enctype="multipart/form-data" >
-			{% csrf_token %}
-			{% for field in form%}
-			<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-				{% if field.html_name == 'published' %}
-				<label for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
-					{{field}}
-				{% elif field.html_name == 'poll' and not add%}
-			
-				{% else%}
-					<label for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
-					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+    <div id="article-forms-col" class="col-md-8">
+        <div class="form-group">
+                <span class="help-block">Required fields are marked with *</span>
+        </div>
+        <form id="article-post-form" method="post" action="" enctype="multipart/form-data" >
+            {% csrf_token %}
+            {% for field in form%}
+            <div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+                {% if field.html_name == 'published' %}
+                <label for="{{field.id_for_label}}">{{field.label}}{% if field.field.require %}<span class="required">*</span>{% endif %}</label>
+                    {{field}}
+                {% elif field.html_name == 'poll' and not add%}
+            
+                {% else%}
+                    <label for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
+                    {% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
 
-	               <span class="help-block">
-						<p>{{field.help_text}}</p>
-	                {% for error in field.errors %}
-	                        {{error}}
-	                {% endfor %}
-	               	</span>
-	            {%endif%}
-			</div>
-			{% endfor %}
+                   <span class="help-block">
+                        <p>{{field.help_text}}</p>
+                    {% for error in field.errors %}
+                            {{error}}
+                    {% endfor %}
+                    </span>
+                {%endif%}
+            </div>
+            {% endfor %}
 
-		</form>
-		<div class="article-tag-form article-poll-form">
-			<h4>Add a new tag</h4>
-			<form id="add_new_tag_form" class="form-horizontal" action="{% url 'newshub:add_tag' %}" method="post">
-			{% csrf_token %}
-				<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-				{% for field in tag_form%}
-					<label class="col-sm-1 control-label" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
-					<div class="col-sm-3">
-						{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
-		            </div>
-				{% endfor %}
-					<div class="col-sm-3">
-						<button type="submit" class="btn-default btn">Add</button>
-					</div>
-				</div>
-			</form>
-		</div>
-		{% if not add %}
-		<div class="article-poll-form">
-			<h4>Manage poll for this article</h4>
-				{% if form.instance.poll %}
-					<!--<p>This article has already have a poll</p>
-					<p><a class="btn btn-default" href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a></p>-->
-					<h5>Poll title: <b>{{form.instance.poll}}</b> Number of options: <b>{{form.instance.poll.choice_set.count}}</b></h5>
-					{% if form.instance.poll.choice_set.count < 2 %}
-					<p class="bg-warning">This poll has less than 2 options, so it will not be shown on the article view page. Add more options to make it visible!</p>
-					{% endif %}
-						<a href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a>
-						<a href="{% url 'newshub:article_delete_poll' pk=form.instance.poll.pk %}">Delete the poll</a>
-						<br /><br /><br />
-				{%else%}
-				<form action="{% url 'newshub:article_add_poll' %}" method="post">
-					{% csrf_token %}
-					{% for hidden in poll_form.hidden_fields %}
-	                        {{ hidden }}
-	                    {% endfor %}
-					{% for field in poll_form.visible_fields %}
-					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-						<label for="{{field.id_for_label}}">{{field.label}}</label>
-						{% if field.html_name == 'published' %}
-							{{field}}
-						{% else%}
-							{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
-							<span class="help-block">
-								<p>{{field.help_text}}</p>
-			                {% for error in field.errors %}
-			                        {{error}}
-			                {% endfor %}
-			               	</span>
-			            {%endif%}
-					</div>
-					{% endfor %}
-					<ul class="nav nav-pills">
-						<li><input type="submit" value="Add poll" class="btn btn-default" /></li>
-					</ul>
-				</form>
-				{% endif %}
-		</div>
-		{% endif %}
-	</div>
-	<div class="col-md-2 affixed-sidebar right-sidebar">
-		<ul class="nav nav-pills nav-stacked">
-			{% if form.instance.published %} <!-- Can't figure out how to make it published -->
-			<li><input class="red" type="submit" name="action" value="Published" form="article-post-form"/></li> <!-- THIS CURRENTLY DOES NOTHING -->
-			{% else %}
-			<li><input type="submit" name="action" value="Publish" form="article-post-form"/></li>
-			{% endif %}
-			{% if not add %}
-				<li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default btn-block">
-				{% if form.instance.published %}
-					View
-				{% else %}
-					Preview
-				{% endif %}
-				</a></li>
-			{% endif %}
-			<li><input type="submit" name="action" value="Save" form="article-post-form"/></li>
-		</ul>
-		
-	</div>
+        </form>
+        <div class="article-tag-form article-poll-form">
+            <h4>Add a new tag</h4>
+            <form id="add_new_tag_form" class="form-horizontal" action="{% url 'newshub:add_tag' %}" method="post">
+            {% csrf_token %}
+                <div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+                {% for field in tag_form%}
+                    <label class="col-sm-1 control-label" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
+                    <div class="col-sm-3">
+                        {% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+                    </div>
+                {% endfor %}
+                    <div class="col-sm-3">
+                        <button type="submit" class="btn-default btn">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        {% if not add %}
+        <div class="article-poll-form">
+            <h4>Manage poll for this article</h4>
+                {% if form.instance.poll %}
+                    <!--<p>This article has already have a poll</p>
+                    <p><a class="btn btn-default" href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a></p>-->
+                    <h5>Poll title: <b>{{form.instance.poll}}</b> Number of options: <b>{{form.instance.poll.choice_set.count}}</b></h5>
+                    {% if form.instance.poll.choice_set.count < 2 %}
+                    <p class="bg-warning">This poll has less than 2 options, so it will not be shown on the article view page. Add more options to make it visible!</p>
+                    {% endif %}
+                        <a href="{% url 'newshub:article_edit_poll' pk=form.instance.poll.pk %}">Edit poll</a>
+                        <a href="{% url 'newshub:article_delete_poll' pk=form.instance.poll.pk %}">Delete the poll</a>
+                        <br /><br /><br />
+                {%else%}
+                <form id="add_new_poll_form" action="{% url 'newshub:article_add_poll' %}" method="post">
+                    {% csrf_token %}
+                    {% for hidden in poll_form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                    {% for field in poll_form.visible_fields %}
+                    <div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+                        <label for="{{field.id_for_label}}">{{field.label}}</label>
+                        {% if field.html_name == 'published' %}
+                            {{field}}
+                        {% else%}
+                            {% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+                            <span class="help-block">
+                                <p>{{field.help_text}}</p>
+                            {% for error in field.errors %}
+                                    {{error}}
+                            {% endfor %}
+                            </span>
+                        {%endif%}
+                    </div>
+                    {% endfor %}
+                    <ul class="nav nav-pills">
+                        <li><input type="submit" value="Add poll" class="btn btn-default" /></li>
+                    </ul>
+                </form>
+                {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-md-2 affixed-sidebar right-sidebar">
+        <ul class="nav nav-pills nav-stacked">
+            {% if form.instance.published %} <!-- Can't figure out how to make it published -->
+            <li><input class="red" type="submit" name="action" value="Published" form="article-post-form"/></li> <!-- THIS CURRENTLY DOES NOTHING -->
+            {% else %}
+            <li><input type="submit" name="action" value="Publish" form="article-post-form"/></li>
+            {% endif %}
+            {% if not add %}
+                <li><a href="{% url 'newshub:view_article' action_type='home' pk=form.instance.pk %}" class="btn btn-default btn-block">
+                {% if form.instance.published %}
+                    View
+                {% else %}
+                    Preview
+                {% endif %}
+                </a></li>
+            {% endif %}
+            <li><input type="submit" name="action" value="Save" form="article-post-form"/></li>
+        </ul>
+        
+    </div>
 </div>
 {% comment %}
 <script>

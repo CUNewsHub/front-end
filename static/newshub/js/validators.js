@@ -46,6 +46,13 @@ $(document).ready(function(){
 				}
 			}
 		}
-	})
+	});
+
+	$("#add_new_poll_form").bootstrapValidator({
+		feedbackIcons: validators_feedback_icons,
+		fields:{
+			'title': not_empty_validator
+		}
+	});
 
 });
