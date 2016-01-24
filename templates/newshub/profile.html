@@ -84,7 +84,7 @@ Profile of {{user.first_name}}
 						<div class="profile-page-title">
 						</div>
 						<div class="profile-page-section">
-							{% if user.profile.about %}{{user.profile.about}}{% endif %}
+							{% if user.profile.about %}{{user.profile.about|linebreaks}}{% endif %}
 						</div>
 					</div>
 				</div>
@@ -111,7 +111,7 @@ Profile of {{user.first_name}}
 					<div class="profile-page-title">
 					</div>
 					<div class="profile-page-section">
-						{{user.society.about}}
+						{{user.society.about|linebreaks}}
 					</div>
 				</div>
 			{% endif %}
