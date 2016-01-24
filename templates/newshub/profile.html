@@ -1,5 +1,5 @@
 {% extends 'newshub/framework/base.html' %}
-{% load widget_tweaks thumbnail %}
+{% load widget_tweaks thumbnail 	%}
 {% comment %}
 	Profile page of the User/Author. 
 
@@ -96,7 +96,6 @@ Profile of {{user.first_name}}
 					{% thumbnail user.society.logo "350x350" crop="center" as im %}
 	                    <img src="{{ im.url }}">
 	                {% endthumbnail %}
-					<img class="img-responsive" src="{{user.society.logo.url}}" /> 
 				{% endif %}
 
 				</div>
