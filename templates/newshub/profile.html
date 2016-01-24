@@ -27,7 +27,9 @@
 				- time_uploaded: a datetime object of when was the article first uploaded
 				- time_changed: the time of the last save of the article
 {% endcomment %}
-{% block title %}Profile{% endblock%}
+{% block title %}
+Profile of {{user.first_name}}
+{% endblock%}
 {% block content %}
 <div class="row fill-height">
     <div class="col-sm-2 affixed-sidebar left-sidebar">

@@ -1,5 +1,12 @@
 {% extends 'newshub/framework/base.html' %}
 {% load staticfiles widget_tweaks%}
+{% block title %}
+	{% if add %}
+		Add new article
+	{% else %}
+		Edit article
+	{% endif %}
+{% endblock%}
 {% block content %}
 
 <div class="row article-forms fill-height">
