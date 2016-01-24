@@ -132,13 +132,12 @@ Profile of {{user.first_name}}
 			{% endif %}
 			{% endfor %}
 		</div>
-		<div class="row">
+		<div id="profile-articles" class="row center-block tab-pane">
+            <div class="row">
 			{% if request.user == user %}
 			<div class="col-sm-10 col-sm-offset-1"><h4 class="bg-info" style="padding:20px;">You can choose up to 3 articles to feature on the main section of your profile. Just click the button next to your name!</h4></div>
 			{% endif %}
 		</div>
-		<div id="profile-articles" class="row center-block tab-pane">
-            
 			{% for article in user.author.article_set.all %}
 			{% if article.published %}
 			<div class="row">
