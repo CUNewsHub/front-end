@@ -1,5 +1,5 @@
 {% extends 'newshub/framework/base.html' %}
-{% load widget_tweaks thumbnail 	%}
+{% load widget_tweaks thumbnail %}
 {% comment %}
 	Profile page of the User/Author. 
 
@@ -190,7 +190,18 @@ Profile of {{user.first_name}}
                 </div>
                 {% else %}
                 <div class="post-tools">
-                    <p class="article-post-meta"><img src="{{article.author.user.profile.picture.url}}{{article.author.user.society.logo.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
+                    <p class="article-post-meta">
+                    {% if article.author.user.profile.picture %}
+	                    {% thumbnail article.author.user.profile.picture "350x350" crop="center" as im %}
+		                    <img src="{{ im.url }}">
+		                {% endthumbnail %}
+
+                    {% elif article.author.user.society.logo%}
+	                    {% thumbnail article.author.user.society.logo "350x350" crop="center" as im %}
+		                    <img src="{{ im.url }}" alt="author pic">
+		                {% endthumbnail %}
+                    {% endif %}
+                    <a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
                     <a href="{% url 'newshub:edit_article' article.pk %}" class="btn btn-default">Edit article</a>
                     <button type="submit" class="btn btn-default {% if article.featured %}btn-active{% endif %}" form="feature_article_form_{{article.pk}}">
                     	{% if article.featured %}

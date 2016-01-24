@@ -1,4 +1,16 @@
+{% load thumbnail %}
 <div class="article-post">
-	<p class="article-post-meta"><img src="{{comment.made_by.profile.picture.url}}{{comment.made_by.society.logo.url}}" alt="author pic"/><a href="{% url 'newshub:profile' comment.made_by.pk %}">{% if comment.made_by.profile.display_name and comment.made_by.profile.display_name.strip %}{{comment.made_by.profile.display_name}}{% else %}{{comment.made_by.first_name}} {{comment.made_by.last_name}}{%endif%}</a></p>
+	<p class="article-post-meta">
+	{% if comment.made_by.profile.picture %}
+        {% thumbnail article.author.user.profile.picture "350x350" crop="center" as im %}
+            <img src="{{ im.url }}">
+        {% endthumbnail %}
+
+    {% elif comment.made_by.profile.logo%}
+        {% thumbnail article.author.user.society.logo "350x350" crop="center" as im %}
+            <img src="{{ im.url }}" alt="author pic">
+        {% endthumbnail %}
+    {% endif %}
+	<a href="{% url 'newshub:profile' comment.made_by.pk %}">{% if comment.made_by.profile.display_name and comment.made_by.profile.display_name.strip %}{{comment.made_by.profile.display_name}}{% else %}{{comment.made_by.first_name}} {{comment.made_by.last_name}}{%endif%}</a></p>
 	<p>{{comment.text|linebreaks}}</p>
 </div>

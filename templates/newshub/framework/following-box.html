@@ -1,3 +1,4 @@
+{% load thumbnail %}
 {% if feed == 0 %}
 	{% if user.author.follow_set.all.count > 0 and user == request.user %}
 	<li class="header following-header"><p>Following Me<p></li>
@@ -7,11 +8,14 @@
 			<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">
 			<li class="following-pill">
 				{% if user.profile.picture %}
-					<img src="{{user.profile.picture.url}}" alt="author pic"/>
-				{% endif %}
-				{% if user.society.logo %}
-					<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
-				{% endif %}
+                    {% thumbnail user.profile.picture "350x350" crop="center" as im %}
+                        <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                {% elif user.society.logo %}
+                    {% thumbnail user.society.logo "350x350" crop="center" as im %}
+                        <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                {% endif %}
 				{% if user.profile %}
 					{% if user.profile.display_name and user.profile.display_name.strip %}
                             {{user.profile.display_name}}
@@ -36,11 +40,14 @@
 			<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">
 			<li class="following-pill">
 				{% if user.profile.picture %}
-					<img src="{{user.profile.picture.url}}" alt="author pic"/>
-				{% endif %}
-				{% if user.society.logo %}
-					<img class="" src="{{user.society.logo.url}}"  alt="author pic"/> 
-				{% endif %}
+                    {% thumbnail user.profile.picture "350x350" crop="center" as im %}
+                        <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                {% elif user.society.logo %}
+                    {% thumbnail user.society.logo "350x350" crop="center" as im %}
+                        <img src="{{ im.url }}">
+                    {% endthumbnail %}
+                {% endif %}
 				{% if user.profile %}
 					{% if user.profile.display_name and user.profile.display_name.strip %}
                             {{user.profile.display_name}}

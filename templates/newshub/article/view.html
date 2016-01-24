@@ -16,7 +16,16 @@
 			<h1 class="article-post-title">{{article.title}}</h1>
 			<div class="post-tools" data-author-id="{{article.author.id}}">
 				<p class="article-post-meta">
-                    <img src="{{article.author.user.profile.picture.url}}{{article.author.user.society.logo.url}}" alt="author pic"/>
+                    {% if article.author.user.profile.picture %}
+                        {% thumbnail article.author.user.profile.picture "350x350" crop="center" as im %}
+                            <img src="{{ im.url }}">
+                        {% endthumbnail %}
+
+                    {% elif article.author.user.society.logo%}
+                        {% thumbnail article.author.user.society.logo "350x350" crop="center" as im %}
+                            <img src="{{ im.url }}" alt="author pic">
+                        {% endthumbnail %}
+                    {% endif %}
                     <a href="{% url 'newshub:profile' article.author.user.pk %}">
                         {% if article.author.user.profile.display_name and article.author.user.profile.display_name.strip %}
                             {{article.author.user.profile.display_name}}
