@@ -1,5 +1,5 @@
 {% extends 'newshub/framework/base.html' %}
-{% load widget_tweaks %}
+{% load widget_tweaks thumbnail %}
 {% comment %}
 	Profile page of the User/Author. 
 
@@ -65,7 +65,9 @@ Profile of {{user.first_name}}
 			<div class="row">
 			{% if not society %}
 				<div class="col-sm-5 profile-picture">
-					<img class="img-responsive" src="{{user.profile.picture.url}}" /> 
+					{% thumbnail user.profile.picture "350x350" crop="center" as im %}
+	                    <img src="{{ im.url }}">
+	                {% endthumbnail %}
 				</div>
 				<div class="col-sm-7 profile-description">
 					<div class="profile-info">
@@ -91,6 +93,9 @@ Profile of {{user.first_name}}
 			{% else %}
 			<div class="col-sm-5 profile-picture">
 				{% if user.society.logo %}
+					{% thumbnail user.society.logo "350x350" crop="center" as im %}
+	                    <img src="{{ im.url }}">
+	                {% endthumbnail %}
 					<img class="img-responsive" src="{{user.society.logo.url}}" /> 
 				{% endif %}
 
@@ -148,7 +153,18 @@ Profile of {{user.first_name}}
                 </a>
                 {% if request.user != article.author.user %}
                 <div class="post-tools" data-author-id="{{article.author.id}}">
-                    <p class="article-post-meta"><img src="{{article.author.user.profile.picture.url}}{{article.author.user.society.logo.url}}" alt="author pic"/><a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
+                    <p class="article-post-meta">
+                    {% if article.author.user.profile.picture %}
+	                    {% thumbnail article.author.user.profile.picture "350x350" crop="center" as im %}
+		                    <img src="{{ im.url }}">
+		                {% endthumbnail %}
+
+                    {% elif article.author.user.society.logo%}
+	                    {% thumbnail article.author.user.society.logo "350x350" crop="center" as im %}
+		                    <img src="{{ im.url }}" alt="author pic">
+		                {% endthumbnail %}
+                    {% endif %}
+                    <a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
                     {% comment %}
                     {% if request.user in article.author.followed_by.all %}
                     <button type="button" class="btn btn-active btn-default follow-button">
