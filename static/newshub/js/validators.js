@@ -46,6 +46,12 @@ $(document).ready(function(){
 				}
 			}
 		}
+	}).on('submit.form.bv', function(e){
+		var $form = $(e.target);
+
+	    // Get the BootstrapValidator instance
+	    var bv = $form.data('bootstrapValidator');
+	    bv.resetForm();
 	});
 
 	$("#add_new_poll_form").bootstrapValidator({
