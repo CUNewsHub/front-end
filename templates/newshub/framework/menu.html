@@ -16,13 +16,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{% if after_landing == 1%}{% url 'newshub:home' %}{% else %}/{%endif%}"><img class="logo" src="{% static 'newshub/images/nhlogo.svg' %}" /><span class="brand-text"><span class="hidden-text">CAM</span> <span class="alternate-colour">N</span>EWS <span class="alternate-colour">H</span>UB</span></a>
+        <a class="navbar-brand" href="{% if after_landing == 1%}{% url 'newshub:top_stories' %}{% else %}/{%endif%}"><img class="logo" src="{% static 'newshub/images/nhlogo.svg' %}" /><span class="brand-text"><span class="hidden-text">CAM</span> <span class="alternate-colour">N</span>EWS <span class="alternate-colour">H</span>UB</span></a>
       </div>
       {% if after_landing == 1%}
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <!-- <li><a href="#">Search</a></li> -->
-          <li {% if request.path == '/' or '/view/article/' in request.path or '/history/' in request.path or '/top-stories/' in request.path %} class="active"{% endif %} ><a href="{% url 'newshub:home' %}">News</a></li>
+          <li {% if request.path == '/' or '/view/article/' in request.path or '/history/' in request.path or '/top-stories/' in request.path %} class="active"{% endif %} ><a href="{% url 'newshub:top_stories' %}">News</a></li>
           <li {% if request.path == '/new/article/' or '/edit/article/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:new_article' %}">Post</a></li>
           <li {% if '/profile/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:profile' %}">Profile</a></li>
           <li role="presentation" class="dropdown">
