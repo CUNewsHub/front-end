@@ -5,7 +5,9 @@
 <meta property="og:type" content="article" />
 <meta property="og:title" content="{{article.title}}" />
 <meta property="og:description" content="{{article.headline}}" />
-<meta property="og:image"              content="https://www.camnewshub.com{{MEDIA_URL}}{{article.header_picture.url}}" />
+{% if article.header_picture %}
+    <meta property="og:image" content="https://www.camnewshub.com{{MEDIA_URL}}{{article.header_picture.url}}" />
+{% endif %}
 {% endblock %}
 {% block title %}
     {{article.title}}
