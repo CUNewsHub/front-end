@@ -106,12 +106,12 @@ Profile of {{user.first_name}}
 							<p>Society ID: {{user.username}}</p>
 						{% endif %}
 					</div>
-				</div>
-				<div class="profile-blurb">
-					<div class="profile-page-title">
-					</div>
-					<div class="profile-page-section">
-						{{user.society.about|linebreaks}}
+					<div class="profile-blurb">
+						<div class="profile-page-title">
+						</div>
+						<div class="profile-page-section">
+							{{user.society.about|linebreaks}}
+						</div>
 					</div>
 				</div>
 			{% endif %}
