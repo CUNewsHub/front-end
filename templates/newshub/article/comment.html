@@ -2,12 +2,12 @@
 <div class="article-post">
 	<p class="article-post-meta">
 	{% if comment.made_by.profile.picture %}
-        {% thumbnail article.author.user.profile.picture "350x350" crop="center" as im %}
+        {% thumbnail comment.made_by.profile.picture "350x350" crop="center" as im %}
             <img src="{{ im.url }}">
         {% endthumbnail %}
 
-    {% elif comment.made_by.profile.logo%}
-        {% thumbnail article.author.user.society.logo "350x350" crop="center" as im %}
+    {% elif comment.made_by.society.logo%}
+        {% thumbnail comment.made_by.society.logo "350x350" crop="center" as im %}
             <img src="{{ im.url }}" alt="author pic">
         {% endthumbnail %}
     {% endif %}
