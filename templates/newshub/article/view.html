@@ -1,14 +1,5 @@
 {% extends 'newshub/framework/base.html' %}
 {% load widget_tweaks thumbnail %}
-{% block meta %}
-<meta property="og:url" content="https://www.camnewshub.com{% url 'newshub:view_article' 'home' article.pk %}" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="{{article.title}}" />
-<meta property="og:description" content="{{article.headline}}" />
-{% if article.header_picture %}
-    <meta property="og:image" content="https://www.camnewshub.com{{MEDIA_URL}}{{article.header_picture.url}}" />
-{% endif %}
-{% endblock %}
 {% block title %}
     {{article.title}}
 {% endblock %}
