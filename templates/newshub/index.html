@@ -1,5 +1,5 @@
 {% extends 'newshub/framework/base.html' %}
-{% load staticfiles thumbnail %}
+{% load staticfiles thumbnail endless %}
 {% comment %}
     This is the main entry for the website, here will be the feed of articles.
 
@@ -29,7 +29,7 @@
     </div><!-- /.article-sidebar -->
 
     <div class="col-sm-8 main">
-        
+        {% paginate 10 articles %}
         {% for article in articles %}
         <div class="row">
             <div class="center-block feed-article">
@@ -94,6 +94,25 @@
             </div>
         </div>
         {% endfor %}
+        <div class="row page-links">
+            <div class="col-sm-4 col-sm-offset-4">
+                {%get_pages%}
+                {% if pages.current.url == "" %}
+
+                {% else %}
+                    {% if pages.previous.url == "" %}
+                        <a href="{{request.path}}">Previous page</a>
+                    {% else %}
+                        <a href="{{request.path}}">First page</a>
+                        <a href="{{pages.previous.url}}">Previous page</a>
+                    {% endif %}
+                {% endif %}
+                {% if pages.next.url %}
+                    <a href="{{pages.next.url}}">Next page</a>
+                {% endif %}
+            </div>
+        </div>
+
     </div><!-- /.feed-main -->
 
     <div class="col-sm-2 affixed-sidebar right-feed-sidebar">

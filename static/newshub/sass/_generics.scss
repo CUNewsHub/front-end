@@ -1020,3 +1020,19 @@ body {
 	border-radius: 0px!important;
 }
 
+
+.page-links{
+	margin-top:30px;
+	a{
+		color: white;
+		background-color: $main-color;
+		font-size: 11.52pt;
+		font-weight: bolder;
+		padding: 5px 10px;
+		text-decoration: none;
+	}
+	a:hover{
+		text-decoration:none;
+		opacity: 0.8;
+	}
+}
