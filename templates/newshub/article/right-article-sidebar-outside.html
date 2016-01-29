@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<ul class="nav nav-pills nav-stacked">
+<li class="header">
+	<p>Feedback</p>
+</li>
+<li>
+	<p>To give feedback, you need to login</p>
+</li>
+</ul>
+	<div class="login">
+		<p class="social">
+		<a href="{% url 'social:begin' 'facebook' %}?next={% url 'newshub:view_article' 'home' article.pk %}" title="Facebook Login"><span class="social-span facebook-title">Login via Facebook</span><img class="facebook" src="{% static 'newshub/images/facebook.png' %}" alt="fb logo"/></a>
+	</p>
+	</div>
+<ul class="nav nav-pills nav-stacked">
+<li class="header"><p>Share</p></li>
+</ul>
+{% include 'newshub/article/share.html' with article=article %}

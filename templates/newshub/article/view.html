@@ -1,5 +1,14 @@
 {% extends 'newshub/framework/base.html' %}
-{% load widget_tweaks thumbnail %}
+{% load staticfiles widget_tweaks thumbnail %}
+{% if action_type == 'pre_view' %}
+{% block og %}
+    <meta property="og:url" content="https://www.camnewshub.com{% url 'newshub:view_article_outside' article.pk %}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{article.title}}" />
+    <meta property="og:description" content="{{article.subheading}}" />
+    <meta property="og:image" content="https://www.camnewshub.com{% if article.header_picture %}{% thumbnail article.header_picture "800x450" crop="center" as im %}{{im.url}}{% endthumbnail%}{% else %}{% static 'newshub/images/newshubcover.png' %}{% endif %}" />
+{% endblock %}
+{% endif %}
 {% block title %}
     {{article.title}}
 {% endblock %}
@@ -11,7 +20,6 @@
     </div><!-- /.article-sidebar -->
 
     <div class="col-sm-8 main article-container">
-
 		<div class="col-sm-9 center-block article-post">
 			<h1 class="article-post-title">{{article.title}}</h1>
 			<div class="post-tools" data-author-id="{{article.author.id}}">
@@ -37,24 +45,26 @@
 		  		{% if article.author.user == request.user %}
                 	<a href="{% url 'newshub:edit_article' pk=article.pk %}" class="btn btn-default">Edit</a>
 				{% else %}
-		            {% if request.user in article.author.followed_by.all %}
-                    <button type="button" class="btn btn-active btn-default follow-button">
-                        Followed
-                    {% else %}
-                    <button type="button" class="btn btn-default follow-button">
-                        Follow
+                    {% if action_type != 'pre_view' %}
+    		            {% if request.user in article.author.followed_by.all %}
+                        <button type="button" class="btn btn-active btn-default follow-button">
+                            Followed
+                        {% else %}
+                        <button type="button" class="btn btn-default follow-button">
+                            Follow
+                        {% endif %}
+                        </button>
+                        {% comment %}
+                        {% if request.user in article.author.endorsed_by.all %}
+                        <button type="button" class="btn btn-active btn-default endorse-button">
+                            Endorsed
+                        {% else %}
+                        <button type="button" class="btn btn-default endorse-button">
+                            Endorse
+                        {% endif %}
+                        {% endcomment %}
+                        <!-- <button type="button" class="btn btn-default">Feedback</button> -->
                     {% endif %}
-                    </button>
-                    {% comment %}
-                    {% if request.user in article.author.endorsed_by.all %}
-                    <button type="button" class="btn btn-active btn-default endorse-button">
-                        Endorsed
-                    {% else %}
-                    <button type="button" class="btn btn-default endorse-button">
-                        Endorse
-                    {% endif %}
-                    {% endcomment %}
-                    <!-- <button type="button" class="btn btn-default">Feedback</button> -->
 		        {%endif%}
             </div>
             <div class="article-view-element">
@@ -66,68 +76,70 @@
     			<p class="article-post-headline">{{article.headline}}</p>
     			<div class="article-post-content">{{article.content|safe}}</div>
             </div>
-            {% if article.poll and article.poll.choice_set.count > 1%}
-                <div class="article-view-element poll">
-                    <div class="article-poll-headline">{{article.poll}}</div>
-                    {% if request.user in article.poll.voted.all %}
-                        <div class="poll-results">
-                        {% for choice in article.poll.choice_set.all %}
-                            <div class="row">
-                                <div class="poll-results-info"><span class="poll-count">{{forloop.counter}}</span> {{choice}}</div>
-                                <div class="poll-results-right">
-                                    <div class="poll-results-bar progress-bar progress-bar-success" role="progressbar" aria-valuenow="300" aria-valuemin="0" aria-valuemax="20" style="width:100%"><span class="description">{{choice.votes}}</span></div>
+            {% if action_type != 'pre_view' %}
+                {% if article.poll and article.poll.choice_set.count > 1%}
+                    <div class="article-view-element poll">
+                        <div class="article-poll-headline">{{article.poll}}</div>
+                        {% if request.user in article.poll.voted.all %}
+                            <div class="poll-results">
+                            {% for choice in article.poll.choice_set.all %}
+                                <div class="row">
+                                    <div class="poll-results-info"><span class="poll-count">{{forloop.counter}}</span> {{choice}}</div>
+                                    <div class="poll-results-right">
+                                        <div class="poll-results-bar progress-bar progress-bar-success" role="progressbar" aria-valuenow="300" aria-valuemin="0" aria-valuemax="20" style="width:100%"><span class="description">{{choice.votes}}</span></div>
+                                    </div>
                                 </div>
+                            {% endfor %}
                             </div>
-                        {% endfor %}
+                        {% else %}
+                        <form class="form-horizontal" method="post" action="{% url 'newshub:article_poll_vote' pk=article.poll.pk %}">
+                        {% csrf_token %}
+                        {% for choice in article.poll.choice_set.all %}
+                        <div class="form-group">
+                            <input type="radio" name="choice" id="choice_{{forloop.counter}}" value="{{choice.id}}" />
+                            <label class="col-sm-12" for="choice_{{forloop.counter}}"><span class="poll-count">{{forloop.counter}}</span><span class="poll-middle-text text-middle">{{choice.choice_text}}</span></label>
                         </div>
-                    {% else %}
-                    <form class="form-horizontal" method="post" action="{% url 'newshub:article_poll_vote' pk=article.poll.pk %}">
-                    {% csrf_token %}
-                    {% for choice in article.poll.choice_set.all %}
-                    <div class="form-group">
-                        <input type="radio" name="choice" id="choice_{{forloop.counter}}" value="{{choice.id}}" />
-                        <label class="col-sm-12" for="choice_{{forloop.counter}}"><span class="poll-count">{{forloop.counter}}</span><span class="poll-middle-text text-middle">{{choice.choice_text}}</span></label>
+                        {% endfor %}
+                        <input type="submit" value="Vote" class="btn btn-default" />
+                        </form>
+                        {% endif %}
                     </div>
-                    {% endfor %}
-                    <input type="submit" value="Vote" class="btn btn-default" />
+                {% endif %}
+                <div class="article-view-element article-comments">
+                    <h4>Comments</h4>
+                    <form class="form-horizontal" id="article_comment_form" method="post" action="{% url 'newshub:add_comment' %}">
+                        {% csrf_token %}
+                        {% for hidden in comment_form.hidden_fields %}
+                            {{ hidden }}
+                        {% endfor %}
+                        {% for field in comment_form.visible_fields %}
+                        <div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+                            <div class="col-sm-12">
+                                {% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+                                {% for error in field.errors %}
+                                     <span class="help-block">
+                                        {{error}}
+                                     </span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <div class="form-group">
+                            <div class="post-tools col-sm-2">
+                                <input class="btn" type="submit" name="action" value="Comment"/>
+                            </div>
+                        </div>
                     </form>
-                    {% endif %}
+                    <div class="article-comments-section">
+                        {% for comment in article.comment_set.all %}
+                            {% include 'newshub/article/comment.html' with comment=comment%}
+                        {% empty %}
+                            <p class="no-comment">No comments for this article</p>
+                        {%endfor %}
+
+                    </div>
                 </div>
             {% endif %}
-            <div class="article-view-element article-comments">
-                <h4>Comments</h4>
-                <form class="form-horizontal" id="article_comment_form" method="post" action="{% url 'newshub:add_comment' %}">
-                    {% csrf_token %}
-                    {% for hidden in comment_form.hidden_fields %}
-                        {{ hidden }}
-                    {% endfor %}
-                    {% for field in comment_form.visible_fields %}
-                    <div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
-                        <div class="col-sm-12">
-                            {% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
-                            {% for error in field.errors %}
-                                 <span class="help-block">
-                                    {{error}}
-                                 </span>
-                            {% endfor %}
-                        </div>
-                    </div>
-                    {% endfor %}
-                    <div class="form-group">
-                        <div class="post-tools col-sm-2">
-                            <input class="btn" type="submit" name="action" value="Comment"/>
-                        </div>
-                    </div>
-                </form>
-                <div class="article-comments-section">
-                    {% for comment in article.comment_set.all %}
-                        {% include 'newshub/article/comment.html' with comment=comment%}
-                    {% empty %}
-                        <p class="no-comment">No comments for this article</p>
-                    {%endfor %}
-
-                </div>
-            </div>
 		</div><!-- /.article-post -->
 		
 		<!--{% if article.author == request.user %}
@@ -137,7 +149,11 @@
     </div><!-- /.article-main -->
 
     <div class="col-sm-2 affixed-sidebar article-right-sidebar">
-      	{% include 'newshub/article/right-article-sidebar.html' with article=article feedback_set=feedback_set uf=uf%}
+        {% if action_type != 'pre_view' %}
+          	{% include 'newshub/article/right-article-sidebar.html' with article=article feedback_set=feedback_set uf=uf action_type=action_type%}
+        {% else %}
+            {% include 'newshub/article/right-article-sidebar-outside.html' with article=article %}
+        {% endif %}
     </div><!-- /.article-right-sidebar -->
 
  </div><!-- /.row -->

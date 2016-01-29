@@ -233,6 +233,14 @@ body {
 }
 
 .article-right-sidebar {
+	.login{
+		.social{
+			margin-top: 0px;
+			margin-bottom: 35px;
+			text-align: center;
+			font-size: 11.52pt;
+		}
+	}
 	.social-media-pill {
 		text-align: center;
 		li {
@@ -857,6 +865,7 @@ body {
 
 // Articles
 .article-container {
+	padding-bottom: 30px;
 	.article-view-element, .article-container .post-tools{
 		padding-top: 10px;
 		p{
@@ -881,6 +890,14 @@ body {
 		margin-top: 25px;
 		textarea{
 			height: 100px;
+		}
+
+		.article-comments-section{
+			.btn{
+				float:right;
+				padding: 0px 6px;
+				margin-left: 6px;
+			}
 		}
 	}
 	.article-post-meta {

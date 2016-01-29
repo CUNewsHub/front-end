@@ -6,13 +6,16 @@
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	    <meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="NewsHub" />
+		{% block og %}
 		<meta property="og:title" content="NewsHub" />
 		<meta property="og:url" content="https://www.camnewshub.com/" />
 		<meta property="og:type" content="website" />
 		<meta property="og:description" content="Welcome to the Cambridge NewsHub - a social media platform for Cambridge students to find high quality articles written by Cambridge bloggers, journalists and societies." />
-		<meta property="fb:app_id" content="1544641899183518" />
 	    <meta property="og:image" content="https://www.camnewshub.com{% static 'newshub/images/newshubcover.png' %}" />
-	    
+	   	{% endblock %}
+
+		<meta property="fb:app_id" content="1544641899183518" />
+
 		<title>{% block title %}{%endblock%}</title>
 
 		{% fontawesome_stylesheet %}	
@@ -33,10 +36,14 @@
 		<!-- Header start -->
 		<section class="section-header">
 		{% if request.user.is_authenticated %}
-			{% if request.path == '/landing/pages/tags/' or request.path == '/landing/pages/follow/endorse/' or request.path == '/privacy/policy/' or request.path == '/about/us/' or request.path == '/contact/us/' %}
-			{% include 'newshub/framework/menu.html' with after_landing=0 %}
+			{% if request.path == '/landing/pages/tags/' or request.path == '/landing/pages/follow/endorse/' %}
+				{% include 'newshub/framework/menu.html' with after_landing=0 %}
 			{% else %}
-			{% include 'newshub/framework/menu.html' with after_landing=1%}
+				{% include 'newshub/framework/menu.html' with after_landing=1%}
+			{% endif %}
+		{% else %}
+			{% if '/view/article/' in request.path  or request.path == '/privacy/policy/' or request.path == '/about/us/' or request.path == '/contact/us/' %}
+				{% include 'newshub/framework/menu.html' with after_landing=0 %}
 			{% endif %}
 		{% endif %}
 		</section>

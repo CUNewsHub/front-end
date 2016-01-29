@@ -1,5 +1,5 @@
 {% load thumbnail %}
-<div class="article-post">
+<div class="article-post article-post-comment" id="article_comment_{{comment.pk}}">
 	<p class="article-post-meta">
 	{% if comment.made_by.profile.picture %}
         {% thumbnail comment.made_by.profile.picture "350x350" crop="center" as im %}
@@ -11,6 +11,30 @@
             <img src="{{ im.url }}" alt="author pic">
         {% endthumbnail %}
     {% endif %}
-	<a href="{% url 'newshub:profile' comment.made_by.pk %}">{% if comment.made_by.profile.display_name and comment.made_by.profile.display_name.strip %}{{comment.made_by.profile.display_name}}{% else %}{{comment.made_by.first_name}} {{comment.made_by.last_name}}{%endif%}</a></p>
-	<p>{{comment.text|linebreaks}}</p>
+	<a href="{% url 'newshub:profile' comment.made_by.pk %}">{% if comment.made_by.profile.display_name and comment.made_by.profile.display_name.strip %}{{comment.made_by.profile.display_name}}{% else %}{{comment.made_by.first_name}} {{comment.made_by.last_name}}{%endif%}</a>
+    {% if request.user == comment.made_by %}
+        <button class="btn btn-default btn-sm comment-delete" data-toggle="modal" data-target="#delete_comment_modal_{{comment.pk}}">delete</button>
+        <button class="btn btn-default btn-sm comment-edit">edit</button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="delete_comment_modal_{{comment.pk}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+          <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                Are you sure you want to delete your comment?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+
+                <button type="button" class="btn btn-primary">Yes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endif %}
+
+    </p>
+	
+
+    <p>{{comment.text|linebreaks}}</p>
 </div>
