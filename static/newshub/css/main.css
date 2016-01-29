@@ -9790,106 +9790,114 @@ body {
   padding: 0px 6px;
   margin-left: 6px;
 }
-/* line 903, ../sass/_generics.scss */
+/* line 902, ../sass/_generics.scss */
+.article-container .article-comments .article-comments-section .edit-comment-form textarea {
+  resize: none;
+}
+/* line 905, ../sass/_generics.scss */
+.article-container .article-comments .article-comments-section .edit-comment-form .textarea-container {
+  margin: 0px 10px;
+}
+/* line 911, ../sass/_generics.scss */
 .article-container .article-post-meta {
   margin-right: 10px;
 }
-/* line 905, ../sass/_generics.scss */
+/* line 913, ../sass/_generics.scss */
 .article-container .article-post-meta img {
   width: 30px !important;
 }
-/* line 910, ../sass/_generics.scss */
+/* line 918, ../sass/_generics.scss */
 .article-container .poll p {
   font-family: "PT Sans", sans-serif;
 }
-/* line 913, ../sass/_generics.scss */
+/* line 921, ../sass/_generics.scss */
 .article-container .poll .form-group {
   margin: 0;
 }
-/* line 916, ../sass/_generics.scss */
+/* line 924, ../sass/_generics.scss */
 .article-container .poll .article-poll-headline {
   text-align: center;
   color: #8D0812;
   font-size: 20px;
 }
-/* line 921, ../sass/_generics.scss */
+/* line 929, ../sass/_generics.scss */
 .article-container .poll input[type="radio"] {
   display: none;
 }
-/* line 924, ../sass/_generics.scss */
+/* line 932, ../sass/_generics.scss */
 .article-container .poll input[type="radio"]:checked + label, .article-container .poll label:hover {
   background-color: #8D0812;
   color: white;
 }
-/* line 928, ../sass/_generics.scss */
+/* line 936, ../sass/_generics.scss */
 .article-container .poll label {
   padding: 3px;
   font-size: 16px;
   margin: 0;
 }
-/* line 933, ../sass/_generics.scss */
+/* line 941, ../sass/_generics.scss */
 .article-container .poll .poll-count {
   width: 10%;
   display: inline-block;
 }
-/* line 937, ../sass/_generics.scss */
+/* line 945, ../sass/_generics.scss */
 .article-container .poll .poll-middle-text {
   width: 90%;
   text-align: center;
   display: inline-block;
   margin-left: -5%;
 }
-/* line 943, ../sass/_generics.scss */
+/* line 951, ../sass/_generics.scss */
 .article-container .poll .btn {
   margin-top: 10px;
 }
-/* line 946, ../sass/_generics.scss */
+/* line 954, ../sass/_generics.scss */
 .article-container .poll .poll-results {
   font-weight: bold;
 }
-/* line 948, ../sass/_generics.scss */
+/* line 956, ../sass/_generics.scss */
 .article-container .poll .poll-results .row {
   margin: 0 0 10px 0;
 }
-/* line 951, ../sass/_generics.scss */
+/* line 959, ../sass/_generics.scss */
 .article-container .poll .poll-results .poll-count {
   width: auto;
   margin-right: 10px;
 }
-/* line 955, ../sass/_generics.scss */
+/* line 963, ../sass/_generics.scss */
 .article-container .poll .poll-results .poll-results-info {
   margin-right: 10px;
   display: inline-block;
 }
-/* line 959, ../sass/_generics.scss */
+/* line 967, ../sass/_generics.scss */
 .article-container .poll .poll-results .poll-results-right {
   display: inline-block;
 }
-/* line 961, ../sass/_generics.scss */
+/* line 969, ../sass/_generics.scss */
 .article-container .poll .poll-results .poll-results-right .poll-results-bar {
   float: none;
   background-color: #8D0812;
 }
 
-/* line 972, ../sass/_generics.scss */
+/* line 980, ../sass/_generics.scss */
 #profile {
   text-align: justify;
   padding: 0 15%;
   padding-top: 10px;
 }
-/* line 976, ../sass/_generics.scss */
+/* line 984, ../sass/_generics.scss */
 #profile .profile-picture, #profile .profile-description {
   padding: 0;
 }
-/* line 979, ../sass/_generics.scss */
+/* line 987, ../sass/_generics.scss */
 #profile .profile-picture {
   border: 5px solid #242424;
 }
-/* line 981, ../sass/_generics.scss */
+/* line 989, ../sass/_generics.scss */
 #profile .profile-picture img {
   width: 100%;
 }
-/* line 986, ../sass/_generics.scss */
+/* line 994, ../sass/_generics.scss */
 #profile .profile-description .profile-info {
   padding: 10px 0;
   text-align: center;
@@ -9897,65 +9905,65 @@ body {
   color: white;
   font-size: 14pt;
 }
-/* line 992, ../sass/_generics.scss */
+/* line 1000, ../sass/_generics.scss */
 #profile .profile-description .profile-info h2 {
   font-size: 30pt;
   font-size: 2vw;
   margin: 10px 0 0;
 }
-/* line 997, ../sass/_generics.scss */
+/* line 1005, ../sass/_generics.scss */
 #profile .profile-description .profile-info p {
   font-family: "PT Sans", sans-serif;
   margin: 0;
 }
-/* line 1002, ../sass/_generics.scss */
+/* line 1010, ../sass/_generics.scss */
 #profile .profile-description .profile-blurb {
   padding: 10px 20px;
 }
-/* line 1006, ../sass/_generics.scss */
+/* line 1014, ../sass/_generics.scss */
 #profile .featured {
   padding: 0 5%;
 }
-/* line 1007, ../sass/_generics.scss */
+/* line 1015, ../sass/_generics.scss */
 #profile .featured .heading {
   font-size: 28pt;
   text-align: center;
   border-bottom: thin solid #A6A6A6;
 }
-/* line 1012, ../sass/_generics.scss */
+/* line 1020, ../sass/_generics.scss */
 #profile .featured .article-post-title {
   font-size: 24pt;
 }
-/* line 1015, ../sass/_generics.scss */
+/* line 1023, ../sass/_generics.scss */
 #profile .featured .profile-articles {
   border-bottom: thin solid #A6A6A6;
 }
-/* line 1017, ../sass/_generics.scss */
+/* line 1025, ../sass/_generics.scss */
 #profile .featured .profile-articles h4 {
   padding: 20px;
 }
 
-/* line 1025, ../sass/_generics.scss */
+/* line 1033, ../sass/_generics.scss */
 #edit-profile {
   padding-top: 20px;
 }
-/* line 1027, ../sass/_generics.scss */
+/* line 1035, ../sass/_generics.scss */
 #edit-profile .form-group {
   margin: 0 0 15px;
 }
 
-/* line 1035, ../sass/_generics.scss */
+/* line 1043, ../sass/_generics.scss */
 .select2-container--default .select2-selection--multiple {
   border: 1px solid #8D0812 !important;
   border-radius: 0px !important;
 }
 
-/* line 1041, ../sass/_generics.scss */
+/* line 1049, ../sass/_generics.scss */
 .page-links {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-/* line 1044, ../sass/_generics.scss */
+/* line 1052, ../sass/_generics.scss */
 .page-links a {
   color: white;
   background-color: #8D0812;
@@ -9964,7 +9972,7 @@ body {
   padding: 5px 10px;
   text-decoration: none;
 }
-/* line 1052, ../sass/_generics.scss */
+/* line 1060, ../sass/_generics.scss */
 .page-links a:hover {
   text-decoration: none;
   opacity: 0.8;

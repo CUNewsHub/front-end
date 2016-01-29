@@ -13,10 +13,10 @@
     {% endif %}
 	<a href="{% url 'newshub:profile' comment.made_by.pk %}">{% if comment.made_by.profile.display_name and comment.made_by.profile.display_name.strip %}{{comment.made_by.profile.display_name}}{% else %}{{comment.made_by.first_name}} {{comment.made_by.last_name}}{%endif%}</a>
     {% if request.user == comment.made_by %}
-        <button class="btn btn-default btn-sm comment-delete" data-toggle="modal" data-target="#delete_comment_modal_{{comment.pk}}">delete</button>
-        <button class="btn btn-default btn-sm comment-edit">edit</button>
+        <button class="btn btn-default btn-sm comment-delete" data-toggle="modal" data-target="#delete_comment_modal_{{comment.pk}}">Delete</button>
+        <button class="btn btn-default btn-sm comment-edit" data-toggle="modal" data-target="#edit_comment_modal_{{comment.pk}}">Edit</button>
 
-        <!-- Modal -->
+        <!-- Delete Modal -->
         <div class="modal fade" id="delete_comment_modal_{{comment.pk}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog modal-sm" role="document">
             <div class="modal-content">
@@ -25,16 +25,40 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-
-                <button type="button" class="btn btn-primary">Yes</button>
+                <form action="{% url 'newshub:delete_comment' %}" method="post" class="delete-comment-form">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{comment.pk}}" name="comment_pk"/>
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                </form>
               </div>
             </div>
           </div>
         </div>
+        <!-- Edit Modal -->
+        <div class="modal fade" id="edit_comment_modal_{{comment.pk}}" tabindex="-1" role="dialog">
+          <div class="modal-dialog" role="document">
+            <form data-parent-section="#article_comment_{{comment.pk}}" data-parent-modal="#edit_comment_modal_{{comment.pk}}" action="{% url 'newshub:edit_comment' %}" method="post" class="edit-comment-form">
+            {% csrf_token %}
+            <div class="modal-content">
+              <div class="modal-header">
+                <p>Update your comment</p>
+              </div>
+              <div class="modal-body row textarea-container">
+                <textarea name="comment_text" class="form-control">{{comment.text}}</textarea>
+              </div>
+              <div class="modal-footer">
+                <input type="hidden" value="{{comment.pk}}" name="comment_pk"/>
+                <button type="submit" class="btn btn-primary">Edit</button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+
     {% endif %}
 
     </p>
 	
 
-    <p>{{comment.text|linebreaks}}</p>
+    <div class="comment-text">{{comment.text|linebreaks}}</div>
 </div>

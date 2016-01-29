@@ -1,5 +1,33 @@
-$(document).ready(function(){
+function delete_comment_fun(elem){
+  elem.ajaxForm({success: function(data){
+    if(data.success){
+      toastr.success('Success!');
+      $('#delete_comment_modal_'+data.comment_pk).modal('hide');
+      $('#article_comment_'+data.comment_pk).slideUp('1000', function(){
+        $(this).remove();
+          delete_comment_fun($('.delete-comment-form'));
+          edit_comment_fun($('.edit-comment-form'));
+      });
+    }
+  }, clearForm: true});
+}
 
+function edit_comment_fun(elem){
+  data_parent_modal = elem.attr('data-parent-modal');
+  data_parent_section = elem.attr('data-parent-section');
+  elem.ajaxForm({success:function(data){
+    toastr.success('Success!');
+    $.when($(data_parent_modal).modal('hide').remove()).then(function(){ 
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+      $(data_parent_section).replaceWith(data);
+      delete_comment_fun($('.delete-comment-form'));
+      edit_comment_fun($('.edit-comment-form'));
+    });
+  }});
+}
+
+$(document).ready(function(){
   toastr.options = {
     "closeButton": true,
     "debug": false,
@@ -17,6 +45,9 @@ $(document).ready(function(){
     "showMethod": "fadeIn",
     "hideMethod": "fadeOut"
   }
+
+  delete_comment_fun($('.delete-comment-form'));
+  edit_comment_fun($('.edit-comment-form'));
 
 	$(".follow-button").click(function(){
 		$this = $(this);
@@ -44,7 +75,6 @@ $(document).ready(function(){
 			data: {'author': $author_id},
 			method: 'GET',
 			success: function(data){
-        console.log(data)
 				if(data.created && data.success){
           $('div[data-author-id='+$author_id+'] .endorse-button').addClass('btn-active').html('Endorsed');
 				} else {
@@ -82,6 +112,9 @@ $(document).ready(function(){
 
   $('#article_comment_form').ajaxForm({success: function(data) { 
     $('.article-comments-section').prepend(data);
+    var new_elem = $('.article-comments-section div:first-child');
+    delete_comment_fun($('.delete-comment-form'));
+    edit_comment_fun($('.edit-comment-form'));
   }, clearForm: true}); 
 
   $('#add_new_tag_form').ajaxForm({success:function(data){
@@ -105,7 +138,6 @@ $(document).ready(function(){
     if(data.success){
       toastr.success('Success!');
       if(data.feature){
-        console.log("feature");
         $('button[form="feature_article_form_'+data.id_article+'"]').html('Unfeature').addClass('btn-active');
       }
       else{

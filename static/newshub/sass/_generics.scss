@@ -898,6 +898,14 @@ body {
 				padding: 0px 6px;
 				margin-left: 6px;
 			}
+			.edit-comment-form{
+				textarea{
+					resize:none;
+				}
+				.textarea-container{
+					margin: 0px 10px;
+				}
+			}
 		}
 	}
 	.article-post-meta {
