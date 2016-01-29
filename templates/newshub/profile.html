@@ -55,6 +55,7 @@ Profile of {{user.first_name}}
             -->
 	            {% if request.user == user %}
 	            <li><a href="#edit-profile" data-toggle="pill">Edit Society</a></li>
+	            <li><a href="{% url 'newshub:society_change_password' %}">Change password</a></li>
 	            {% endif %}
             {% endif %}
         </ul>

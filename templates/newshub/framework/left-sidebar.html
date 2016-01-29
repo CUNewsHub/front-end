@@ -14,6 +14,11 @@
     {% elif type == 'pre_view' %}
         <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
         <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+    {% else %}
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
+        <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:history' %}">History</a></li>
+        <li class="{%if is_article%}article-{%endif%}active"><a href="{% url 'newshub:articles_by_category' category.name %}">{{category.name}}</a></li>
     {% endif %}
     <!-- <li class="search">
         <div id="custom-search-input">
@@ -43,7 +48,6 @@
             {% endfor %}
         </ul>
     </div>
-    {% else %}
     <!-- <div class="trending-tags">
         <p class="tag-type">Trending Tags</p>
         {% for tag in Author.objects.all %}
@@ -54,5 +58,15 @@
             {%endif %}
         {% endfor %}
     </div> -->
+    {% else %}
+    <div class="related-tags">
+        <p class="tag-type">Browse articles by:</p>
+        <ul class="tag-list">
+        {% for category in categories %}
+            <li><a href="{% url 'newshub:articles_by_category' category.name %}">{{category.name}}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
     {% endif %}
+
 </div>
