@@ -176,7 +176,7 @@ $('.nav-stacked > li').hover(function() {
     $(this).siblings().removeClass("sibling-hover");
 });
 
-function debounce(func, wait, immediate) {
+/* function debounce(func, wait, immediate) {
   var timeout;
   return function() {
     var context = this, args = arguments;
@@ -199,12 +199,10 @@ var myEfficientFn = debounce(function() {
   }
 }, 250);
 
-window.addEventListener('scroll', myEfficientFn);
-/* $(window).scroll(function() {
-  $('.affixed-sidebar').stop().animate({
-    marginTop: $(this).scrollTop()
-  });
-}); */
+window.addEventListener('scroll', myEfficientFn); */
+$(window).scroll(function() {
+  $('.affixed-sidebar').css('top', $(this).scrollTop())
+});
 /*!
  * jQuery Plugin: Are-You-Sure (Dirty Form Detection)
  * https://github.com/codedance/jquery.AreYouSure/

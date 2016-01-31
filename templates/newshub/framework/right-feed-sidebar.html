@@ -2,6 +2,8 @@
 	<!--<li class="header first-header"><p>New to NewsHub?<p></li>
 	<li><a href="#" class="btn btn-default">Get Started</a></li>--> <!-- NEEDS LINK -->
 	<!-- <li class="header"><p>Topic of the Week<p></li>-->
-	<li><p><b>Welcome to the Cambridge NewsHub. We're changing the way that student news works in Cambridge. Find out more about what we're doing and get involved <a target="_blank" href="{% url 'newshub:about_us' %}">here</a>.</b></p></li>
+	<li><p class="blurb-header">Welcome to the Cambridge NewsHub.</p><p>We're changing the way that student news works in Cambridge. Find out more about what we're doing and get involved here: </p>
+	<a class="about-us-btn" target="_blank" href="{% url 'newshub:about_us' %}">About Us</a></li>
+	<div class="fb-like" data-href="https://www.facebook.com/CamNewsHub/" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
 	{% include 'newshub/framework/following-box.html' with feed=1%}
 </ul>

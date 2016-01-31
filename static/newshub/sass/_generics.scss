@@ -117,35 +117,36 @@ body {
 	.brand-text {
 		display: none;
 		@media (min-width: $container-sm) {
-			z-index: 0;
 			display: inline;
 			vertical-align: middle;
 			position: relative;
-			left: -100px;
+			/* left: -100px;
 			-webkit-transition: all 300ms ease-out;
 			-moz-transition: all 300ms ease-out;
-			transition: all 300ms ease-out;
+			transition: all 300ms ease-out; */
 		}
+	}
+	.school-text {
+		margin: 0 10px 0 0;
 	}
 	font-size: 36pt;
 	padding: 5px 5px 5px 0;
     overflow: hidden;
     position: relative;
-    left: 5px;
 	.alternate-colour {
 		color: white;
 	}
 	.hidden-text {
 		opacity: 0;
 	}
-	&:hover {
+	/*&:hover {
 		.brand-text {
 			left: 5px;
 		}
 		.hidden-text {
 			opacity: 1;
 		}
-	}
+	}*/
 }
 // End Navbar
 
@@ -163,9 +164,6 @@ body {
 		}
 		.article-active a {
 			background-color: $navbar-inverse-link-active-bg;
-			&:hover {
-				background-color: $button-light-gray;
-			}
 		}
 		.article-pill a {
 			background-color: $button-light-gray;
@@ -208,6 +206,11 @@ body {
 			}
 			&:after {
 				border-left-color: $navbar-inverse-bg !important; 
+			}
+		}
+		&.article-active {
+			a {
+				background-color: $button-light-gray;
 			}
 		}
 	}
@@ -386,8 +389,8 @@ body {
 	.feedback-pill{
 		font-size: 12pt;
 		&.active a{
-			background-color: $navbar-inverse-bg;
-			color: white;
+			background-color: $button-light-gray;
+			color: black;
 			font-size: 16pt;
 			font-weight: bold;
 		}
@@ -454,6 +457,17 @@ body {
 	height: 100%;
 	@media (max-width: $screen-sm) {
 	    display: none;
+	}
+	.blurb-header {
+		background-color: $navbar-inverse-bg;
+		color: white;
+		font-size: 13pt;
+	}
+	.about-us-btn {
+		display: inline-block;
+		padding: 2px 5px;
+		font-size: 11.52pt;
+		margin: -10px auto 10px;
 	}
 }
 // End Sidebars
@@ -730,7 +744,7 @@ body {
 		padding-top: 10px;
 		margin: 0;
 		font-weight: bold;
-		font-size: 28pt;
+		font-size: 22pt;
 		a {
 			color: black;
 			text-decoration: none;
