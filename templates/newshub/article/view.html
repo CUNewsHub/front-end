@@ -6,7 +6,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{article.title}}" />
     <meta property="og:description" content="{{article.subheading}}" />
-    <meta property="og:image" content="{{request.META.HTTP_HOST}}{% if article.header_picture %}{% thumbnail article.header_picture "800x450" crop="center" as im %}{{im.url}}{% endthumbnail%}{% else %}{% static 'newshub/images/newshubcover.png' %}{% endif %}" />
+    <meta property="og:image" content="https://www.camnewshub.com{% if article.header_picture %}{% thumbnail article.header_picture "800x450" crop="center" as im %}{{im.url}}{% endthumbnail%}{% else %}{% static 'newshub/images/newshubcover.png' %}{% endif %}" />
 {% endblock %}
 {% endif %}
 {% block title %}
