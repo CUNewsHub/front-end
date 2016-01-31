@@ -34,30 +34,53 @@
     </li>
     <li ><a href="#">Filter</a></li>  -->
 </ul>
+
 <div class="tags">
     {% if is_article %}
-    <div class="related-tags">
-        <p class="tag-type">Related Tags</p>
-        <ul class="tag-list">
-            {% for tag in article.tags.all %}
+        {% if type != 'pre_view' %}
+
+        <div class="related-tags">
+            <p class="tag-type">Related Tags</p>
+            <ul class="tag-list">
+                {% for tag in article.tags.all %}
+                    {% if tag.approved %}
+                        <li><a href="{% url 'newshub:article_by_tags' tag.name %}">{{tag.name}}</a></li>
+                    {% else %}
+                        <li>{{tag}}</li>
+                    {%endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <!-- <div class="trending-tags">
+            <p class="tag-type">Trending Tags</p>
+            {% for tag in Author.objects.all %}
                 {% if tag.approved %}
                     <li><a href="{% url 'newshub:article_by_tags' tag.name %}">{{tag.name}}</a></li>
                 {% else %}
                     <li>{{tag}}</li>
                 {%endif %}
             {% endfor %}
-        </ul>
-    </div>
-    <!-- <div class="trending-tags">
-        <p class="tag-type">Trending Tags</p>
-        {% for tag in Author.objects.all %}
-            {% if tag.approved %}
-                <li><a href="{% url 'newshub:article_by_tags' tag.name %}">{{tag.name}}</a></li>
-            {% else %}
-                <li>{{tag}}</li>
-            {%endif %}
-        {% endfor %}
-    </div> -->
+        </div> -->
+        {% else %}
+        <div class="article-right-sidebar">
+            <ul class="nav nav-pills nav-stacked">
+            <li class="header following-header"><p>More articles<p></li>
+                <ul class="nav nav-pills nav-stacked following-box">
+                    {% for article in more_articles %}
+                        <a class="following-profile-link" href="{% url 'newshub:view_article_outside' article.pk %}">
+                        <li class="following-pill">
+                                {{forloop.counter}}. {{article.title}}
+                        </li>
+                        </a>
+                    {% endfor %}
+                </ul>
+            <li class="header"><p>Share</p></li>
+            </ul>
+            <div class="left-social">
+                {% include 'newshub/article/share.html' with article=article %}
+            </div>
+        </div>
+        {% endif %}
     {% else %}
     <div class="related-tags">
         <p class="tag-type">Browse articles by:</p>

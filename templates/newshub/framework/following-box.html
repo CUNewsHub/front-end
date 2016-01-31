@@ -3,7 +3,7 @@
 	{% if user.author.follow_set.all.count > 0 and user == request.user %}
 	<li class="header following-header"><p>Following Me<p></li>
 	<ul class="nav nav-pills nav-stacked following-box">
-		{% for follow in user.author.follow_set.all|slice:":5" %}
+		{% for follow in user.author.follow_set.all %}
 			{% with user=follow.followed_by %}
 			<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">
 			<li class="following-pill">
@@ -35,7 +35,7 @@
 	{% if user.follow_set.all.count > 0%}
 	<li class="header following-header"><p>Following<p></li>
 	<ul class="nav nav-pills nav-stacked following-box">
-		{% for follow in user.follow_set.all|slice:":5" %}
+		{% for follow in user.follow_set.all %}
 			{% with user=follow.author.user %}
 			<a class="following-profile-link" href="{% url 'newshub:profile' user.pk %}">
 			<li class="following-pill">

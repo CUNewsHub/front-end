@@ -294,6 +294,13 @@ body {
 	}
 }
 
+.left-social{
+	.social-media-pill{
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+}
+
 .right-profile-sidebar {
 	.profile-tools {
 		.btn {
@@ -319,6 +326,11 @@ body {
 }
 
 .nav-pills {
+	p.login-text{
+		border-top: 1px solid $main-color;
+		margin-top: 10px;
+		padding-top: 10px;
+	}
 	margin-top: 10px;
 	position: relative;
 	li.active a{
@@ -375,6 +387,7 @@ body {
 		p:hover{
 			cursor: pointer;
 		}
+
 	}
 	.header {
 		margin-top: 20px;
@@ -428,7 +441,6 @@ body {
 		}
 		.following-pill {
 			text-align: left;
-			height: 30px;
 			margin-bottom: 10px;
 			img {
 				height: 30px;
@@ -704,6 +716,7 @@ body {
 	}
 	.article-post-headline {
 		font-weight: 400;
+		text-align: left;
 		font-size: 16px;
 		word-wrap: break-word;
 	}

@@ -165,6 +165,9 @@ $(document).ready(function(){
           else{
             $this.addClass('active').blur();
           }
+        } else if (data == 'notauth'){
+          toastr.error('To give feedback, you need to login!');
+          $this.blur();
         }
       }
     });

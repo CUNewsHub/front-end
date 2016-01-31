@@ -152,7 +152,7 @@
         {% if action_type != 'pre_view' %}
           	{% include 'newshub/article/right-article-sidebar.html' with article=article feedback_set=feedback_set uf=uf action_type=action_type%}
         {% else %}
-            {% include 'newshub/article/right-article-sidebar-outside.html' with article=article %}
+            {% include 'newshub/article/right-article-sidebar-outside.html' with article=article feedback_set=feedback_set%}
         {% endif %}
     </div><!-- /.article-right-sidebar -->
 
