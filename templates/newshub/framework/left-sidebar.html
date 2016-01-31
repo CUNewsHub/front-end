@@ -64,7 +64,7 @@
         {% else %}
         <div class="article-right-sidebar">
             <ul class="nav nav-pills nav-stacked">
-            <li class="header following-header"><p>More articles<p></li>
+            <li class="header following-header"><p>Trending Articles<p></li>
                 <ul class="nav nav-pills nav-stacked following-box">
                     {% for article in more_articles %}
                         <a class="following-profile-link" href="{% url 'newshub:view_article_outside' article.pk %}">
