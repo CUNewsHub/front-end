@@ -5777,7 +5777,7 @@ tbody.collapse.in {
 @media (min-width: 768px) {
   /* line 180, ../../../../../../../../../var/lib/gems/1.9.1/gems/bootstrap-sass-3.3.5.1/assets/stylesheets/bootstrap/_navbar.scss */
   .navbar > .container .navbar-brand, .navbar > .container-fluid .navbar-brand {
-    margin-left: -10px;
+    margin-left: -15px;
   }
 }
 
@@ -10003,4 +10003,11 @@ body {
 .page-links a:hover {
   text-decoration: none;
   opacity: 0.8;
+}
+
+@media (min-width: 768px) {
+  /* line 1094, ../sass/_generics.scss */
+  .navbar > .container .navbar-brand {
+    margin-left: -10px;
+  }
 }

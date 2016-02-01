@@ -1089,3 +1089,9 @@ body {
 		opacity: 0.8;
 	}
 }
+
+@media (min-width: $screen-sm){
+	.navbar > .container .navbar-brand{
+		margin-left: -10px;
+	}
+}
