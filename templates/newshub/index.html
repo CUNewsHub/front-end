@@ -49,7 +49,13 @@
                                 <img src="{{ im.url }}">
                             {% endthumbnail %}
                         {% endif %}
-                    <a href="{% url 'newshub:profile' article.author.user.pk %}">{{article.author.user.first_name}} {{article.author.user.last_name}}</a></p>
+                    <a href="{% url 'newshub:profile' article.author.user.pk %}">
+                        {% if article.author.user.profile.display_name and article.author.user.profile.display_name.strip %}
+                            {{article.author.user.profile.display_name}}
+                        {% else %}
+                            {{article.author.user.first_name}} {{article.author.user.last_name}}
+                        {% endif %}
+                    </a></p>
                     {% if request.user in article.author.followed_by.all %}
                     <button type="button" class="btn btn-active btn-default follow-button">
                         Followed
