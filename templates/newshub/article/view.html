@@ -2,7 +2,7 @@
 {% load staticfiles widget_tweaks thumbnail %}
 {% if action_type == 'pre_view' %}
 {% block og %}
-    <meta property="og:url" content="https://www.camnewshub.com{% url 'newshub:view_article_outside' article.pk %}" />
+    <meta property="og:url" content="https://www.camnewshub.com{% url 'newshub:view_article_outside' article.url_text %}" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{article.title}}" />
     <meta property="og:description" content="{{article.subheading}}" />
