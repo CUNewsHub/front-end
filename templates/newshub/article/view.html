@@ -5,7 +5,7 @@
     <meta property="og:url" content="https://www.camnewshub.com{% url 'newshub:view_article_outside' article.url_text %}" />
     <meta property="og:type" content="article" />
     <meta property="og:title" content="{{article.title}}" />
-    <meta property="og:description" content="{{article.subheading}}" />
+    <meta property="og:description" content="{{article.headline}}" />
     <meta property="og:image" content="https://www.camnewshub.com{% if article.header_picture %}{% thumbnail article.header_picture "800x450" crop="center" as im %}{{im.url}}{% endthumbnail%}{% else %}{% static 'newshub/images/newshubcover.png' %}{% endif %}" />
 {% endblock %}
 {% endif %}
