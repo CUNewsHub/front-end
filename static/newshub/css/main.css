@@ -9009,6 +9009,7 @@ body {
 .left-sidebar .tags .tag-list {
   list-style: none;
   padding: 0;
+  font-weight: normal;
 }
 /* line 226, ../sass/_generics.scss */
 .left-sidebar .tags .tag-list li {
@@ -9112,7 +9113,7 @@ body {
 }
 /* line 317, ../sass/_generics.scss */
 .right-profile-sidebar .following-pill {
-  font-size: 9.52pt;
+  font-size: 9.52pt
 }
 /* line 322, ../sass/_generics.scss */
 .right-profile-sidebar li a {
@@ -9288,6 +9289,7 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
+  font-weight: normal;
 }
 @media (max-width: 768px) {
   /* line 466, ../sass/_generics.scss */
@@ -9304,7 +9306,7 @@ body {
 /* line 478, ../sass/_generics.scss */
 .right-feed-sidebar .about-us-btn {
   display: inline-block;
-  padding: 2px 5px;
+  padding: 2px 50px;
   font-size: 11.52pt;
   margin: -10px auto 10px;
 }
