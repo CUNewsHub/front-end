@@ -204,7 +204,9 @@ var myEfficientFn = debounce(function() {
 
 window.addEventListener('scroll', myEfficientFn); */
 $(window).scroll(function() {
+  if($(window).width() > 768){
   $('.affixed-sidebar').css('top', $(this).scrollTop())
+  }
 });
 /*!
  * jQuery Plugin: Are-You-Sure (Dirty Form Detection)

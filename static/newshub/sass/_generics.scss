@@ -517,9 +517,11 @@ body {
 
 // Footer 
 .section-footer {
-	position: fixed;
-	bottom: 0;
-	right: 0;
+	@media (min-width: $screen-sm) {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+	}
 	.nav-stacked{
 		li {
 			a {
