@@ -1,0 +1,39 @@
+{% extends 'newshub/framework/base.html' %}
+{% load staticfiles widget_tweaks %}
+{% block title%}Register{% endblock%}
+
+{% block content %}
+<div class="row fill-height">
+	<div class="col-sm-8 col-sm-offset-2 main tab-content profile-page">
+		<form id="register_form" class="form-horizontal" method="post" action="" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-4">
+					<h3>NewsHub registration</h3>
+				</div>
+			</div>	
+			{% csrf_token %}
+				{% for field in form %}
+				<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+					<label class="col-sm-offset-1 col-sm-3 control-label" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required"></span>{% endif %}</label>
+					<div class="col-sm-6">
+					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+		                <span class="help-block">
+							<p>{{field.help_text}}</p>
+		                {% for error in field.errors %}
+		                        {{error}}
+		                {% endfor %}
+		               	</span>
+	        	    </div>
+	        	</div>
+				{% endfor %}
+	        	{% if login_error %}
+	        	{% endif %}
+				<div class="row">			
+					<div class="col-sm-offset-4 col-sm-6">
+						<input class="btn btn-block btn-primary" type="submit" name="action" value="Register"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+{% endblock %}

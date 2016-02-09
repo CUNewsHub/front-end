@@ -51,7 +51,7 @@
 				{% include 'newshub/framework/menu.html' with after_landing=1%}
 			{% endif %}
 		{% else %}
-			{% if request.path == '/privacy/policy/' or request.path == '/about/us/' or request.path == '/contact/us/' %}
+			{% if request.path == '/privacy/policy/' or request.path == '/about/us/' or request.path == '/contact/us/' or request.path == '/register/' %}
 				{% include 'newshub/framework/menu.html' with after_landing=0 %}
 			{% elif '/view/article/' in request.path  %}
 				{% include 'newshub/framework/menu.html' with after_landing=2 %}

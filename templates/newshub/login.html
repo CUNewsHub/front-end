@@ -1,5 +1,5 @@
 {% extends 'newshub/framework/base.html' %}
-{% load staticfiles %}
+{% load staticfiles widget_tweaks%}
 {% comment %}
 	The main entry for users which arenot logged in. Login link is provided below, this will redirect the users to facebook when they'll be asked about their data.
 {% endcomment %}
@@ -15,18 +15,57 @@
 		<div class="col-md-8 login-right login-brand">
 			<h1><span class="brand-text"> <span class="alternate-colour">N</span>EWS <span class="alternate-colour">H</span>UB</span></h1>
 		</div>
-		<div class="col-md-8 login-right">	
-			<p class="login-blurb">Welcome to the Cambridge NewsHub - a platform for you to post your opinion pieces, articles and blogs for Cambridge students to discover. In order to get a personalised feed of content, <b>login in one step with Facebook.</b> It only takes your email address, name and profile picture and doesn't ever post to Facebook.</p>
+		<div class="col-md-8 login-right">
+			<form class="form-horizontal" method="post" action="" >
+				<div class="row">
+					<div class="col-sm-4 col-sm-offset-4">
+						<h3>Login</h3>
+					</div>
+				</div>	
+				{% csrf_token %}
+					{% for field in form %}
+					<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+						<label class="col-sm-offset-1 col-sm-3 control-label" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required"></span>{% endif %}</label>
+						<div class="col-sm-6">
+						{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+						{% if field.html_name == 'username' %}
+							<span class="help-block">
+								<p>Login with username or society ID</p>
+							</span>
+						{% endif %}
+		        	    </div>
+		        	</div>
+					{% endfor %}
+					<div class="row">
+						<div class="col-sm-offset-4 col-sm-6">
+							{% for error in form.non_field_errors %}
+								<div class="alert alert-danger">{{error}}</span>
+							{% endfor %}
+						</div>
+					</div>
+					<div class="row">			
+						<div class="col-sm-offset-4 col-sm-6">
+							<input class="btn btn-block btn-primary btn-login" type="submit" name="action" value="Login"/>
+						</div>
+					</div>
+					<div class="row">
+						<p class="social social-facebook col-sm-offset-4 col-sm-6">
+							<a href="{% url 'social:begin' 'facebook' %}{% if request.GET.next and request.GET.next != '/' %}?next={{ request.GET.next }}{% else %}?next=/top-stories/{% endif %}" title="Facebook Login"><span class="social-span facebook-title">Login via Facebook</span><img class="facebook" src="{% static 'newshub/images/facebook2.png' %}" alt="fb logo"/></a>
+						</p>
+					</div>
+					<div class="row">
+					<p class="col-sm-offset-4 col-sm-6">
+						Not yet registered? <a href="{% url 'newshub:register' %}">Register here</a> or login with Facebook above.
+					</p>
+					</div>
+				</form>
+			</br>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-md-8 center-block login">
-		<p class="social col-md-8 pull-right">Login via:
-		<a href="{% url 'social:begin' 'facebook' %}{% if request.GET.next and request.GET.next != '/' %}?next={{ request.GET.next }}{% else %}?next=/top-stories/{% endif %}" title="Facebook Login"><span class="social-span facebook-title">Facebook</span><img class="facebook" src="{% static 'newshub/images/facebook.png' %}" alt="fb logo"/></a>
-		 <br>
-		<a href="{% url 'newshub:society_login' %}">Login with society credentials</a>
-	</p>
+		
 	</div>
 </div>
 {%endblock%}

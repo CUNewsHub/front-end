@@ -599,13 +599,16 @@ body {
 		}
 	}
 	.social {
-		font-size: 18pt;
-		margin-top: 30px;
+		font-size: 16px;
+		text-align: center;
+		margin-top: 10px;
 		a {
 			text-decoration: none;
+			padding: 6px 12px;
+			display:block;
 		}
 		.facebook {
-			height: 30px;
+			height: 25px;
 			vertical-align: text-bottom;
 		}
 		.social-span {
@@ -613,7 +616,7 @@ body {
 			font-weight: bold;
 		}
 		.facebook-title {
-			color: $facebook-colour;
+			color: white;
 		}
 		.google {
 			height: 40px;
@@ -621,6 +624,13 @@ body {
 		}
 		.google-title, .google {
 			display: none;
+		}
+	}
+
+	.social-facebook{
+		a {
+			background-color: $facebook-colour;
+			color: white;
 		}
 	}
 }
@@ -1096,4 +1106,9 @@ body {
 	.navbar > .container .navbar-brand{
 		margin-left: -10px;
 	}
+}
+
+.btn-login{
+	font-size: 16px;
+	font-weight: bolder;
 }
