@@ -31,7 +31,6 @@ body {
 }
 
 .container {
-	height: 100%;
 	.fill-height {
 		height: 100%;
 		position: relative;
@@ -42,6 +41,9 @@ body {
 		top: 50%;
 		transform: translateY(-50%);
 	}
+}
+@media (min-width: $screen-sm) {
+	height: 100%;
 }
 // End Basic
 
