@@ -1,0 +1,69 @@
+{% extends "admin/change_form.html" %}
+{% load staticfiles %}
+{% block extrastyle %}
+	{{block.super}}
+    <link href="{% static 'external/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+{% endblock %}
+{% block content_title %}{% if title %}<h1>{{ title }}: {{original.title}}</h1>{% endif %}{% endblock %}
+{% block sidebar %}
+{{block.super}}
+<div class="row">
+	<div class="admin-object-aggregation col-md-4">
+		<h1>Aggregated data</h1>
+		<table class="table table-striped">
+			<tr>
+				<th>Field name</th>
+				<th>Value</th>
+			</tr>
+			<tr>
+				<td>Total view count</td>
+				<td>{{original.get_total_view_count}}</td>
+			</tr>
+			<tr>
+				<td>Distinct view count</td>
+				<td>{{original.get_distinct_view_count}}</td>
+			</tr>
+			<tr>
+				<td>Outside view count</td>
+				<td>{{original.outside_view_count}}</td>
+			</tr>
+			<tr>
+				<td>Like count</td>
+				<td>{{original.likes.count}}</td>
+			</tr>
+			<tr>
+				<td>Comment count</td>
+				<td>{{original.comment_set.count}}</td>
+			</tr>
+			<tr>
+				<td>Top stories value</td>
+				<td>{{original.top_stories_value}}</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+			</tr>
+		</table>
+	</div>
+	<div class="admin-object-aggregation col-md-4">
+		<h1>Feedback info</h1>
+		<table class="table table-striped">
+			<tr>
+				<th>Feedback name</th>
+				<th>count</th>
+			</tr>
+			{% for feedback in original.get_feedback_set %}
+			<tr>
+				<td>{{feedback}}</td>
+				<td>{{feedback.f_count}}
+			</td>
+			{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}
