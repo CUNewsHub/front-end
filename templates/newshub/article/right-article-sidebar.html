@@ -32,7 +32,7 @@
 	{% endfor %}
 	{% else %}
 		<li class="feedback-info feedback-likes">{{article.likes.count}} LIKES</li>
-		<li class="feedback-info feedback-views">{{article_data.article_view_count}} VIEWS</li>
+		<li class="feedback-info feedback-views">{{article_data.total_view_count}} VIEWS</li>
 		<li class="header"><p>Feedback<p></li>
 		<li class="feedback-info feedback-total">TOTAL {{article_data.article_feedback_sum}}</li>
 		{% for feedback in article_data.feedback_set %}
