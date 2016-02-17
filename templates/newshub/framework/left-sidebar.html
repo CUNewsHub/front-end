@@ -67,7 +67,7 @@
             <li class="header following-header"><p>Trending Articles<p></li>
                 <ul class="nav nav-pills nav-stacked following-box">
                     {% for article in more_articles %}
-                        <a class="following-profile-link" href="{% url 'newshub:login' %}?next={% url 'newshub:view_article' 'top-stories' article.pk %}">
+                        <a class="following-profile-link" href="{% url 'newshub:view_article_outside' article.pk %}">
                         <li class="following-pill">
                                 {{forloop.counter}}. {{article.title}}
                         </li>
