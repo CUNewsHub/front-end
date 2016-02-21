@@ -41,9 +41,9 @@ body {
 		top: 50%;
 		transform: translateY(-50%);
 	}
-}
-@media (min-width: $screen-sm) {
-	height: 100%;
+	@media (min-width: $screen-sm) {
+		height: 100%;
+	}
 }
 // End Basic
 
@@ -230,6 +230,7 @@ body {
 				margin: 3px;
 				a {
 					color: black;
+					font-weight: normal;
 					text-decoration: none;
 				}
 			}
@@ -435,6 +436,7 @@ body {
 	}
 	.following-header {
 		border-bottom: $border-style;
+		font-weight: normal;
 	}
 	.following-box {
 		.following-profile-link {
@@ -444,6 +446,7 @@ body {
 		.following-pill {
 			text-align: left;
 			margin-bottom: 10px;
+			font-weight: normal;
 			img {
 				height: 30px;
 				width: 30px;
@@ -476,6 +479,9 @@ body {
 		background-color: $navbar-inverse-bg;
 		color: white;
 		font-size: 13pt;
+	}
+	.blurb-body {
+		font-weight: normal;
 	}
 	.about-us-btn {
 		display: inline-block;
