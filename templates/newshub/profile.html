@@ -83,13 +83,6 @@ Profile of {{user.first_name}}
 							{% endcomment %}
 						{% endif %}
 					</div>
-					<div class="profile-blurb">
-						<div class="profile-page-title">
-						</div>
-						<div class="profile-page-section">
-							{% if user.profile.about %}{{user.profile.about|linebreaks}}{% endif %}
-						</div>
-					</div>
 				</div>
 			{% else %}
 			<div class="col-sm-5 profile-picture">
@@ -111,15 +104,17 @@ Profile of {{user.first_name}}
 							<p>Society ID: {{user.username}}</p>
 						{% endif %}
 					</div>
-					<div class="profile-blurb">
-						<div class="profile-page-title">
-						</div>
-						<div class="profile-page-section">
-							{{user.society.about|linebreaks}}
-						</div>
-					</div>
 				</div>
 			{% endif %}
+			</div>
+			<div class="row">
+				<div class="col-sm-12 profile-blurb">
+					<div class="profile-page-title">
+					</div>
+					<div class="profile-page-section">
+						{% if user.profile.about %}{{user.profile.about|linebreaks}}{% endif %}
+					</div>
+				</div>
 			</div>
 			{% for article in featured_article_set %}
 			{% if forloop.first %}

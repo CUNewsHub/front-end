@@ -648,7 +648,7 @@ body {
 	font-family: $font-family-sans-serif;
 	text-align: justify;
 	@media (max-width: $screen-sm) {
-		margin: 0;
+		margin: 0 ;
 	}
 	.brand {
 		.logo {
@@ -1118,6 +1118,9 @@ body {
 	text-align: justify;
 	padding: $center-padding;
 	padding-top: 10px;
+	.row {
+		position: relative;
+	}
 	.profile-picture, .profile-description {
 		padding: 0;
 	}
@@ -1128,30 +1131,49 @@ body {
 		}
 	}
 	.profile-description {
+		&:before {
+			content: '';
+			display: inline-block;
+			height: 100%; 
+			vertical-align: middle;
+			margin-right: -0.25em; /* Adjusts for spacing */
+		}
+		@media (min-width: $screen-sm) {
+		    height: 100%;
+		    top: 0;
+		    bottom: 0;
+		    right: 0;
+		    position: absolute;
+		    background-color: #242424;
+		}
 		.profile-info {
 			padding: 10px 0;
 			text-align: center;
 			background-color: $navbar-inverse-bg;
 			color: white;
+		    width: calc(100% - 1px);
+			display: inline-block;
+			vertical-align: middle;
 			font-size: 14pt;
 			h2 {
 				font-size: 30pt;
 				font-size: 2vw;
-				margin: 10px 0 0;
+				margin: 0;
 			}
 			p {
 				font-family: $font-family-sans-serif;
 				margin: 0;
 			}
 		}
-		.profile-blurb {
-			padding: 10px 20px;
-		}
 	}
+	.profile-blurb {
+		padding: 10px 20px 0;
+	}		
 	.featured {
 		.heading {
 			font-size: 28pt;
 			text-align: center;
+			margin-top: 0;
 			border-bottom: $border-style;
 		}
 		.article-post-title {
