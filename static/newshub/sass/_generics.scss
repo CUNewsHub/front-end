@@ -525,6 +525,9 @@ body {
 
 // Footer 
 .section-footer {
+	@media (max-width: $screen-sm) {
+		display: none;
+	}
 	@media (min-width: $screen-sm) {
 		position: fixed;
 		bottom: 0;
@@ -542,8 +545,6 @@ body {
 // End Footer
 // Login
 .login {
-	font-family: $font-family-sans-serif;
-	text-align: justify;
 	.login-right form{
 		.form-group {
 			margin-bottom: 5px;
@@ -604,6 +605,95 @@ body {
 		@media (min-width: $screen-md) {
 			position: relative;
 			top: 10px;
+		}
+	}
+	.social {
+		font-size: 16px;
+		text-align: center;
+		margin-top: 10px;
+		a {
+			text-decoration: none;
+			padding: 6px 12px;
+			display:block;
+		}
+		.facebook {
+			height: 25px;
+			vertical-align: text-bottom;
+		}
+		.social-span {
+			margin-right: 10px;
+			font-weight: bold;
+		}
+		.facebook-title {
+			color: white;
+		}
+		.google {
+			height: 40px;
+			vertical-align: text-bottom;
+		}
+		.google-title, .google {
+			display: none;
+		}
+	}
+
+	.social-facebook{
+		a {
+			background-color: $facebook-colour;
+			color: white;
+		}
+	}
+}
+
+.welcome {
+	font-family: $font-family-sans-serif;
+	text-align: justify;
+	@media (max-width: $screen-sm) {
+		margin: 0;
+	}
+	.brand {
+		.logo {
+			height: 100px;
+			width: auto;
+		}
+		h1 {
+			width: calc(100% - 100px);
+			float: right;
+			font-size: 86px;
+		    text-align: center;
+		    color: #9d9d9d;
+		    background-color: #242424;
+		    padding: 4px 0 0 0;
+		    margin: 0;
+			@media (min-width: $screen-sm) {
+		    	height: 100px;
+			}	    
+			.alternate-colour {
+				color: white;
+			}
+		}
+	}
+	.nav {
+		margin: 10px 0;
+		li {
+			width: 50%;
+			float: left;
+			a {
+				font-weight: bold;
+				font-size: 20px;
+				color: $navbar-inverse-bg;
+				:hover, :active, :focus {
+					background-color: transparent !important;
+				}
+			}
+			&.active {
+				a {
+					font-size: 24px;
+					color: $navbar-inverse-link-active-bg;
+				}
+			}
+			:hover, :active, :focus {
+				background-color: transparent !important;
+			}
 		}
 	}
 	.social {
