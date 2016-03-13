@@ -15,7 +15,7 @@
         <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
         <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:home' %}">Personal Feed</a></li>
         {% if request.user.is_authenticated %}
-            <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:history' %}">History</a></li>
+            <li class="{%if is_article%}article-{%endif%}active"><a href="{% url 'newshub:history' %}">History</a></li>
         {% endif %}
     {% elif type == 'pre_view' %}
         <li class="{%if is_article%}article-pill{%endif%}"><a href="{% url 'newshub:top_stories' %}">Top Stories</a></li>
