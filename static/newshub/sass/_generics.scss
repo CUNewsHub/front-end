@@ -825,7 +825,7 @@ body {
 		margin-bottom: 0;
 	}
 	.article-post-headline {
-		font-weight: 400;
+		font-weight: 600;
 		text-align: left;
 		font-size: 16px;
 		word-wrap: break-word;
@@ -1030,6 +1030,10 @@ body {
 		}
 
 		.article-comments-section{
+			.article-post-comment {
+				border-bottom: $border-style;
+				padding-top: 5px;
+			}
 			.btn{
 				float:right;
 				padding: 0px 6px;
@@ -1193,6 +1197,11 @@ body {
 	padding-top: 20px;
 	.form-group {
 		margin: 0 0 15px;
+	}
+	.help-block {
+		p {
+			font-family: $font-family-sans-serif;
+		}
 	}
 }
 
