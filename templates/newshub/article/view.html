@@ -66,6 +66,7 @@
                         <!-- <button type="button" class="btn btn-default">Feedback</button> -->
                     {% endif %}
 		        {%endif%}
+            <p>Published date: {{article.time_uploaded}}</p>
             </div>
             <div class="article-view-element">
                 {% thumbnail article.header_picture "800x450" crop="center" as im %}
