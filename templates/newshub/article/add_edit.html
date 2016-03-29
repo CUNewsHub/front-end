@@ -2,7 +2,7 @@
 {% load staticfiles widget_tweaks%}
 {% block title %}
     {% if add %}
-        Add new article
+        Post new article
     {% else %}
         Edit article
     {% endif %}
@@ -31,6 +31,7 @@
         </ul>
     </div><!-- previous-articles-sidebar -->
     <div id="article-forms-col" class="col-md-8">
+        <h3>{%if add%}Post new article{% else %}Edit {{form.instance.title}}{%endif %}</h3>
         <div class="form-group">
                 <span class="help-block">Required fields are marked with *</span>
         </div>
