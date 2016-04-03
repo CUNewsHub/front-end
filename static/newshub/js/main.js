@@ -204,7 +204,11 @@ var myEfficientFn = debounce(function() {
 
 window.addEventListener('scroll', myEfficientFn); */
 $(window).scroll(function() {
-  if($(window).width() > 768){
+  var maxHeight = Math.max.apply(null, $(".affixed-sidebar").map(function ()
+  {
+      return $(this).height();
+  }).get());
+  if($(window).width() > 768 && maxHeight < $(window).height()){
   $('.affixed-sidebar').css('top', $(this).scrollTop())
   }
 });

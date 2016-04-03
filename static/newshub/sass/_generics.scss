@@ -34,6 +34,9 @@ body {
 	.fill-height {
 		height: 100%;
 		position: relative;
+		:after{
+			clear: both;
+		}
 	}
 	position: relative;
 	.vertically-center {
@@ -499,6 +502,7 @@ body {
 	@media (min-width: $container-sm) {
 		border-left: $border-style;
 		border-right: $border-style;
+		border-bottom: $border-style;
 	}
 	.article-post-meta a {
 		color: $navbar-inverse-link-active-bg;
@@ -825,7 +829,6 @@ body {
 		margin-bottom: 0;
 	}
 	.article-post-headline {
-		font-weight: 600;
 		text-align: left;
 		font-size: 16px;
 		word-wrap: break-word;
@@ -966,10 +969,13 @@ body {
 	    font-size: 16px;
 	    padding: 5px 5px;
 	}
-
 	.btn-active {
 		color: #ffffff;
 		background-color: $navbar-inverse-link-active-bg;
+	}
+	.follow-button {
+		padding: 1px 25px;
+		font-size: 14pt;
 	}
 }
 
@@ -1016,6 +1022,9 @@ body {
 			padding: 5px 20px;
 			vertical-align: inherit;
 		}
+		.follow-button {
+			padding: 1px 25px;
+		}
 	}
 	.article-view-element{
 		img{
@@ -1054,6 +1063,9 @@ body {
 		img {
 			width: 30px!important;
 		}
+	}
+	.article-post-headline {
+		font-weight: 600;
 	}
 	.poll {
 		p {
@@ -1192,7 +1204,11 @@ body {
 		padding: 0 5%;
 	}
 }
-
+#profile-articles {
+	.bg-info {
+		background-color: $feed-hover-gray;
+	}
+}
 #edit-profile {
 	padding-top: 20px;
 	.form-group {
