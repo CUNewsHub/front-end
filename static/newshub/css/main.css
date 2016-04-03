@@ -10174,11 +10174,16 @@ body {
 }
 
 /* line 1233, ../sass/_generics.scss */
+.locked a {
+  background: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 10px, rgba(0, 0, 0, 0.3) 10px, rgba(0, 0, 0, 0.3) 20px), #A6A6A6;
+}
+
+/* line 1238, ../sass/_generics.scss */
 .page-links {
   margin-top: 30px;
   margin-bottom: 30px;
 }
-/* line 1236, ../sass/_generics.scss */
+/* line 1241, ../sass/_generics.scss */
 .page-links a {
   color: white;
   background-color: #8D0812;
@@ -10187,19 +10192,19 @@ body {
   padding: 5px 10px;
   text-decoration: none;
 }
-/* line 1244, ../sass/_generics.scss */
+/* line 1249, ../sass/_generics.scss */
 .page-links a:hover {
   text-decoration: none;
   opacity: 0.8;
 }
 
 @media (min-width: 768px) {
-  /* line 1251, ../sass/_generics.scss */
+  /* line 1256, ../sass/_generics.scss */
   .navbar > .container .navbar-brand {
     margin-left: -10px;
   }
 }
-/* line 1256, ../sass/_generics.scss */
+/* line 1261, ../sass/_generics.scss */
 .btn-login {
   font-size: 16px;
   font-weight: bolder;

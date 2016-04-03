@@ -1229,6 +1229,11 @@ body {
 	border-radius: 0px!important;
 }
 
+.locked {
+	a {
+		background: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 10px, rgba(0, 0, 0, 0.3) 10px, rgba(0, 0, 0, 0.3) 20px), $button-light-gray;
+	}
+}
 
 .page-links{
 	margin-top:30px;
