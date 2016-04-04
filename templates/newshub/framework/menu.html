@@ -17,8 +17,8 @@
         <ul class="nav navbar-nav navbar-right">
           <!-- <li><a href="#">Search</a></li> -->
           <li {% if request.path == '/' or '/view/article/' in request.path or '/history/' in request.path or '/top-stories/' in request.path %} class="active"{% endif %} ><a href="{% url 'newshub:top_stories' %}">News</a></li>
-          <li {% if request.path == '/new/article/' or '/edit/article/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:new_article' %}">Post</a></li>
-          <li {% if '/profile/' in request.path %} class="active"{% endif %}><a href="{% url 'newshub:self_profile' %}">Profile</a></li>
+          <li class="{% if request.path == '/new/article/' or '/edit/article/' in request.path %}active{% endif %} {% if not user.is_authenticated %}locked{% endif %}"><a href="{% url 'newshub:new_article' %}">Post</a></li>
+          <li class="{% if '/profile/' in request.path %}active{% endif %} {% if not user.is_authenticated %}locked{% endif %}"><a href="{% url 'newshub:self_profile' %}">Profile</a></li>
             {% if after_landing == 1 %}
           <li role="presentation" class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
