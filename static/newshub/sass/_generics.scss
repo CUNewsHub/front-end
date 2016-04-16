@@ -1053,6 +1053,12 @@ body {
 		.follow-button {
 			padding: 1px 25px;
 		}
+		.poster-info {
+			padding-top: 10px;
+			.contact-info {
+				float: right;
+			}
+		}
 	}
 	.article-view-element{
 		img{
@@ -1259,7 +1265,8 @@ body {
 
 .locked {
 	a {
-		background: repeating-linear-gradient(135deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 10px, rgba(0, 0, 0, 0.3) 10px, rgba(0, 0, 0, 0.3) 20px), $button-light-gray;
+		background: repeating-linear-gradient(143deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 10px, rgba(0, 0, 0, 0.3) 10px, rgba(0, 0, 0, 0.3) 20px), $button-light-gray !important;
+
 	}
 }
 
