@@ -1,0 +1,68 @@
+/* line 6, ../sass/notifications.scss */
+.notification-email {
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  width: 600px;
+  margin: auto;
+  color: #3b3b3b;
+  font-size: 20px;
+}
+/* line 10, ../sass/notifications.scss */
+.notification-email:after {
+  clear: both;
+}
+/* line 15, ../sass/notifications.scss */
+.notification-email .black-text {
+  color: black;
+  font-weight: 500;
+}
+/* line 19, ../sass/notifications.scss */
+.notification-email .email-header {
+  border: 5px solid #8D0812;
+  margin: auto;
+  padding: 10px 140px;
+}
+/* line 23, ../sass/notifications.scss */
+.notification-email .email-header .logo {
+  width: 70px;
+  height: 70px;
+  float: left;
+  padding-right: 5px;
+}
+/* line 33, ../sass/notifications.scss */
+.notification-email .email-header .email-header-company {
+  font-size: 36px;
+  font-weight: bolder;
+}
+/* line 38, ../sass/notifications.scss */
+.notification-email .email-header .email-header-url {
+  font-size: 24px;
+}
+/* line 45, ../sass/notifications.scss */
+.notification-email .email-content p {
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/* line 50, ../sass/notifications.scss */
+.notification-email .email-content p a {
+  color: black;
+  text-decoration: none;
+}
+/* line 55, ../sass/notifications.scss */
+.notification-email .email-content p a:hover {
+  text-decoration: none;
+}
+/* line 59, ../sass/notifications.scss */
+.notification-email .email-content p a.red {
+  color: #8D0812;
+  font-weight: bolder;
+}
+/* line 65, ../sass/notifications.scss */
+.notification-email .email-content .featured-content {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border: 2px solid #8D0812;
+}

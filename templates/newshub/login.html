@@ -8,7 +8,7 @@
 {% endblock %}
 {% block content %}
 <div class="row">
-	<div class="col-md-8 center-block login">
+	<div class="col-md-8 login">
 		<div class="col-md-4 login-left">
 			<img class="logo" src="{% static 'newshub/images/nhlogo.svg' %}" />
 		</div>
@@ -61,6 +61,38 @@
 				</form>
 			</br>
 		</div>
+	</div>
+	<div class="col-md-4 register-form">
+	<div class="filler"></div>
+	<form id="register_form" class="form-horizontal" method="post" action="{% url 'newshub:register' %}" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-sm-12">
+					<h3>NewsHub registration</h3>
+				</div>
+			</div>	
+			{% csrf_token %}
+				{% for field in reg_form %}
+				<div class="form-group {%if field.errors %}has-feedback has-error{%endif%}">
+					<label class=" col-sm-12 control-label" for="{{field.id_for_label}}">{{field.label}}{% if field.field.required %}<span class="required"></span>{% endif %}</label>
+					<div class="col-sm-12">
+					{% render_field field placeholder=field.label class='form-control' autocomplete='off'%}
+		                <span class="help-block">
+							<p>{{field.help_text}}</p>
+		                {% for error in field.errors %}
+		                        {{error}}
+		                {% endfor %}
+		               	</span>
+	        	    </div>
+	        	</div>
+				{% endfor %}
+	        	{% if login_error %}
+	        	{% endif %}
+				<div class="row">			
+					<div class="col-sm-12">
+						<input class="btn btn-block btn-default" type="submit" name="action" value="Register"/>
+					</div>
+				</div>
+			</form>
 	</div>
 </div>
 <div class="row">

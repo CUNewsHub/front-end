@@ -1,0 +1,12 @@
+{% extends 'newshub/notifications/email_notification_base.html' %}
+{% load inlinecss %}
+{% inlinecss "newshub/css/notifications.css" %}
+{% block content %}
+	<p>We just wanted to let you know that <span class="black-text">{{article.author}}</span> has posted a new article on the Cambridge NewsHub.</p>
+	<div class="featured-content">
+		<h3>{{article.title}}</h3>
+		<p>{{article.headline}}</p>
+	</div>
+	<p>To see the article, click <a class="red" href="https://www.camnewshub.com{% url 'newshub:view_article_outside' article.pk %}">here</a></p>
+{% endblock %}
+{% endinlinecss %}

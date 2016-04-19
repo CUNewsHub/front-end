@@ -1,5 +1,5 @@
 <ul class="nav nav-pills nav-stacked">
-	{% if request.user != user %}
+	{% if request.user != user and request.user.is_authenticated %}
 		<div class="profile-tools">
             <li data-author-id="{{user.author.pk}}">
             {% if request.user in user.author.followed_by.all %}

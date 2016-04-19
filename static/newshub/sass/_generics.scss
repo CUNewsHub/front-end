@@ -549,6 +549,7 @@ body {
 // End Footer
 // Login
 .login {
+	padding-right: 0px;
 	.login-right form{
 		.form-group {
 			margin-bottom: 5px;
@@ -867,6 +868,14 @@ body {
 		font-size: 14px;
 		display: inline;
 		color: $navbar-inverse-link-active-bg;
+	}
+
+	.article-post-content{
+		img{
+			max-width: 100%;
+			height: auto;
+			display: block;
+		}
 	}
 }
 
@@ -1296,4 +1305,17 @@ body {
 .btn-login{
 	font-size: 16px;
 	font-weight: bolder;
+}
+
+.register-form{
+	.filler{
+		height: 100px;
+		background-color: #242424;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	background-color: $main-color;
+	color: white;
+	margin-bottom: 30px;
+	padding-bottom: 15px;
 }

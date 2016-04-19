@@ -1,0 +1,19 @@
+{% load inlinecss staticfiles %}
+{% inlinecss "newshub/css/notifications.css" %}
+<div class="notification-email">
+	<div class="email-header">
+		<div class="email-header-text black-text">
+			<div class="email-header-company">NEWSHUB</div>
+			<div class="email-header-url">www.camnewshub.com</div>
+		</div>
+	</div>
+	<div class="email-content">
+		<p class="black-text">Dear {{user.first_name}},</p>
+		{% block content %}
+		{% endblock %}
+		<p>If you wish to stop receiving notifications, you can change your notification settings <a href="https://www.camnewshub.com{% url 'newshub:self_profile' %}#notification-settings ">here</a></p>
+		<p>Cheers,</p>
+		<p class="black-text">The Cambridge NewsHub Team</p>
+	</div>
+</div>
+{% endinlinecss %}

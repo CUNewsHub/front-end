@@ -69,6 +69,10 @@
                 {% endif %}
             </div>
         </div>
+        {% empty %}
+            {% if '/history/' in request.path %}
+                <h1>You have not viewed any articles yet.</h1>
+            {% endif %}
         {% endfor %}
         
 {% show_more %}

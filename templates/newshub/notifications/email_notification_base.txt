@@ -1,0 +1,9 @@
+Dear {{user.first_name}},
+
+{% block content %}
+{% endblock %}	
+
+If you wish to stop receiving notifications, you can change your notification settings here
+Cheers,
+
+The Cambridge NewsHub Team

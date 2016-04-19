@@ -1,0 +1,75 @@
+$main-color: #8D0812;
+$feed-hover-gray: #F2F2F2;
+$button-light-gray: #A6A6A6;
+$darker-gray: #686868;
+
+.notification-email{
+	font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+	width: 600px;
+	margin: auto;
+	&:after{
+		clear:both;
+	}
+	color: #3b3b3b;
+	font-size: 20px;
+	.black-text{
+		color: black;
+		font-weight: 500;
+	}
+	.email-header{
+		border: 5px solid $main-color;
+		margin: auto;
+		padding: 10px 140px;
+		.logo{
+			width: 70px;
+			height: 70px;
+			float: left;
+			padding-right: 5px;
+		}
+
+		.email-header-text{
+		}
+
+		.email-header-company{
+			font-size: 36px;
+			font-weight: bolder;
+		}
+
+		.email-header-url{
+			font-size: 24px;
+		}
+
+	}
+
+	.email-content{
+		p{
+			margin-bottom: 15px;
+			margin-top: 15px;
+			padding-left: 15px;
+			padding-right: 15px;
+			a{
+				color: black;
+				text-decoration: none;
+			}
+
+			a:hover{
+				text-decoration: none;
+			}
+
+			a.red{
+				color: $main-color;
+				font-weight: bolder;
+			}	
+		}
+
+		.featured-content{
+			padding-left: 15px;
+			padding-right: 15px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+			border: 2px solid $main-color;
+		}
+
+			
+	}
+}

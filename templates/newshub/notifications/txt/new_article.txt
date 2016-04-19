@@ -1,0 +1,5 @@
+{% extends 'newshub/notifications/email_notification_base.txt' %}
+
+{% block content %}
+	html
+{% endblock %}

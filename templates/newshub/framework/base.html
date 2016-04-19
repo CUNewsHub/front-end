@@ -53,7 +53,7 @@
 		{% else %}
 			{% if request.path == '/privacy/policy/' or request.path == '/about/us/' or request.path == '/contact/us/' or request.path == '/register/' %}
 				{% include 'newshub/framework/menu.html' with after_landing=0 %}
-			{% elif '/view/article/' in request.path or show_menu %}
+			{% elif '/view/article/' in request.path  or '/profile/' in request.path or show_menu %}
 				{% include 'newshub/framework/menu.html' with after_landing=2 %}
 			{% endif %}
 		{% endif %}
