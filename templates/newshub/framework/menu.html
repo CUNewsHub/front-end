@@ -13,6 +13,14 @@
       </div>
       {% if after_landing >= 1%}
       <div id="navbar" class="collapse navbar-collapse">
+        <form class="navbar-form navbar-left">
+          <div class="form-group input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-btn">
+              <button class="btn btn-default" type="button">Go!</button>
+            </span>
+          </div>
+        </form>
         <ul class="nav navbar-nav navbar-right">
           <!-- <li><a href="#">Search</a></li> -->
           <li {% if request.path == '/' or '/view/article/' in request.path or '/history/' in request.path or '/top-stories/' in request.path %} class="active"{% endif %} ><a href="{% url 'newshub:top_stories' %}">News</a></li>
